@@ -1,43 +1,73 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Container, Row, Navbar, Nav } from 'react-bootstrap';
 import "./Header.scss"
+import styled from 'styled-components';
 
-const MetaHeader = () => {
-    const Links = [
-        { "title": "Home", "url": "#home" },
-        { "title": "Features", "url": "#features" },
-        { "title": "Pricing", "url": "#pricing" }
-    ];
+
+const MetaHeader = (props) => {
+    const {children, className, Links} = props
     return (
-        <Navbar bg="ieee-black" variant="dark">
-            <Nav className="mr-auto">
-                {/* <Nav.Item>
-                    <Nav.Link href="#home">Home</Nav.Link>
-                </Nav.Item>
-
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-                {
-                    Links.map((link, key) => (
-                        <Nav.Item key={key}>
-                            <Nav.Link 
-                                href={link.url}
-                                // style={ key == Links.length - 1 ? {padding: "0 13px"} : { borderRight: "1px solid rgba(0,102,153,.2)", padding: "0 13px" }}
-                            >
-                                {link.title}
-                            </Nav.Link>
-                        </Nav.Item>
-                    ))
-                }
-            </Nav>
-        </Navbar>
+        <div className={className + " d-none d-lg-block"}>
+            <Container>
+                <Row>
+                    <Nav>
+                        {
+                            Links.map((link, key) => (
+                                <Nav.Item key={key}>
+                                    <Nav.Link href={link.url} target="_blank">{link.title}</Nav.Link>
+                                </Nav.Item>
+                            ))
+                        }
+                    </Nav>
+                </Row>
+                {children}
+            </Container>
+        </div>
     );
 }
 
+export const StyledMetaHeader = styled(MetaHeader)`
+    min-height: 40px;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .nav .nav-item{  
+        :first-child{
+            a{
+                padding-left: 0;
+            }
+        } 
+        a{
+            font-family: "Open Sans";
+            font-size: 11px;
+            font-weight: 500;
+            padding-top:0;
+            padding-bottom: 0;
+            color: white;
+            :hover{
+                color:	#007377;
+            }
+        }
+        
+        :not(:last-child){
+            a{
+                border-right: 1px solid rgba(117,120,123,.4); 
+            }
+        }
+    }
+`;
+
 const Header = () => {
+    const Links = [
+        { title: "IEEE.org", url: "https://www.ieee.org" },
+        { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },
+        { title: "IEEE Standards", url: "https://standards.ieee.org" },
+        { title: "IEEE Spectrum", url: "https://spectrum.ieee.org" },
+        { title: "More sites", url: "https://www.ieee.org/sitemap" }
+    ];
     return (
         <header>
-            <MetaHeader />
+            <StyledMetaHeader Links={Links} hey="ss" />
         </header>
     );
 }
