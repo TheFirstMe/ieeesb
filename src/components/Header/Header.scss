@@ -1,0 +1,39 @@
+@import "src/scss/bootstrap";
+
+.site-identifier {
+  padding: 30px 0;
+  background-color: #ecebe9;
+}
+
+.nav-links {
+  background-color: #dad7d8;
+  @include media-breakpoint-down(sm) {
+    padding: 0;
+  }
+}
+
+.custom-navbar {
+  .nav-item {
+    padding: 5px 10px;
+    .nav-link {
+      color: #212122;
+    }
+    @include media-breakpoint-up(lg) {
+      &:hover {
+        background-color: #ecebe9;
+        text-shadow: none;
+        -webkit-transition: background linear 300ms;
+        -moz-transition: background linear 300ms;
+        -o-transition: background linear 300ms;
+        transition: background linear 300ms;
+        .nav-link {
+          color: #00629b;
+          -webkit-transition: color linear 300ms;
+          -moz-transition: color linear 300ms;
+          -o-transition: color linear 300ms;
+          transition: color linear 300ms;
+        }
+      }
+    }
+  }
+}

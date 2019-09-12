@@ -23,6 +23,14 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-lodash",
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svg/
+        }
+      }
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",

@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import "./UserLinks.css";
-
+import "./UserLinks.scss";
+import { SocialIcon } from "react-social-icons";
 
 class UserLinks extends Component {
   getLinkElements() {
     const { userLinks } = this.props.config;
     const { labeled } = this.props;
     return userLinks.map(link => (
-      <button key={link.label} href={link.url}>
-        {labeled ? link.label : ""}
-      </button>
+      <SocialIcon key={link.label} url={link.url} fgColor="#ffffff" target="_blank" style={{ height: 35, width: 35, margin: "0 0 0 22px" }} />
     ));
   }
   render() {
@@ -17,7 +15,7 @@ class UserLinks extends Component {
     if (!userLinks) {
       return null;
     }
-    return <div className="user-links">{this.getLinkElements()}</div>;
+    return <div className="user-links" aria-hidden="true">{this.getLinkElements()}</div>;
   }
 }
 

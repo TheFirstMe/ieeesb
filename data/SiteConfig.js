@@ -23,19 +23,20 @@ const config = {
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
   userLinks: [
     {
-      label: "GitHub",
-      url: "https://github.com/Vagr9K/gatsby-advanced-starter",
-      iconClassName: "fa fa-github"
+      label: "Facebook",
+      url: "https://www.facebook.com/IEEESB.GCEK/",
     },
     {
-      label: "Twitter",
-      url: "https://twitter.com/Vagr9K",
-      iconClassName: "fa fa-twitter"
+      label: "LinkedIn",
+      url: "https://in.linkedin.com/company/ieee-sb-gcek",
+    },
+    {
+      label: "Instagram",
+      url: "https://www.instagram.com/ieeesbgcek/"
     },
     {
       label: "Email",
-      url: "mailto:vagr9k@gmail.com",
-      iconClassName: "fa fa-envelope"
+      url: "mailto:ieeesb@gcek.ac.in"
     }
   ],
   copyright: "Copyright © " + new Date().getFullYear() + " IEEE – All rights reserved. Use of this website signifies your agreement to the IEEE Terms and Conditions.", // Copyright string for the footer of the website and RSS feed.

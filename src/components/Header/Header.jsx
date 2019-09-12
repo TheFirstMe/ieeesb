@@ -1,11 +1,15 @@
 import React from 'react';
-import { Container, Row, Navbar, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import "./Header.scss"
 import styled from 'styled-components';
+import Logo from "../../assets/svg/logo.svg";
 
+const IEEE = () => (
+    <img height={30} src={require("../../assets/ieee.png")} alt="IEEE" />
+)
 
 const MetaHeader = (props) => {
-    const {children, className, Links} = props
+    const { children, className, Links } = props
     return (
         <div className={className + " d-none d-lg-block"}>
             <Container>
@@ -20,7 +24,6 @@ const MetaHeader = (props) => {
                         }
                     </Nav>
                 </Row>
-                {children}
             </Container>
         </div>
     );
@@ -45,7 +48,7 @@ export const StyledMetaHeader = styled(MetaHeader)`
             padding-bottom: 0;
             color: white;
             :hover{
-                color:	#007377;
+                color:	#00629B;
             }
         }
         
@@ -67,7 +70,42 @@ const Header = () => {
     ];
     return (
         <header>
-            <StyledMetaHeader Links={Links} hey="ss" />
+            <StyledMetaHeader Links={Links} />
+            <Navbar expand="md" className="p-0 custom-navbar">
+                <div className="d-flex flex-column align-items-start w-100">
+                    <Container className="site-identifier" fluid>
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <Logo height={50} />
+                                </Col>
+                                <Col className="text-right">
+                                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                                </Col>
+                                <Col className="text-right pt-2 d-none d-md-block" >
+                                    <a href="https://www.ieee.org" target="_blank" >
+                                        <IEEE />
+                                    </a>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Container>
+                    <Container className="nav-links" fluid>
+                        <Container>
+                            <Navbar.Collapse id="basic-navbar-nav" className="text-center">
+                                <Nav className="mr-auto">
+                                    <Nav.Item>
+                                        <Nav.Link href="#home">Home</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link href="#link">Link</Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Container>
+                </div>
+            </Navbar>
         </header>
     );
 }

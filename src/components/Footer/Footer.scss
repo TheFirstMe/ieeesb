@@ -39,9 +39,13 @@
       line-height: 15px;
       color: white;
       &:hover {
-        color: #007377;
+        color: #00629B;
       }
     }
+    p{
+        padding-bottom: 20px;
+    }
+    
     @include media-breakpoint-up(md) {
       a {
         padding-top: 0;

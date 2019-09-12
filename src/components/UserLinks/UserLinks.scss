@@ -1,0 +1,16 @@
+@import "src/scss/bootstrap";
+
+.user-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    /* align-items: center; */
+    margin: 0 0 0 -22px;
+    max-width: 100%;
+    
+    @include media-breakpoint-down(md){
+        justify-content: center;
+        margin-top: 30px;
+    }
+}
+
