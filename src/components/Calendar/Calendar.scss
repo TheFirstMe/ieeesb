@@ -1,0 +1,12 @@
+@import "~tail.datetime/css/tail.datetime-default-blue.css";
+
+.tail-datetime-calendar {
+  font-family: "Open Sans Condensed";
+  .calendar-actions {
+    background-color: #006699;
+  }
+}
+
+.calendar-days .calendar-week {
+  text-transform: uppercase;
+}

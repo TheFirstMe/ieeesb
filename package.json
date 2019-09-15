@@ -35,14 +35,18 @@
     "node-sass": "^4.12.0",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
+    "react-big-calendar": "^0.22.1",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-icons": "^3.7.0",
+    "react-intersection-observer": "^8.24.2",
     "react-share": "^2.4.0",
     "react-social-icons": "^4.1.0",
     "react-twitter-widgets": "^1.7.1",
     "styled-components": "^4.3.2",
+    "tail.datetime": "^0.4.13",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

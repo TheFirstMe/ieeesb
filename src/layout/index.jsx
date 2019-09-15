@@ -19,9 +19,7 @@ export default class MainLayout extends React.Component {
                 <div className="site">
                     <Header />
                     <div className="site-content">
-                        <Container>
-                            <Row>{children}</Row>
-                        </Container>
+                        {children}
                     </div>
                     <Footer config={config} />
                 </div>

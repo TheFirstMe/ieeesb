@@ -1,22 +1,21 @@
 import React from 'react';
-import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import "./Header.scss"
 import styled from 'styled-components';
 import Logo from "../../assets/svg/logo.svg";
-
+import { FaSearch } from 'react-icons/fa';
 const IEEE = () => (
     <img height={30} src={require("../../assets/ieee.png")} alt="IEEE" />
 )
 
-const MetaHeader = (props) => {
-    const { children, className, Links } = props
+const MetaHeader = ({ className, links }) => {
     return (
-        <div className={className + " d-none d-lg-block"}>
+        <div className={className + " d-none d-md-block"}>
             <Container>
                 <Row>
                     <Nav>
                         {
-                            Links.map((link, key) => (
+                            links.map((link, key) => (
                                 <Nav.Item key={key}>
                                     <Nav.Link href={link.url} target="_blank">{link.title}</Nav.Link>
                                 </Nav.Item>
@@ -60,53 +59,117 @@ export const StyledMetaHeader = styled(MetaHeader)`
     }
 `;
 
+
+class MainHeader extends React.Component {
+    constructor(props) {
+        super(props);
+        this.setNavExpanded = this.setNavExpanded.bind(this);
+        this.closeNav = this.closeNav.bind(this);
+        this.test = this.test.bind(this);
+        this.state = { 
+                        navExpanded: false, 
+                        stuck: '',
+                        dark: '', 
+                        btnVariant: 'outline-dark',
+                        fixed: '' 
+                    };
+    }
+
+    setNavExpanded(expanded) {
+        this.setState({ navExpanded: expanded });
+    }
+
+    closeNav() {
+        this.setState({ navExpanded: false });
+    }
+
+    test(t) {
+        if (t) {
+            this.setState({ stuck: '', dark: '', btnVariant: 'outline-dark', fixed: '' });
+            // return '';
+        }
+        else {
+            this.setState({ stuck: 'stuck', dark: 'dark', btnVariant: 'outline-light', fixed: 'top' });
+            // return 'test';
+        }
+    }
+
+    render() {
+        return (
+            <>
+                <Navbar
+                    onToggle={this.setNavExpanded}
+                    expanded={this.state.navExpanded}
+                    expand="md"
+                    className="site-identifier px-3"
+                >
+                    <Container>
+                        <Navbar.Brand href="/"><Logo height={50} /></Navbar.Brand>
+                        <Navbar.Toggle />
+                        <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" >
+                            <IEEE />
+                        </a>
+                    </Container>
+                </Navbar>
+                <Component test={this.test} />
+                <Navbar expanded={this.state.navExpanded} expand="md" bg={this.state.dark} className={"custom-navbar p-0 " + this.state.stuck } sticky="top">
+                    <Container className="pl-0">
+                        <Navbar.Collapse className="text-center">
+                            <Nav className="mr-auto" onSelect={this.closeNav}>
+                                {
+                                    this.props.links.map((link, key) => (
+                                        <Nav.Item key={key}>
+                                            <Nav.Link href={link.url} className="text-nowrap" >{link.title}</Nav.Link>
+                                        </Nav.Item>
+                                    ))
+                                }
+                            </Nav>
+                            <Form inline className="">
+                                <FormControl type="text" placeholder="Search" className="mr-sm-2" size="sm" />
+                                <Button size="md" variant={this.state.btnVariant}>Search</Button>
+                            </Form>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+            </>
+        )
+    }
+}
+
+import { InView } from 'react-intersection-observer'
+
+const Component = ({ test }) => (
+    <InView onChange={(inView, entry) => test(inView)}>
+        {({ inView, ref, entry }) => {
+
+            return (
+               <div ref={ref}></div>
+            )
+        }}
+    </InView>
+)
+
 const Header = () => {
-    const Links = [
+    const metalinks = [
         { title: "IEEE.org", url: "https://www.ieee.org" },
         { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },
         { title: "IEEE Standards", url: "https://standards.ieee.org" },
         { title: "IEEE Spectrum", url: "https://spectrum.ieee.org" },
         { title: "More sites", url: "https://www.ieee.org/sitemap" }
     ];
+    const navlinks = [
+        { title: "Home", url: "/" },
+        { title: "About", url: "/about" },
+        { title: "Events", url: "/events" },
+        { title: "Execom Members", url: "/execom-members" },
+        { title: "Contact", url: "/contact" }
+    ];
     return (
-        <header>
-            <StyledMetaHeader Links={Links} />
-            <Navbar expand="md" className="p-0 custom-navbar">
-                <div className="d-flex flex-column align-items-start w-100">
-                    <Container className="site-identifier" fluid>
-                        <Container>
-                            <Row>
-                                <Col>
-                                    <Logo height={50} />
-                                </Col>
-                                <Col className="text-right">
-                                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                                </Col>
-                                <Col className="text-right pt-2 d-none d-md-block" >
-                                    <a href="https://www.ieee.org" target="_blank" >
-                                        <IEEE />
-                                    </a>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Container>
-                    <Container className="nav-links" fluid>
-                        <Container>
-                            <Navbar.Collapse id="basic-navbar-nav" className="text-center">
-                                <Nav className="mr-auto">
-                                    <Nav.Item>
-                                        <Nav.Link href="#home">Home</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link href="#link">Link</Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
-                            </Navbar.Collapse>
-                        </Container>
-                    </Container>
-                </div>
-            </Navbar>
-        </header>
+        <>
+            <StyledMetaHeader links={metalinks} />
+            {/* <Component test="d" /> */}
+            <MainHeader links={navlinks} />
+        </>
     );
 }
 

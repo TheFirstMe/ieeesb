@@ -5,19 +5,23 @@
   background-color: #ecebe9;
 }
 
-.nav-links {
+.custom-navbar {
   background-color: #dad7d8;
+  transition: all 1s;
+  font-family: "Open Sans Condensed";
   @include media-breakpoint-down(sm) {
     padding: 0;
   }
-}
 
-.custom-navbar {
   .nav-item {
-    padding: 5px 10px;
+    padding: 5px 20px;
+    @include media-breakpoint-down(lg){
+      padding: 10px 5px;
+    }
     .nav-link {
       color: #212122;
     }
+
     @include media-breakpoint-up(lg) {
       &:hover {
         background-color: #ecebe9;
@@ -32,6 +36,40 @@
           -moz-transition: color linear 300ms;
           -o-transition: color linear 300ms;
           transition: color linear 300ms;
+        }
+      }
+    }
+  }
+}
+
+.sticky-top {
+  @include media-breakpoint-down(sm) {
+    position: relative;
+    top: initial;
+    z-index: initial;
+  }
+  transition: all 0.25s ease-in;
+  &.stuck {
+    transition: all 0.5 ease-in;
+    .nav-item {
+      .nav-link {
+        color: white;
+      }
+      @include media-breakpoint-up(lg) {
+        &:hover {
+          background-color: #fff;
+          text-shadow: none;
+          -webkit-transition: background linear 300ms;
+          -moz-transition: background linear 300ms;
+          -o-transition: background linear 300ms;
+          transition: background linear 300ms;
+          .nav-link {
+            color: #212122;
+            -webkit-transition: color linear 300ms;
+            -moz-transition: color linear 300ms;
+            -o-transition: color linear 300ms;
+            transition: color linear 300ms;
+          }
         }
       }
     }
