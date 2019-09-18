@@ -139,11 +139,11 @@ class Index extends React.Component {
     render() {
         const postEdges = this.props.data.allMarkdownRemark.edges;
         return (
-            <Layout>
+            <Layout isHome>
                 <Helmet title={config.siteTitle} />
                 <SEO />
                 {/* <PostListing postEdges={postEdges} /> */}
-                <Container>
+                {/* <Container>
                     <Row>
                         <Col md={12} lg={8}>
                             <Container>
@@ -157,23 +157,7 @@ class Index extends React.Component {
                                                 <Col>
                                                     <Filler />
                                                 </Col>
-                                                {/* <Col className="pl-0">
-                                                    <Filler />
-                                                </Col> */}
                                             </Row>
-                                            {/* <Row className="mt-3">
-                                                <Col>
-                                                    <Filler />
-                                                </Col>
-                                                <Col className="pl-0">
-                                                    <Filler />
-                                                </Col>
-                                            </Row> */}
-                                            {/* <Row className="mt-3">
-                                                <Col>
-                                                    <a className="btn btn-primary" href="/events">See all Events</a>
-                                                </Col>
-                                            </Row> */}
                                         </Container>
                                     </Col>
                                 </Row>
@@ -234,7 +218,7 @@ class Index extends React.Component {
                                                 </a>
                                         </div>
                                     </Col>
-                                    <Col>
+                                    <Col className="pt-lg-4">
                                         <h3 className="boxed mb-4">
                                             <span>Calendar</span>
                                         </h3>
@@ -247,6 +231,53 @@ class Index extends React.Component {
                     <Row className="">
                         <Col>
 
+                        </Col>
+                    </Row>
+                </Container> */}
+
+                <Container>
+                    <Row>
+                        <Col>
+                            <h3 className="boxed">
+                                <span>Upcoming Events</span>
+                            </h3>
+                            <Container>
+                                <Row className="mt-4">
+                                    <Col>
+                                        <Filler />
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </Col>
+                    </Row>
+                    <Row className="mt-5">
+                        <Col>
+                            <h3 className="boxed">
+                                <span>Events</span>
+                            </h3>
+                            <Container>
+                                <Row className="mt-4">
+                                    <Col>
+                                        <Filler />
+                                    </Col>
+                                    <Col className="pl-0">
+                                        <Filler />
+                                    </Col>
+                                </Row>
+                                <Row className="mt-3">
+                                    <Col>
+                                        <Filler />
+                                    </Col>
+                                    <Col className="pl-0">
+                                        <Filler />
+                                    </Col>
+                                </Row>
+                                <Row className="mt-4">
+                                    <Col>
+                                        <a className="btn btn-primary" href="/events">See all Events</a>
+                                    </Col>
+                                </Row>
+                            </Container>
                         </Col>
                     </Row>
                 </Container>
