@@ -235,52 +235,46 @@ class Index extends React.Component {
                     </Row>
                 </Container> */}
 
-                <Container>
-                    <Row>
-                        <Col>
-                            <h3 className="boxed">
-                                <span>Upcoming Events</span>
-                            </h3>
-                            <Container>
-                                <Row className="mt-4">
-                                    <Col>
-                                        <Filler />
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                    </Row>
-                    <Row className="mt-5">
-                        <Col>
-                            <h3 className="boxed">
-                                <span>Events</span>
-                            </h3>
-                            <Container>
-                                <Row className="mt-4">
-                                    <Col>
-                                        <Filler />
-                                    </Col>
-                                    <Col className="pl-0">
-                                        <Filler />
-                                    </Col>
-                                </Row>
-                                <Row className="mt-3">
-                                    <Col>
-                                        <Filler />
-                                    </Col>
-                                    <Col className="pl-0">
-                                        <Filler />
-                                    </Col>
-                                </Row>
-                                <Row className="mt-4">
-                                    <Col>
-                                        <a className="btn btn-primary" href="/events">See all Events</a>
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                    </Row>
-                </Container>
+                <Row>
+                    <Col>
+                        <h3 className="boxed">
+                            <span>Upcoming Events</span>
+                        </h3>
+                        <Row className="mt-4">
+                            <Col>
+                                <Filler />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className="mt-5">
+                    <Col>
+                        <h3 className="boxed">
+                            <span>Events</span>
+                        </h3>
+                        <Row className="mt-4">
+                            <Col>
+                                <Filler />
+                            </Col>
+                            <Col className="pl-0">
+                                <Filler />
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col>
+                                <Filler />
+                            </Col>
+                            <Col className="pl-0">
+                                <Filler />
+                            </Col>
+                        </Row>
+                        <Row className="mt-4">
+                            <Col>
+                                <a className="btn btn-primary" href="/events">See all Events</a>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
             </Layout>
         );
     }

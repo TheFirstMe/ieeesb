@@ -69,31 +69,29 @@ export default class MainLayout extends React.Component {
                             <h3 className="boxed">
                                 <span>Latest Posts</span>
                             </h3>
-                            <Container>
-                                {postList.map(post => (
-                                    <Row key={post.title}>
-                                        <Col>
-                                            <div className="mt-4" style={{ position: "relative", minHeight: "55px" }}>
-                                                <div className="hello">
-                                                    <Filler />
-                                                </div>
-                                                <h6 style={{ marginLeft: "90px" }}>
-                                                    <Link to={post.path}>
-                                                        {post.title}
-                                                    </Link>
-                                                </h6>
+                            {postList.map(post => (
+                                <Row key={post.title}>
+                                    <Col>
+                                        <div className="mt-4" style={{ position: "relative", minHeight: "55px" }}>
+                                            <div className="hello">
+                                                <Filler />
                                             </div>
-                                            <p className="text-muted mt-3" >
-                                                {
-                                                    post.excerpt.length > 51 ?
-                                                    `${post.excerpt.substring(0,50)}...` :
+                                            <h6 style={{ marginLeft: "90px" }}>
+                                                <Link to={post.path}>
+                                                    {post.title}
+                                                </Link>
+                                            </h6>
+                                        </div>
+                                        <p className="text-muted mt-3" >
+                                            {
+                                                post.excerpt.length > 51 ?
+                                                    `${post.excerpt.substring(0, 50)}...` :
                                                     `${post.excerpt}`
-                                                }
-                                            </p>
-                                        </Col>
-                                    </Row>
-                                ))}
-                            </Container>
+                                            }
+                                        </p>
+                                    </Col>
+                                </Row>
+                            ))}
                         </>
                     );
                 }}
@@ -108,7 +106,7 @@ export default class MainLayout extends React.Component {
                 </h3>
 
                 <div className="banner-wrapper mt-4">
-                    <h4 className>
+                    <h4>
                         <span>Become a Member</span>
                     </h4>
                     <div className="banner-wrapper small">
@@ -158,42 +156,41 @@ export default class MainLayout extends React.Component {
         const { children, isHome } = this.props;
         console.log(isHome);
         return (
-            <div>
+            <>
                 <Helmet>
                     <meta name="description" content={config.siteDescription} />
                     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700" rel="stylesheet" />
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script>
                 </Helmet>
                 <div className="site">
                     <Header />
-                    <div className="site-content">
+                    <div className="site-content pt-lg-3">
                         {/* {children} */}
                         <Container>
                             <Row>
-                                <Col md={12} lg={8}>
+                                <Col md={12} lg={8} className="py-2 py-lg-0">
                                     {children}
                                 </Col>
-                                <Col md={12} lg={4} className="mt-5 mt-lg-0">
-                                    <Container className="px-0">
-                                        <Row>
-                                            <Col xs={!isHome && 12}>
-                                                {isHome && <this.SignUpComponent />}
-                                                {!isHome && <this.LatestPosts />}
-                                            </Col>
-                                            <Col className="pt-lg-4">
-                                                <h3 className="boxed mb-4">
-                                                    <span>Calendar</span>
-                                                </h3>
-                                                <Calendar />
-                                            </Col>
-                                        </Row>
-                                    </Container>
+                                <Col md={12} lg={4} className="py-2 py-lg-0">
+                                    <Row className="ml-lg-1">
+                                        <Col xs={12}>
+                                            {isHome && <this.SignUpComponent />}
+                                            {!isHome && <this.LatestPosts />}
+                                        </Col>
+                                        <Col className="pt-4 pt-lg-0">
+                                            <h3 className="boxed mb-4">
+                                                <span>Calendar</span>
+                                            </h3>
+                                            <Calendar />
+                                        </Col>
+                                    </Row>
                                 </Col>
                             </Row>
                         </Container>
                     </div>
                     <Footer config={config} />
                 </div>
-            </div>
+            </>
         );
     }
 }

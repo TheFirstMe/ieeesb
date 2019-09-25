@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
-import About from "../components/About/About";
+import Contact from "../components/Contact/Contact";
 import config from "../../data/SiteConfig";
 
-class AboutPage extends Component {
+class ContactPage extends Component {
     render() {
         return (
             <Layout>
-                <Helmet title={`About | ${config.siteTitle}`} />
-                <About />
+                <Helmet title={`Contact | ${config.siteTitle}`} />
+                <Contact />
             </Layout>
         );
     }
 }
 
-export default AboutPage;
+export default ContactPage;
