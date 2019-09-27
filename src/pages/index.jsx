@@ -6,13 +6,10 @@ import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 
 import config from "../../data/SiteConfig";
-import { Container, Row, Col } from "react-bootstrap";
-// import "tail.datetime/css/tail.datetime";
-
-
-// import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 import Calendar from "../components/Calendar/Calendar";
+import { Member } from "../components/ExecomMembers/ExecomMembers";
 
 
 const now = new Date();
@@ -139,138 +136,134 @@ class Index extends React.Component {
     render() {
         const postEdges = this.props.data.allMarkdownRemark.edges;
         return (
-            <Layout isHome>
+            <Layout>
                 <Helmet title={config.siteTitle} />
                 <SEO />
                 {/* <PostListing postEdges={postEdges} /> */}
-                {/* <Container>
-                    <Row>
-                        <Col md={12} lg={8}>
-                            <Container>
-                                <Row>
-                                    <Col>
-                                        <h3 className="boxed">
-                                            <span>Upcoming Events</span>
-                                        </h3>
-                                        <Container>
-                                            <Row className="mt-4">
-                                                <Col>
-                                                    <Filler />
-                                                </Col>
-                                            </Row>
-                                        </Container>
-                                    </Col>
-                                </Row>
-                                <Row className="mt-5">
-                                    <Col>
-                                        <h3 className="boxed">
-                                            <span>Events</span>
-                                        </h3>
-                                        <Container>
-                                            <Row className="mt-4">
-                                                <Col>
-                                                    <Filler />
-                                                </Col>
-                                                <Col className="pl-0">
-                                                    <Filler />
-                                                </Col>
-                                            </Row>
-                                            <Row className="mt-3">
-                                                <Col>
-                                                    <Filler />
-                                                </Col>
-                                                <Col className="pl-0">
-                                                    <Filler />
-                                                </Col>
-                                            </Row>
-                                            <Row className="mt-4">
-                                                <Col>
-                                                    <a className="btn btn-primary" href="/events">See all Events</a>
-                                                </Col>
-                                            </Row>
-                                        </Container>
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                        <Col md={12} lg={4} className="mt-5 mt-lg-0">
-                            <Container className="px-0">
-                                <Row>
-                                    <Col>
-                                        <h3 className="boxed">
-                                            <span>Membership</span>
-                                        </h3>
-
-                                        <div className="banner-wrapper mt-4">
-                                            <h4 className>
-                                                <span>Become a Member</span>
-                                            </h4>
-                                            <div className="banner-wrapper small">
-                                                <p>Sign up today to get involved in IEEE SB GCEK.</p>
-                                            </div>
-                                            <a className="btn btn-yellow"
-                                                href="https://www.ieee.org/go/join_student/"
-                                                title="Join IEEE"
-                                                target="_blank"
-                                                style={{ marginBottom: "45px" }}
-                                            >
-                                                Join IEEE
-                                                </a>
-                                        </div>
-                                    </Col>
-                                    <Col className="pt-lg-4">
-                                        <h3 className="boxed mb-4">
-                                            <span>Calendar</span>
-                                        </h3>
-                                        <Calendar />
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                    </Row>
-                    <Row className="">
-                        <Col>
-
-                        </Col>
-                    </Row>
-                </Container> */}
-
                 <Row>
                     <Col>
                         <h3 className="boxed">
-                            <span>Upcoming Events</span>
+                            <span>IEEE SB GCEK</span>
                         </h3>
-                        <Row className="mt-4">
-                            <Col>
-                                <Filler />
-                            </Col>
-                        </Row>
+                        <div className="boxed-content">
+                            <p className="text-muted">
+                                The IEEE Student Branch of GCEK came into existence
+                                on 5<sup>th</sup> June 2009. Since then we have conducted several
+                                programs for the benefit of students.
+                                The IEEE Head Quarters is regularly conducting contests in various
+                                category in which students can participate. These are conducted globally
+                                and the students get a chance to compete with students from Universities from other parts of the world.<br />
+                                Our IAS and PELS chapters were officially inaugurated by Dr. Sanjeeb Kumar Panda, Director of Power and
+                                Energy Section On March 11, 2019. It mainly focused on industry leadership in energy conservation and
+                                environmental ,health issues. Several activities were organised under these chapters which got great
+                                appreciation from the student members as well as from the teachers.<br />
+                                The goal of the Student Branch is to provide a platform for the students where they can develop
+                                co-curricular skills. The Student Branch stands for increasing the awareness of students
+                                in co-academic matters, supplement their studies and help them reach higher professional
+                                standards. It is hoped that the activities of the Student Branch will generate a genuine
+                                interest among the students in their studies.
+                            </p>
+                        </div>
                     </Col>
                 </Row>
                 <Row className="mt-5">
                     <Col>
                         <h3 className="boxed">
-                            <span>Events</span>
+                            <span>Execom Members</span>
                         </h3>
-                        <Row className="mt-4">
-                            <Col>
-                                <Filler />
+                        <Row className="boxed-content">
+                            <Col md={3}>
+                                <Member designation="SB Chariman" />
                             </Col>
-                            <Col className="pl-0">
-                                <Filler />
+                            <Col md={3}>
+                                <Member designation="IAS Chairman" borderTopColor="#006341" />
                             </Col>
-                        </Row>
-                        <Row className="mt-3">
-                            <Col>
-                                <Filler />
+                            <Col md={3}>
+                                <Member designation="PELS Chairman" borderTopColor="#BA0C2F" />
                             </Col>
-                            <Col className="pl-0">
-                                <Filler />
+                            <Col md={3}>
+                                <Member designation="WIE Chairperson" borderTopColor="#772583" />
                             </Col>
                         </Row>
                         <Row className="mt-4">
                             <Col>
-                                <a className="btn btn-primary" href="/events">See all Events</a>
+                                <Button href="/execom-members" block>See all members</Button>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className="mt-5">
+                    <Col md={12} lg={8} className="py-2 py-lg-0">
+                        <Row>
+                            <Col>
+                                <h3 className="boxed">
+                                    <span>Upcoming Events</span>
+                                </h3>
+                                <Row className="mt-4">
+                                    <Col>
+                                        <Filler />
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <Row className="mt-5">
+                            <Col>
+                                <h3 className="boxed">
+                                    <span>Events</span>
+                                </h3>
+                                <Row className="mt-4">
+                                    <Col>
+                                        <Filler />
+                                    </Col>
+                                    <Col className="pl-0">
+                                        <Filler />
+                                    </Col>
+                                </Row>
+                                <Row className="mt-3">
+                                    <Col>
+                                        <Filler />
+                                    </Col>
+                                    <Col className="pl-0">
+                                        <Filler />
+                                    </Col>
+                                </Row>
+                                <Row className="mt-4">
+                                    <Col>
+                                        <a className="btn btn-primary btn-block" href="/events">See all Events</a>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col md={12} lg={4} className="py-2 py-lg-0">
+                        <Row className="ml-lg-1">
+                            <Col xs={12}>
+                                <h3 className="boxed">
+                                    <span>Membership</span>
+                                </h3>
+
+                                <div className="banner-wrapper mt-4">
+                                    <h4>
+                                        <span>Become a Member</span>
+                                    </h4>
+                                    <div className="banner-wrapper small">
+                                        <p>Sign up today to get involved in IEEE SB GCEK.</p>
+                                    </div>
+                                    <a className="btn btn-yellow"
+                                        href="https://www.ieee.org/go/join_student/"
+                                        title="Join IEEE"
+                                        target="_blank"
+                                        style={{ marginBottom: "45px" }}
+                                    >
+                                        Join IEEE
+                                    </a>
+                                </div>
+                            </Col>
+                            <Col className="pt-4 pt-lg-0">
+                                <h3 className="boxed mb-4">
+                                    <span>Calendar</span>
+                                </h3>
+                                <Calendar />
                             </Col>
                         </Row>
                     </Col>

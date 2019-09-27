@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav, Form, InputGroup,FormControl, Button } from 'react-bootstrap';
 import "./Header.scss"
 import styled from 'styled-components';
 import Logo from "../../assets/svg/logo.svg";
@@ -66,13 +66,13 @@ class MainHeader extends React.Component {
         this.setNavExpanded = this.setNavExpanded.bind(this);
         this.closeNav = this.closeNav.bind(this);
         this.test = this.test.bind(this);
-        this.state = { 
-                        navExpanded: false, 
-                        stuck: '',
-                        dark: '', 
-                        btnVariant: 'outline-dark',
-                        fixed: '' 
-                    };
+        this.state = {
+            navExpanded: false,
+            stuck: '',
+            dark: '',
+            btnVariant: 'outline-dark',
+            fixed: ''
+        };
     }
 
     setNavExpanded(expanded) {
@@ -112,7 +112,7 @@ class MainHeader extends React.Component {
                     </Container>
                 </Navbar>
                 <Component test={this.test} />
-                <Navbar expanded={this.state.navExpanded} expand="md" bg={this.state.dark} className={"custom-navbar p-0 " + this.state.stuck } sticky="top">
+                <Navbar expanded={this.state.navExpanded} expand="md" bg={this.state.dark} className={"custom-navbar p-0 " + this.state.stuck} sticky="top">
                     <Container className="pl-0">
                         <Navbar.Collapse className="text-center">
                             <Nav className="mr-auto" onSelect={this.closeNav}>
@@ -124,9 +124,22 @@ class MainHeader extends React.Component {
                                     ))
                                 }
                             </Nav>
-                            <Form inline className="">
-                                <FormControl type="text" placeholder="Search" className="mr-sm-2" size="sm" />
+                            <Form inline className="pb-3 pb-md-0">
+                                <InputGroup className="mx-auto">
+                                    <Form.Control 
+                                    type="text" 
+                                    placeholder="Search" 
+                                    aria-describedby="inputGroupPrepend"
+                                    size="md"
+                                    // className="mr-sm-2" 
+                                />
+                                <InputGroup.Append>
                                 <Button size="md" variant={this.state.btnVariant}>Search</Button>
+                                        {/* <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
+                                    </InputGroup.Append>
+                                </InputGroup>
+                                
+                                {/* <Button size="md" variant={this.state.btnVariant}>Search</Button> */}
                             </Form>
                         </Navbar.Collapse>
                     </Container>
@@ -143,7 +156,7 @@ const Component = ({ test }) => (
         {({ inView, ref, entry }) => {
 
             return (
-               <div ref={ref}></div>
+                <div ref={ref}></div>
             )
         }}
     </InView>

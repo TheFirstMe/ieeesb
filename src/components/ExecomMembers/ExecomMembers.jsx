@@ -8,17 +8,21 @@ const Filler = () => (
 );
 
 
-const Member = () => {
+export const Member = ({
+    name = 'Member Name',
+    designation = 'Member Designation',
+    borderTopColor = '#1e73be'
+}) => {
     return (
-        <Card style={{ marginTop: "60px" }} className="rounded-0">
-            <div style={{ width: '120px', height: '120px', marginTop: "-60px"}} className="mx-auto">
+        <Card style={{ marginTop: "60px", borderTopColor: borderTopColor }} className="rounded-0">
+            <div style={{ width: '120px', height: '120px', marginTop: "-60px" }} className="mx-auto">
                 <img src={"holder.js/120x120?bg=#bbb"} className="rounded-circle showcase-img img-fluid" />
             </div>
             <Card.Body className="text-center py-5">
-                <Card.Title>Member Name</Card.Title>
+                <Card.Title>{name}</Card.Title>
                 <Card.Text>
-                    Member Designation
-    </Card.Text>
+                    {designation}
+                </Card.Text>
             </Card.Body>
         </Card>
     );
@@ -89,7 +93,7 @@ class ExecomMembers extends Component {
                     </Row>
                 </Col>
             </Row>
-            
+
         );
     }
 }

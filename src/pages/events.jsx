@@ -1,20 +1,28 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
-import ExecomMembers from "../components/ExecomMembers/ExecomMembers";
+import Contact from "../components/Contact/Contact";
 import config from "../../data/SiteConfig";
+import PostListing from "../components/PostListing/PostListing";
+
 import LatestPosts from "../components/LatestPosts/LatestPosts";
 import Calendar from "../components/Calendar/Calendar";
 import { Row, Col } from "react-bootstrap";
 
-class ExecomMembersPage extends Component {
+class EventsPage extends Component {
     render() {
+        const postEdges = this.props.data.allMarkdownRemark.edges;
         return (
             <Layout>
-                <Helmet title={`Execom Members | ${config.siteTitle}`} />
+                <Helmet title={`Events | ${config.siteTitle}`} />
                 <Row>
+                    <Col>
+                        <PostListing postEdges={postEdges} />
+                    </Col>
+                </Row>
+                {/* <Row>
                     <Col md={12} lg={8} className="py-2 py-lg-0">
-                        <ExecomMembers />
+                        <Contact />
                     </Col>
                     <Col md={12} lg={4} className="py-2 py-lg-0">
                         <Row className="ml-lg-1">
@@ -29,10 +37,37 @@ class ExecomMembersPage extends Component {
                             </Col>
                         </Row>
                     </Col>
-                </Row>
+                </Row> */}
             </Layout>
         );
     }
 }
 
-export default ExecomMembersPage;
+export default EventsPage;
+
+/* eslint no-undef: "off" */
+export const eventQuery = graphql`
+  query EventQuery {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [fields___date], order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+            date
+          }
+          excerpt
+          timeToRead
+          frontmatter {
+            title
+            tags
+            cover
+            date
+          }
+        }
+      }
+    }
+  }
+`;
