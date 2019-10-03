@@ -14,7 +14,7 @@ export const Member = ({
     borderTopColor = '#1e73be'
 }) => {
     return (
-        <Card style={{ marginTop: "60px", borderTopColor: borderTopColor }} className="rounded-0">
+        <Card style={{ marginTop: "60px", borderTopColor: borderTopColor }} className="member rounded-0">
             <div style={{ width: '120px', height: '120px', marginTop: "-60px" }} className="mx-auto">
                 <img src={"holder.js/120x120?bg=#bbb"} className="rounded-circle showcase-img img-fluid" />
             </div>

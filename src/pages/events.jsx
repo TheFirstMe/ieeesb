@@ -64,7 +64,7 @@ export const eventQuery = graphql`
             title
             tags
             cover
-            date
+            date(formatString: "MM DD YYYY")
           }
         }
       }
