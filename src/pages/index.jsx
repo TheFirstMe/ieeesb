@@ -7,7 +7,7 @@ import SEO from "../components/SEO/SEO";
 
 import config from "../../data/SiteConfig";
 import { Container, Row, Col, Button } from "react-bootstrap";
-
+import Sidebar from "../components/Sidebar/Sidebar";
 import Calendar from "../components/Calendar/Calendar";
 import { Member } from "../components/ExecomMembers/ExecomMembers";
 
@@ -236,36 +236,7 @@ class Index extends React.Component {
                         </Row>
                     </Col>
                     <Col md={12} lg={4} className="py-2 py-lg-0">
-                        <Row className="ml-lg-1">
-                            <Col xs={12}>
-                                <h3 className="boxed">
-                                    <span>Membership</span>
-                                </h3>
-
-                                <div className="banner-wrapper mt-4">
-                                    <h4>
-                                        <span>Become a Member</span>
-                                    </h4>
-                                    <div className="banner-wrapper small">
-                                        <p>Sign up today to get involved in IEEE SB GCEK.</p>
-                                    </div>
-                                    <a className="btn btn-yellow"
-                                        href="https://www.ieee.org/go/join_student/"
-                                        title="Join IEEE"
-                                        target="_blank"
-                                        style={{ marginBottom: "45px" }}
-                                    >
-                                        Join IEEE
-                                    </a>
-                                </div>
-                            </Col>
-                            <Col className="pt-4 pt-lg-0">
-                                <h3 className="boxed mb-4">
-                                    <span>Calendar</span>
-                                </h3>
-                                <Calendar />
-                            </Col>
-                        </Row>
+                        <Sidebar />
                     </Col>
                 </Row>
             </Layout>

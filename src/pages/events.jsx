@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
-import Contact from "../components/Contact/Contact";
 import config from "../../data/SiteConfig";
 import PostListing from "../components/PostListing/PostListing";
+import Sidebar from "../components/Sidebar/Sidebar";
 
-import LatestPosts from "../components/LatestPosts/LatestPosts";
-import Calendar from "../components/Calendar/Calendar";
 import { Row, Col } from "react-bootstrap";
 
 class EventsPage extends Component {
@@ -17,27 +15,21 @@ class EventsPage extends Component {
                 <Helmet title={`Events | ${config.siteTitle}`} />
                 <Row>
                     <Col>
-                        <PostListing postEdges={postEdges} />
-                    </Col>
-                </Row>
-                {/* <Row>
-                    <Col md={12} lg={8} className="py-2 py-lg-0">
-                        <Contact />
-                    </Col>
-                    <Col md={12} lg={4} className="py-2 py-lg-0">
-                        <Row className="ml-lg-1">
-                            <Col xs={12}>
-                                <LatestPosts />
-                            </Col>
-                            <Col className="pt-4 pt-lg-0">
-                                <h3 className="boxed mb-4">
-                                    <span>Calendar</span>
+                        <Row>
+                            <Col>
+                                <h3 className="boxed">
+                                    <span>Events</span>
                                 </h3>
-                                <Calendar />
+                                <div className="boxed-content">
+                                    <PostListing postEdges={postEdges} />
+                                </div>
                             </Col>
                         </Row>
                     </Col>
-                </Row> */}
+                    <Col md={12} lg={4} className="py-2 py-lg-0">
+                        <Sidebar />
+                    </Col>
+                </Row>
             </Layout>
         );
     }
@@ -64,7 +56,7 @@ export const eventQuery = graphql`
             title
             tags
             cover
-            date(formatString: "MM DD YYYY")
+            date(formatString: "MMM Do YYYY")
           }
         }
       }

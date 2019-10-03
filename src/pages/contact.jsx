@@ -3,8 +3,7 @@ import Helmet from "react-helmet";
 import Layout from "../layout";
 import Contact from "../components/Contact/Contact";
 import config from "../../data/SiteConfig";
-import LatestPosts from "../components/LatestPosts/LatestPosts";
-import Calendar from "../components/Calendar/Calendar";
+import Sidebar from "../components/Sidebar/Sidebar";
 import { Row, Col } from "react-bootstrap";
 
 class ContactPage extends Component {
@@ -17,17 +16,7 @@ class ContactPage extends Component {
                         <Contact />
                     </Col>
                     <Col md={12} lg={4} className="py-2 py-lg-0">
-                        <Row className="ml-lg-1">
-                            <Col xs={12}>
-                                <LatestPosts />
-                            </Col>
-                            <Col className="pt-4 pt-lg-0">
-                                <h3 className="boxed mb-4">
-                                    <span>Calendar</span>
-                                </h3>
-                                <Calendar />
-                            </Col>
-                        </Row>
+                        <Sidebar type="secondary" />
                     </Col>
                 </Row>
             </Layout>

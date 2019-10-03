@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Row, Col, Card } from "react-bootstrap";
+import { Badge, Row, Col, Card } from "react-bootstrap";
+
+import {slugify} from "../../util/utilityFunctions";
+import './PostListing.scss';
+const Filler = () => (
+    <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
+    </div>
+);
 
 class PostListing extends React.Component {
     getPostList() {
@@ -11,7 +18,7 @@ class PostListing extends React.Component {
                 tags: postEdge.node.frontmatter.tags,
                 cover: postEdge.node.frontmatter.cover,
                 title: postEdge.node.frontmatter.title,
-                date: postEdge.node.fields.date,
+                date: postEdge.node.frontmatter.date,
                 excerpt: postEdge.node.excerpt,
                 timeToRead: postEdge.node.timeToRead
             });
@@ -28,18 +35,34 @@ class PostListing extends React.Component {
                         //   <h1>{post.title}</h1>
                         // </Link>
                         <Row key={post.title} className="my-5">
-                            <Card className="w-100">
-                                <Card.Body>
-                                    <Card.Title>
-                                        {post.title}
-                                    </Card.Title>
-                                    <Card.Subtitle>
-                                        <span className="text-info">{post.date}</span>
-                                    </Card.Subtitle>
-                                    <Card.Text>{post.excerpt}</Card.Text>
-                                    <Link to={post.path} className="btn btn-primary float-right">Read more</Link>
-                                </Card.Body>
-                            </Card>
+                            <Col>
+                                <Card className="post w-100">
+                                    {/* <Card.Img variant="top" src={} style={{ maxwidth: '300px' }} /> */}
+                                    <Filler />
+                                    <Card.Body>
+                                        <Card.Title>
+                                            {post.title}
+                                        </Card.Title>
+                                        <Card.Subtitle>
+                                            <span className="text-info">{post.date}</span>
+                                        </Card.Subtitle>
+                                        <Card.Text>{post.excerpt}</Card.Text>
+                                        <ul className="post-tags">
+                                            {
+                                                post.tags.map(tag => (
+                                                    <li>
+                                                        <Link to={`/tags/${slugify(tag)}`}>
+                                                            <Badge variant="primary" className="text-uppercase">{tag}</Badge>
+                                                        </Link>
+                                                    </li>
+                                                ))
+                                            }
+                                        </ul>
+                                        <Link to={post.path} className="btn btn-primary float-right">Read more</Link>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+
                         </Row>
                     ))}
             </>
