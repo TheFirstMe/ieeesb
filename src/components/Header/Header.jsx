@@ -1,7 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Navbar, Nav, Form, InputGroup,FormControl, Button } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav, Form, InputGroup, FormControl, Button } from 'react-bootstrap';
 import "./Header.scss"
 import styled from 'styled-components';
+import { Link } from 'gatsby';
+import { Location } from '@reach/router';
 import Logo from "../../assets/svg/logo.svg";
 import { FaSearch } from 'react-icons/fa';
 const IEEE = () => (
@@ -68,6 +70,7 @@ class MainHeader extends React.Component {
         this.test = this.test.bind(this);
         this.state = {
             navExpanded: false,
+            active: true,
             stuck: '',
             dark: '',
             btnVariant: 'outline-dark',
@@ -95,6 +98,7 @@ class MainHeader extends React.Component {
     }
 
     render() {
+        // const {pathName} = this.props;
         return (
             <>
                 <Navbar
@@ -118,27 +122,36 @@ class MainHeader extends React.Component {
                             <Nav className="mr-auto" onSelect={this.closeNav}>
                                 {
                                     this.props.links.map((link, key) => (
-                                        <Nav.Item key={key}>
-                                            <Nav.Link href={link.url} className="text-nowrap" >{link.title}</Nav.Link>
-                                        </Nav.Item>
+                                        <Location key={key}>
+                                            {({ location }) => {
+                                                let pathName = location.pathname === '/' ? "/" : location.pathname.replace(/\/+/g, "/");
+                                                pathName = pathName === '/' ? "/" : pathName.replace(/\/+$/, "");
+                                                return (
+                                                    <Nav.Item className={pathName === link.url ? 'active' : ''} >
+                                                        <Nav.Link href={link.url} className="text-nowrap">{link.title}</Nav.Link>
+                                                    </Nav.Item>
+                                                )
+                                            }}
+                                        </Location>
+
                                     ))
                                 }
                             </Nav>
                             <Form inline className="pb-3 pb-md-0">
                                 <InputGroup className="mx-auto">
-                                    <Form.Control 
-                                    type="text" 
-                                    placeholder="Search" 
-                                    aria-describedby="inputGroupPrepend"
-                                    size="md"
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Search"
+                                        aria-describedby="inputGroupPrepend"
+                                        size="md"
                                     // className="mr-sm-2" 
-                                />
-                                <InputGroup.Append>
-                                <Button size="md" variant={this.state.btnVariant}>Search</Button>
+                                    />
+                                    <InputGroup.Append>
+                                        <Button size="md" variant={this.state.btnVariant}>Search</Button>
                                         {/* <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
                                     </InputGroup.Append>
                                 </InputGroup>
-                                
+
                                 {/* <Button size="md" variant={this.state.btnVariant}>Search</Button> */}
                             </Form>
                         </Navbar.Collapse>
@@ -162,7 +175,7 @@ const Component = ({ test }) => (
     </InView>
 )
 
-const Header = () => {
+const Header = ({ pathName }) => {
     const metalinks = [
         { title: "IEEE.org", url: "https://www.ieee.org" },
         { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },

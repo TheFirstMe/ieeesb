@@ -13,10 +13,20 @@
     padding: 0;
   }
 
+  
   .nav-item {
     padding: 5px 20px;
     @include media-breakpoint-down(lg){
       padding: 10px 5px;
+    }
+    &.active{
+      @include media-breakpoint-up(md){
+        background-color: #ecebe9;
+      }
+      text-shadow: none;
+      .nav-link {
+        color: #00629b;
+      }
     }
     .nav-link {
       color: #212122;
@@ -52,6 +62,13 @@
   &.stuck {
     transition: all 0.5 ease-in;
     .nav-item {
+      &.active{
+        background-color: #fff;
+        text-shadow: none;
+        .nav-link {
+          color: #212122;
+        }
+      }
       .nav-link {
         color: white;
       }
