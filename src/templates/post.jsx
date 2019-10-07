@@ -12,7 +12,13 @@ import "./b16-tomorrow-dark.css";
 import "./post.css";
 import Sidebar from "../components/Sidebar/Sidebar";
 
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
+
+const Filler = () => (
+  <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
+  </div>
+);
+
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -34,20 +40,29 @@ export default class PostTemplate extends React.Component {
         <SEO postPath={slug} postNode={postNode} postSEO />
         <Row>
           <Col lg={8} md={12}>
-            <Row>
-              <Col>
-                <div>
-                  <h1>{post.title}</h1>
-                  <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-                  <div className="post-meta">
-                    <PostTags tags={post.tags} />
-                    <SocialLinks postPath={slug} postNode={postNode} />
-                  </div>
-                  <UserInfo config={config} />
-                  <Disqus postNode={postNode} />
-                </div>
-              </Col>
-            </Row>
+            <h1>{post.title}</h1>
+            <small className="text-muted">{post.date}</small>
+            <Card className="mt-4">
+              <Filler />
+              <Card.Body>
+                <div className="mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <PostTags tags={post.tags} />
+              </Card.Body>
+            </Card>
+            <div className="my-5">
+              <h3 className="text-center">Share this post</h3>
+              <SocialLinks postPath={slug} postNode={postNode} />
+            </div>
+
+            {/* <h1>{post.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <div className="post-meta mt-5">
+              
+              <SocialLinks postPath={slug} postNode={postNode} />
+            </div>
+            */}
+            {/* <UserInfo config={config} /> */}
+            <Disqus postNode={postNode} />
           </Col>
           <Col md={12} lg={4} className="py-2 py-lg-0">
             <Sidebar type="secondary" />
@@ -68,7 +83,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         cover
-        date
+        date(formatString: "MMM Do YYYY")
         category
         tags
       }

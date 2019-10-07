@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col, Card } from "react-bootstrap";
-
-import {slugify} from "../../util/utilityFunctions";
+import PostTags from "../PostTags/PostTags";
 import './PostListing.scss';
 const Filler = () => (
     <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
@@ -47,17 +46,7 @@ class PostListing extends React.Component {
                                             <span className="text-info">{post.date}</span>
                                         </Card.Subtitle>
                                         <Card.Text>{post.excerpt}</Card.Text>
-                                        <ul className="post-tags">
-                                            {
-                                                post.tags.map(tag => (
-                                                    <li>
-                                                        <Link to={`/tags/${slugify(tag)}`}>
-                                                            <Badge variant="primary" className="text-uppercase">{tag}</Badge>
-                                                        </Link>
-                                                    </li>
-                                                ))
-                                            }
-                                        </ul>
+                                        <PostTags tags={post.tags} />
                                         <Link to={post.path} className="btn btn-primary float-right">Read more</Link>
                                     </Card.Body>
                                 </Card>
