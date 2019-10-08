@@ -134,7 +134,9 @@ const Filler = () => (
 
 class Index extends React.Component {
     render() {
-        const postEdges = this.props.data.allMarkdownRemark.edges;
+        console.log(this.props.data)
+        const postEdges = this.props.data.index.edges;
+        const {execom} = this.props.data.execom.edges[0].node;
         return (
             <Layout>
                 <Helmet title={config.siteTitle} />
@@ -172,18 +174,22 @@ class Index extends React.Component {
                             <span>Execom Members</span>
                         </h3>
                         <Row className="boxed-content">
-                            <Col md={3}>
-                                <Member designation="SB Chariman" />
-                            </Col>
-                            <Col md={3}>
-                                <Member designation="IAS Chairman" borderTopColor="#006341" />
-                            </Col>
-                            <Col md={3}>
-                                <Member designation="PELS Chairman" borderTopColor="#BA0C2F" />
-                            </Col>
-                            <Col md={3}>
-                                <Member designation="WIE Chairperson" borderTopColor="#772583" />
-                            </Col>
+                            {
+                                execom.map(({execomName, execomColor, chair, key}) => {
+                                    console.log(chair)
+                                    let designation;
+                                    if (execomName.toLowerCase() !== "student branch")
+                                        designation = execomName + " " + chair.designation;
+                                    else
+                                        designation = "SB " + chair.designation; 
+                                    return (
+                                        <Col md={3} key={key}>
+                                            <Member name={chair.name} designation={designation} borderTopColor={execomColor} 
+                                            image={chair.image} />
+                                        </Col>
+                                    )
+                                })
+                            }
                         </Row>
                         <Row className="mt-4">
                             <Col>
@@ -248,8 +254,8 @@ export default Index;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
+  query {
+    index: allMarkdownRemark(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
     ) {
@@ -270,5 +276,28 @@ export const pageQuery = graphql`
         }
       }
     }
+    execom: allExecomMembersJson(
+        filter: { year: { eq: "2019" } }
+      ) {
+        edges {
+          node {
+              execom{
+                  execomName
+                  execomColor
+                  chair{
+                      name
+                      designation
+                      image{
+                          childImageSharp{
+                              fluid(maxWidth: 180, quality: 100){
+                                  ...GatsbyImageSharpFluid
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        }
+      }
   }
 `;

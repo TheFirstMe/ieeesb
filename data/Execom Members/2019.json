@@ -1,0 +1,124 @@
+{
+    "year": "2019",
+    "execom": [
+        {
+            "execomName": "Student Branch",
+            "execomColor": "#1e73be",
+            "chair": {
+                "name": "Abhinav S Praveen",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2019/SB/Abhinav.jpeg"
+            },
+            "members": [
+                {
+                    "name": "Vishnu Sharma",
+                    "designation": "Vice Chairman",
+                    "image": "../images/execommembers/2019/SB/Vishnu.jpg"
+                },
+                {
+                    "name": "Pooja Haridas",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2019/SB/Pooja.jpg"
+                },
+                {
+                    "name": "Sourav K V",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2019/SB/Sourav.jpeg"
+                },
+                {
+                    "name": "Sreeshanth V S",
+                    "designation": "Link/Hub Representative",
+                    "image": "../images/execommembers/2019/SB/Sreeshanth.jpeg"
+                },
+                {
+                    "name": "Amalendhu K R",
+                    "designation": "Technical Coordinator",
+                    "image": "../images/execommembers/2019/SB/Amalendhu.jpeg"
+                },
+                {
+                    "name": "Sourabh Subhod",
+                    "designation": "Webmaster",
+                    "image": "../images/execommembers/2019/SB/Sourabh.jpg"
+                },
+                {
+                    "name": "P Akshaya",
+                    "designation": "Documentation Head",
+                    "image": "../images/execommembers/2019/SB/Akshaya.jpg"
+                },
+                {
+                    "name": "Anjanji SBK",
+                    "designation": "Publicity Head",
+                    "image": "../images/execommembers/2019/SB/Anjanji.jpg"
+                }
+            ]
+        },
+        {
+            "execomName": "IAS",
+            "execomColor": "#006341",
+            "chair": {
+                "name": "Vishal V",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2019/IAS/Vishal.jpg"
+            },
+            "members": [
+                {
+                    "name": "Swetha S Kammath",
+                    "designation": "Vice Chair",
+                    "image": "../images/execommembers/2019/IAS/Swetha.jpg"
+                },
+                {
+                    "name": "Sneha Kadangot",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2019/IAS/Sneha.jpg"
+                },
+                {
+                    "name": "Aakarsh S",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2019/IAS/Aakarsh.jpg"
+                }
+            ]
+        },
+        {
+            "execomName": "PELS",
+            "execomColor": "#BA0C2F",
+            "chair": {
+                "name": "Rahul Mohanan",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2019/SB/Abhinav.jpeg"
+            },
+            "members": [
+                {
+                    "name": "Sreelakshmi M Rajeev",
+                    "designation": "Vice Chair",
+                    "image": "../images/execommembers/2019/PELS/Sreelakshmi.jpg"
+                },
+                {
+                    "name": "Thejaswi A G",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2019/PELS/Thejaswi.jpg"
+                },
+                {
+                    "name": "Dheeraj Dinesh",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2019/PELS/Dheeraj.jpeg"
+                }
+            ]
+        },
+        {
+            "execomName": "WIE",
+            "execomColor": "#772583",
+            "chair": {
+                "name": "Anjana Ramesh",
+                "designation": "Chairperson",
+                "image": "../images/execommembers/2019/WIE/Anjana.jpeg"
+            },
+            "members": [
+                {
+                    "name": "Anjali Balakrishnan",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2019/WIE/Anjali.jpeg"
+                }
+            ]
+        }
+    ]
+}

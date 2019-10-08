@@ -1,9 +1,40 @@
+@import "src/scss/bootstrap";
+
+@include media-breakpoint-down(sm){
+  .space + .space{
+    margin-top: 20px;
+  }
+}
+@include media-breakpoint-up(sm){
+  .space + .space + .space + .space{
+    margin-top: 20px;
+  }
+}
 .member.card {
+  margin-top: 60px;
   border-top: #1e73be solid 5px;
-  .showcase-img {
-    border: 3px solid #ffffff;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 1);
-    transition: 0.6s;
-    -webkit-transition: 0.6s;
+  .showcase{
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+    .showcase-img {
+      min-width: 120px;
+      // transform: scale(1);
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 1);
+      // transition: 0.6s;
+      // -webkit-transition: 0.6s;
+    }
+  }
+  @include media-breakpoint-down(sm){
+    margin-top: 80px;
+    .showcase{
+      width: 160px;
+      height: 160px;
+      margin-top: -80px;
+      .showcase-img{
+        min-width: 160px;
+      }
+    }
   }
 }
