@@ -33,7 +33,13 @@ function LatestPosts() {
                   frontmatter {
                     title
                     tags
-                    cover
+                    featuredImage{
+                        childImageSharp{
+                          fluid(maxWidth: 800, quality: 80){
+                            ...GatsbyImageSharpFluid_withWebp
+                          }
+                        }
+                    }
                     date
                   }
                 }
@@ -48,7 +54,7 @@ function LatestPosts() {
                     postList.push({
                         path: postEdge.node.fields.slug,
                         tags: postEdge.node.frontmatter.tags,
-                        cover: postEdge.node.frontmatter.cover,
+                        featuredImage: postEdge.node.frontmatter.featuredImage,
                         title: postEdge.node.frontmatter.title,
                         date: postEdge.node.fields.date,
                         excerpt: postEdge.node.excerpt,

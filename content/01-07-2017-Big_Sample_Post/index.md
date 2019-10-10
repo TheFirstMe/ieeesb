@@ -1,6 +1,6 @@
 ---
 title: "Big Test"
-cover: "https://unsplash.it/400/300/?random?BigTest"
+featuredImage: ./feature.png
 category: "moar"
 date: "2018-03-01"
 slug: "Big-Sample_Test"

@@ -1,6 +1,6 @@
 ---
 title: "The Fairy's Witches"
-cover: "https://unsplash.it/1152/300/?random?FaityWitch"
+featuredImage: ./feature.png
 category: "something"
 date: "2017-04-02"
 tags:

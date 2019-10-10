@@ -1,6 +1,6 @@
 ---
 title: "Bold Mage"
-cover: "https://unsplash.it/400/300/?random?BoldMage"
+featuredImage: ./feature.png
 date: "2017-01-01"
 category: "tech"
 tags:

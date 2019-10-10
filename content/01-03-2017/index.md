@@ -1,6 +1,6 @@
 ---
 title: "Angels of Mist"
-cover: "https://unsplash.it/400/300/?random?AngelsofMist"
+featuredImage: ./feature.png
 category: "test3"
 date: "2017-03-01"
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "Birch in the Roses"
-cover: "https://unsplash.it/1152/300/?random?BirchintheRoses"
+featuredImage: ./feature.png
 date: "2017-03-23"
 category: "tech"
 tags:

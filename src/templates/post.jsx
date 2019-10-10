@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layout";
+import Img from "gatsby-image";
 import UserInfo from "../components/UserInfo/UserInfo";
 import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
@@ -11,8 +12,11 @@ import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.css";
 import Sidebar from "../components/Sidebar/Sidebar";
+import { IconContext } from "react-icons";
+import { FaClock } from "react-icons/fa";
 
 import { Row, Col, Card } from "react-bootstrap";
+{/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}></IconContext.Provider> */ }
 
 const Filler = () => (
   <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
@@ -32,6 +36,7 @@ export default class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
+    console.log(post);
     return (
       <Layout>
         <Helmet>
@@ -41,9 +46,12 @@ export default class PostTemplate extends React.Component {
         <Row>
           <Col lg={8} md={12}>
             <h1>{post.title}</h1>
-            <small className="text-muted">{post.date}</small>
+            <FaClock className="text-muted" />
+            <small className="ml-1 text-muted">
+              {post.date}
+            </small>
             <Card className="mt-4">
-              <Filler />
+              <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
               <Card.Body>
                 <div className="mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
                 <PostTags tags={post.tags} />
@@ -82,10 +90,17 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        cover
         date(formatString: "MMM Do YYYY")
         category
         tags
+        featuredImage{
+          childImageSharp{
+            fluid(maxWidth: 800, quality: 80){
+                ...GatsbyImageSharpFluid_withWebp
+                
+            }
+          }
+        }
       }
       fields {
         slug

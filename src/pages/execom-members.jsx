@@ -41,8 +41,8 @@ export const memberQuery = graphql`
                     designation
                     image{
                         childImageSharp{
-                            fluid(maxWidth: 180, quality: 100){
-                                ...GatsbyImageSharpFluid
+                            fluid(maxWidth: 180, quality: 80){
+                                ...GatsbyImageSharpFluid_withWebp
                             }
                         }
                     }
@@ -52,8 +52,8 @@ export const memberQuery = graphql`
                     designation
                     image{
                         childImageSharp{
-                            fluid(maxWidth: 180, quality: 100){
-                                ...GatsbyImageSharpFluid
+                            fluid(maxWidth: 180, quality: 80){
+                                ...GatsbyImageSharpFluid_withWebp
                                 
                             }
                         }

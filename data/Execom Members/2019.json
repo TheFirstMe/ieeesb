@@ -53,7 +53,7 @@
             ]
         },
         {
-            "execomName": "IAS",
+            "execomName": "IAS Chapter",
             "execomColor": "#006341",
             "chair": {
                 "name": "Vishal V",
@@ -79,12 +79,12 @@
             ]
         },
         {
-            "execomName": "PELS",
+            "execomName": "PELS Chapter",
             "execomColor": "#BA0C2F",
             "chair": {
                 "name": "Rahul Mohanan",
                 "designation": "Chairman",
-                "image": "../images/execommembers/2019/SB/Abhinav.jpeg"
+                "image": "../images/execommembers/2019/PELS/Rahul.jpg"
             },
             "members": [
                 {
@@ -98,14 +98,14 @@
                     "image": "../images/execommembers/2019/PELS/Thejaswi.jpg"
                 },
                 {
-                    "name": "Dheeraj Dinesh",
+                    "name": "Deeraj Dinesh",
                     "designation": "Treasurer",
-                    "image": "../images/execommembers/2019/PELS/Dheeraj.jpeg"
+                    "image": "../images/execommembers/2019/PELS/Deeraj.jpeg"
                 }
             ]
         },
         {
-            "execomName": "WIE",
+            "execomName": "WIE Chapter",
             "execomColor": "#772583",
             "chair": {
                 "name": "Anjana Ramesh",

@@ -15,7 +15,6 @@ export default class MainLayout extends React.Component {
             <>
                 <Helmet>
                     <meta name="description" content={config.siteDescription} />
-                    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700" rel="stylesheet" />
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script>
                 </Helmet>
                 <div className="site">

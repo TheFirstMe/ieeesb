@@ -179,7 +179,7 @@ class Index extends React.Component {
                                     console.log(chair)
                                     let designation;
                                     if (execomName.toLowerCase() !== "student branch")
-                                        designation = execomName + " " + chair.designation;
+                                        designation = execomName.split(" ")[0] + " " + chair.designation;
                                     else
                                         designation = "SB " + chair.designation; 
                                     return (
@@ -270,7 +270,13 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
-            cover
+            featuredImage{
+                childImageSharp{
+                  fluid(maxWidth: 800, quality: 80){
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+            }
             date
           }
         }
@@ -290,7 +296,7 @@ export const pageQuery = graphql`
                       image{
                           childImageSharp{
                               fluid(maxWidth: 180, quality: 100){
-                                  ...GatsbyImageSharpFluid
+                                  ...GatsbyImageSharpFluid_withWebp
                               }
                           }
                       }

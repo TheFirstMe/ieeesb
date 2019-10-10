@@ -24,7 +24,7 @@ export const Member = ({
         <Card style={{ borderTopColor: borderTopColor,height: "230px" }} className="member rounded-0">
             <div className="mx-auto showcase">
                 {/* <img src={image} className="rounded-circle showcase-img img-fluid" /> */}
-                <Img className="rounded-circle showcase-img" fluid={image.childImageSharp.fluid} />
+                <Img placeholderStyle={{backgroundColor: "white"}} className="rounded-circle showcase-img" fluid={image.childImageSharp.fluid} />
             </div>
             <Card.Body className="text-center my-3">
                 <Card.Title>{name}</Card.Title>
@@ -39,7 +39,6 @@ class ExecomMembers extends Component {
     render() {
         console.log(this.props.members);
         const {execom} = this.props.members.node;
-        // c
         return (
             <>
                 {
@@ -75,71 +74,6 @@ class ExecomMembers extends Component {
                 }
             </>
         )
-        // return (
-        //     <Row>
-        //         <Col xs={12}>
-        //             <h3 className="boxed">
-        //                 <span>Student Branch</span>
-        //             </h3>
-        //             <Row className="mt-5">
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //             </Row>
-        //         </Col>
-        //         <Col xs={12} className="pt-4">
-        //             <h3 className="boxed">
-        //                 <span>IAS Chapter</span>
-        //             </h3>
-        //             <Row className="mt-4">
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //             </Row>
-        //         </Col>
-        //         <Col xs={12} className="pt-4">
-        //             <h3 className="boxed">
-        //                 <span>PELS Chapter</span>
-        //             </h3>
-        //             <Row className="mt-4">
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //             </Row>
-        //         </Col>
-        //         <Col xs={12} className="pt-4">
-        //             <h3 className="boxed">
-        //                 <span>WIE Chapter</span>
-        //             </h3>
-        //             <Row className="mt-4">
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //                 <Col md={4}>
-        //                     <Member />
-        //                 </Col>
-        //             </Row>
-        //         </Col>
-        //     </Row>
-        // );
     }
 }
 

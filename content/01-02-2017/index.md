@@ -1,6 +1,6 @@
 ---
 title: "The Fallen Time"
-cover: "https://unsplash.it/400/300/?random?TheFallenTime"
+featuredImage: ./feature.png
 date: "2017-02-01"
 category: "another one"
 tags:

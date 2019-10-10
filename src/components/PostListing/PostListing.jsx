@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col, Card } from "react-bootstrap";
 import PostTags from "../PostTags/PostTags";
+import {FaClock} from "react-icons/fa";
+import {IconContext} from "react-icons";
 import './PostListing.scss';
 const Filler = () => (
     <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
@@ -15,7 +17,7 @@ class PostListing extends React.Component {
             postList.push({
                 path: postEdge.node.fields.slug,
                 tags: postEdge.node.frontmatter.tags,
-                cover: postEdge.node.frontmatter.cover,
+                featuredImage: postEdge.node.frontmatter.featuredImage,
                 title: postEdge.node.frontmatter.title,
                 date: postEdge.node.frontmatter.date,
                 excerpt: postEdge.node.excerpt,
@@ -43,7 +45,10 @@ class PostListing extends React.Component {
                                             {post.title}
                                         </Card.Title>
                                         <Card.Subtitle>
-                                            <span className="text-info">{post.date}</span>
+                                        {/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}> */}
+                                            
+                                        {/* </IconContext.Provider> */}
+                                            <span className="text-info"><FaClock className="text-muted" /> {post.date}</span>
                                         </Card.Subtitle>
                                         <Card.Text>{post.excerpt}</Card.Text>
                                         <PostTags tags={post.tags} />
