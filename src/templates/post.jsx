@@ -87,7 +87,10 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
-      excerpt
+      excerpt(
+        pruneLength: 50,
+        truncate:true
+      )
       frontmatter {
         title
         date(formatString: "MMM Do YYYY")

@@ -294,7 +294,7 @@ export default class Calendar extends React.Component {
         });
 
         return (
-            <div className="tail-datetime-calendar calendar-static calendar-stay calendar-open">
+            <div className="tail-datetime-calendar calendar-static calendar-stay calendar-open w-100">
                 <div className="calendar-actions">
                     <span className="action action-prev" data-action="prev" onClick={(e) => this.onPrev()} />
                     <span className="label" data-action="view" data-view="up" onClick={(e) => {

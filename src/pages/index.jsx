@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-
+import Img from "gatsby-image";
 import config from "../../data/SiteConfig";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -136,7 +136,7 @@ class Index extends React.Component {
     render() {
         console.log(this.props.data)
         const postEdges = this.props.data.index.edges;
-        const {execom} = this.props.data.execom.edges[0].node;
+        const { execom } = this.props.data.execom.edges[0].node;
         return (
             <Layout>
                 <Helmet title={config.siteTitle} />
@@ -175,17 +175,17 @@ class Index extends React.Component {
                         </h3>
                         <Row className="boxed-content">
                             {
-                                execom.map(({execomName, execomColor, chair, key}) => {
+                                execom.map(({ execomName, execomColor, chair, key }) => {
                                     console.log(chair)
                                     let designation;
                                     if (execomName.toLowerCase() !== "student branch")
                                         designation = execomName.split(" ")[0] + " " + chair.designation;
                                     else
-                                        designation = "SB " + chair.designation; 
+                                        designation = "SB " + chair.designation;
                                     return (
-                                        <Col md={3} key={key}>
-                                            <Member name={chair.name} designation={designation} borderTopColor={execomColor} 
-                                            image={chair.image} />
+                                        <Col md={3} key={key} className="pb-4 pb-md-0">
+                                            <Member name={chair.name} designation={designation} borderTopColor={execomColor}
+                                                image={chair.image} />
                                         </Col>
                                     )
                                 })
@@ -218,19 +218,27 @@ class Index extends React.Component {
                                     <span>Events</span>
                                 </h3>
                                 <Row className="mt-4">
-                                    <Col>
-                                        <Filler />
+                                    <Col sm={12} md={6}>
+                                        <a href={postEdges[0].node.fields.slug}>
+                                            <Img fluid={postEdges[0].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                        </a>
                                     </Col>
-                                    <Col className="pl-0">
-                                        <Filler />
+                                    <Col sm={12} md={6} md={6} className="pt-4 pt-md-0">
+                                        <a href={postEdges[1].node.fields.slug}>
+                                            <Img fluid={postEdges[1].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                        </a>
                                     </Col>
                                 </Row>
-                                <Row className="mt-3">
-                                    <Col>
-                                        <Filler />
+                                <Row className="mt-4">
+                                    <Col sm={12} md={6}>
+                                        <a href={postEdges[2].node.fields.slug}>
+                                            <Img fluid={postEdges[2].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                        </a>
                                     </Col>
-                                    <Col className="pl-0">
-                                        <Filler />
+                                    <Col sm={12} md={6} className="pt-4 pt-md-0">
+                                        <a href={postEdges[3].node.fields.slug}>
+                                            <Img fluid={postEdges[3].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                        </a>
                                     </Col>
                                 </Row>
                                 <Row className="mt-4">
@@ -256,7 +264,7 @@ export default Index;
 export const pageQuery = graphql`
   query {
     index: allMarkdownRemark(
-      limit: 2000
+      limit: 4
       sort: { fields: [fields___date], order: DESC }
     ) {
       edges {

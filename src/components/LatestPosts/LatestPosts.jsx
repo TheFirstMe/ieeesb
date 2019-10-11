@@ -1,7 +1,8 @@
 import React from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby';
-import {Row, Col} from 'react-bootstrap';
-
+import { Row, Col } from 'react-bootstrap';
+import Img from "gatsby-image";
+import { FaClock } from "react-icons/fa";
 const Filler = () => (
     <div
         className="hehe"
@@ -12,6 +13,20 @@ const Filler = () => (
         }}
     />
 );
+
+import styled from "styled-components";
+const Post = styled.div`
+    display: flex;
+`
+
+const PostImage = styled.div`
+    flex: 40%;
+    margin-right: 1rem;
+`
+
+const PostText = styled.div`
+    flex: 60%;
+`
 
 function LatestPosts() {
     return (
@@ -26,7 +41,7 @@ function LatestPosts() {
                 node {
                   fields {
                     slug
-                    date
+                    date(formatString: "MMM Do YYYY")
                   }
                   excerpt
                   timeToRead
@@ -40,7 +55,7 @@ function LatestPosts() {
                           }
                         }
                     }
-                    date
+                    date(formatString: "MMM Do YYYY")
                   }
                 }
               }
@@ -69,7 +84,7 @@ function LatestPosts() {
                         {postList.map(post => (
                             <Row key={post.title}>
                                 <Col>
-                                    <div className="mt-4" style={{ position: "relative", minHeight: "55px" }}>
+                                    {/* <div className="mt-4" style={{ position: "relative", minHeight: "55px" }}>
                                         <div className="hello">
                                             <Filler />
                                         </div>
@@ -79,6 +94,32 @@ function LatestPosts() {
                                             </Link>
                                         </h6>
                                     </div>
+                                    <p className="text-muted mt-3" >
+                                        {
+                                            post.excerpt.length > 51 ?
+                                                `${post.excerpt.substring(0, 50)}...` :
+                                                `${post.excerpt}`
+                                        }
+                                    </p> */}
+                                    <Post className="my-3">
+                                        <PostImage>
+                                            <Img fluid={post.featuredImage.childImageSharp.fluid} />
+                                        </PostImage>
+                                        <PostText>
+                                            <Link style={{ textDecoration: 'none' }} to={post.path}>
+                                                {post.title}
+                                            </Link><br/>
+                                            <small>
+                                            <span>
+                                                <FaClock className="text-muted" />
+                                            </span>
+
+                                            <span className="ml-1 text-muted">
+                                                {post.date}
+                                            </span>
+                                            </small>
+                                        </PostText>
+                                    </Post>
                                     <p className="text-muted mt-3" >
                                         {
                                             post.excerpt.length > 51 ?

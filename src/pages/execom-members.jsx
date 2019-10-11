@@ -5,6 +5,7 @@ import ExecomMembers from "../components/ExecomMembers/ExecomMembers";
 import config from "../../data/SiteConfig";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { Row, Col } from "react-bootstrap";
+import {eventQuery} from "./events"
 
 class ExecomMembersPage extends Component {
     render() {

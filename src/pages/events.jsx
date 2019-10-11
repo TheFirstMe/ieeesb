@@ -50,7 +50,10 @@ export const eventQuery = graphql`
             slug
             date
           }
-          excerpt
+          excerpt(
+            pruneLength: 100,
+            truncate:true
+          )
           timeToRead
           frontmatter {
             title
