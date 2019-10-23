@@ -17,6 +17,13 @@ export default class Calendar extends React.Component {
         }
     }
 
+    hasDateChanged(data,field) {
+        if (data == field && moment().isSame(this.state.dateObject, "date")) {
+            return false;
+        }
+        return true;
+    }
+
     currentDay() {
         return this.state.dateObject.format("D");
     }
@@ -63,7 +70,7 @@ export default class Calendar extends React.Component {
     MonthTable(props) {
         let months = [];
         props.data.map(data => {
-            let currentMonth = data == this.currentMonth() ? "date-today" : "";
+            let currentMonth = !this.hasDateChanged(data, this.currentMonth()) ? "date-today" : "";
             months.push(
                 <td
                     key={data}
@@ -147,7 +154,7 @@ export default class Calendar extends React.Component {
         let twleveYears = this.getDates(start, end);
 
         twleveYears.map(data => {
-            let currentYear = data == this.currentYear() ? "date-today" : "";
+            let currentYear = !this.hasDateChanged(data, this.currentYear()) ? "date-today" : "";
             months.push(
                 <td
                     key={data}
@@ -262,7 +269,7 @@ export default class Calendar extends React.Component {
 
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let currentDay = d == this.currentDay() ? "date-today" : "";
+            let currentDay = !this.hasDateChanged(d, this.currentDay()) ? "date-today" : "";
             daysInMonth.push(
                 <td key={d} className={`calendar-day date-current ${currentDay}`}>
                     <span className="inner" onClick={(e) => this.onDayClick(e, d)}>

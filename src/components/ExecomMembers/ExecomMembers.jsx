@@ -24,7 +24,7 @@ export const Member = ({
         <Card style={{ borderTopColor: borderTopColor,height: "230px" }} className="member rounded-0">
             <div className="mx-auto showcase">
                 {/* <img src={image} className="rounded-circle showcase-img img-fluid" /> */}
-                <Img placeholderStyle={{backgroundColor: "white"}} className="rounded-circle showcase-img" fluid={image.childImageSharp.fluid} />
+                <Img className="rounded-circle showcase-img" fluid={image.childImageSharp.fluid} />
             </div>
             <Card.Body className="text-center my-3">
                 <Card.Title>{name}</Card.Title>
@@ -37,7 +37,6 @@ export const Member = ({
 }
 class ExecomMembers extends Component {
     render() {
-        console.log(this.props.members);
         const {execom} = this.props.members.node;
         return (
             <>
@@ -45,7 +44,6 @@ class ExecomMembers extends Component {
                     execom.map(({execomName, execomColor, chair, members, key}) => {
                         let execomMembers = [].concat(members)
                         execomMembers.unshift(chair)
-                        console.log(execom)
                         return (
                             <Row key={key} className="mb-5">
                                 <Col>
@@ -57,7 +55,6 @@ class ExecomMembers extends Component {
                                             {
                                                 execomMembers.map(({name,designation,image,key}) => {
                                                     let md;
-                                                    console.log(image)
                                                     return (
                                                         <Col className="space" md={4} key={key}>
                                                             <Member name={name} designation={designation} borderTopColor={execomColor} image={image} />

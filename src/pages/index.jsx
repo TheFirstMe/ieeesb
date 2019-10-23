@@ -3,6 +3,8 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
+import { useExecom } from "../components/Hooks/Execom";
+import { useLatestPosts } from "../components/Hooks/MarkdownPosts";
 import SEO from "../components/SEO/SEO";
 import Img from "gatsby-image";
 import config from "../../data/SiteConfig";
@@ -132,186 +134,126 @@ const Filler = () => (
     </div>
 );
 
-class Index extends React.Component {
-    render() {
-        console.log(this.props.data)
-        const postEdges = this.props.data.index.edges;
-        const { execom } = this.props.data.execom.edges[0].node;
-        return (
-            <Layout>
-                <Helmet title={config.siteTitle} />
-                <SEO />
-                {/* <PostListing postEdges={postEdges} /> */}
-                <Row>
-                    <Col>
-                        <h3 className="boxed">
-                            <span>IEEE SB GCEK</span>
-                        </h3>
-                        <div className="boxed-content">
-                            <p className="text-muted">
-                                The IEEE Student Branch of GCEK came into existence
+const Index = () => {
+    const postEdges = useLatestPosts().edges;
+    const {execom} = useExecom(true).edges[0].node;
+    return (
+        <Layout>
+            <Helmet title={config.siteTitle} />
+            <SEO />
+            {/* <PostListing postEdges={postEdges} /> */}
+            <Row>
+                <Col>
+                    <h3 className="boxed">
+                        <span>IEEE SB GCEK</span>
+                    </h3>
+                    <div className="boxed-content">
+                        <p className="text-muted">
+                            The IEEE Student Branch of GCEK came into existence
                                 on 5<sup>th</sup> June 2009. Since then we have conducted several
-                                programs for the benefit of students.
-                                The IEEE Head Quarters is regularly conducting contests in various
-                                category in which students can participate. These are conducted globally
+                            programs for the benefit of students.
+                            The IEEE Head Quarters is regularly conducting contests in various
+                            category in which students can participate. These are conducted globally
                                 and the students get a chance to compete with students from Universities from other parts of the world.<br />
-                                Our IAS and PELS chapters were officially inaugurated by Dr. Sanjeeb Kumar Panda, Director of Power and
-                                Energy Section On March 11, 2019. It mainly focused on industry leadership in energy conservation and
-                                environmental ,health issues. Several activities were organised under these chapters which got great
+                            Our IAS and PELS chapters were officially inaugurated by Dr. Sanjeeb Kumar Panda, Director of Power and
+                            Energy Section On March 11, 2019. It mainly focused on industry leadership in energy conservation and
+                            environmental ,health issues. Several activities were organised under these chapters which got great
                                 appreciation from the student members as well as from the teachers.<br />
-                                The goal of the Student Branch is to provide a platform for the students where they can develop
-                                co-curricular skills. The Student Branch stands for increasing the awareness of students
-                                in co-academic matters, supplement their studies and help them reach higher professional
-                                standards. It is hoped that the activities of the Student Branch will generate a genuine
-                                interest among the students in their studies.
+                            The goal of the Student Branch is to provide a platform for the students where they can develop
+                            co-curricular skills. The Student Branch stands for increasing the awareness of students
+                            in co-academic matters, supplement their studies and help them reach higher professional
+                            standards. It is hoped that the activities of the Student Branch will generate a genuine
+                            interest among the students in their studies.
                             </p>
-                        </div>
-                    </Col>
-                </Row>
-                <Row className="mt-5">
-                    <Col>
-                        <h3 className="boxed">
-                            <span>Execom Members</span>
-                        </h3>
-                        <Row className="boxed-content">
-                            {
-                                execom.map(({ execomName, execomColor, chair, key }) => {
-                                    console.log(chair)
-                                    let designation;
-                                    if (execomName.toLowerCase() !== "student branch")
-                                        designation = execomName.split(" ")[0] + " " + chair.designation;
-                                    else
-                                        designation = "SB " + chair.designation;
-                                    return (
-                                        <Col md={3} key={key} className="pb-4 pb-md-0">
-                                            <Member name={chair.name} designation={designation} borderTopColor={execomColor}
-                                                image={chair.image} />
-                                        </Col>
-                                    )
-                                })
-                            }
-                        </Row>
-                        <Row className="mt-4">
-                            <Col>
-                                <Button href="/execom-members" block>See all members</Button>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row className="mt-5">
-                    <Col md={12} lg={8} className="py-2 py-lg-0">
-                        <Row>
-                            <Col>
-                                <h3 className="boxed">
-                                    <span>Upcoming Events</span>
-                                </h3>
-                                <Row className="mt-4">
-                                    <Col>
-                                        <Filler />
+                    </div>
+                </Col>
+            </Row>
+            <Row className="mt-5">
+                <Col>
+                    <h3 className="boxed">
+                        <span>Execom Members</span>
+                    </h3>
+                    <Row className="boxed-content">
+                        {
+                            execom.map(({ execomName, execomColor, chair, key }) => {
+                                let designation;
+                                if (execomName.toLowerCase() !== "student branch")
+                                    designation = execomName.split(" ")[0] + " " + chair.designation;
+                                else
+                                    designation = "SB " + chair.designation;
+                                return (
+                                    <Col md={3} key={key} className="pb-4 pb-md-0">
+                                        <Member name={chair.name} designation={designation} borderTopColor={execomColor}
+                                            image={chair.image} />
                                     </Col>
-                                </Row>
-                            </Col>
-                        </Row>
-                        <Row className="mt-5">
-                            <Col>
-                                <h3 className="boxed">
-                                    <span>Events</span>
-                                </h3>
-                                <Row className="mt-4">
-                                    <Col sm={12} md={6}>
-                                        <a href={postEdges[0].node.fields.slug}>
-                                            <Img fluid={postEdges[0].node.frontmatter.featuredImage.childImageSharp.fluid} />
-                                        </a>
-                                    </Col>
-                                    <Col sm={12} md={6} md={6} className="pt-4 pt-md-0">
-                                        <a href={postEdges[1].node.fields.slug}>
-                                            <Img fluid={postEdges[1].node.frontmatter.featuredImage.childImageSharp.fluid} />
-                                        </a>
-                                    </Col>
-                                </Row>
-                                <Row className="mt-4">
-                                    <Col sm={12} md={6}>
-                                        <a href={postEdges[2].node.fields.slug}>
-                                            <Img fluid={postEdges[2].node.frontmatter.featuredImage.childImageSharp.fluid} />
-                                        </a>
-                                    </Col>
-                                    <Col sm={12} md={6} className="pt-4 pt-md-0">
-                                        <a href={postEdges[3].node.fields.slug}>
-                                            <Img fluid={postEdges[3].node.frontmatter.featuredImage.childImageSharp.fluid} />
-                                        </a>
-                                    </Col>
-                                </Row>
-                                <Row className="mt-4">
-                                    <Col>
-                                        <a className="btn btn-primary btn-block" href="/events">See all Events</a>
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col md={12} lg={4} className="py-2 py-lg-0">
-                        <Sidebar />
-                    </Col>
-                </Row>
-            </Layout>
-        );
-    }
+                                )
+                            })
+                        }
+                    </Row>
+                    <Row className="mt-4">
+                        <Col>
+                            <Button href="/execom-members" block>See all members</Button>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+            <Row className="mt-5">
+                <Col md={12} lg={8} className="py-2 py-lg-0">
+                    <Row>
+                        <Col>
+                            <h3 className="boxed">
+                                <span>Upcoming Events</span>
+                            </h3>
+                            <Row className="mt-4">
+                                <Col>
+                                    <Filler />
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row className="mt-5">
+                        <Col>
+                            <h3 className="boxed">
+                                <span>Events</span>
+                            </h3>
+                            <Row className="mt-4">
+                                <Col sm={12} md={6}>
+                                    <a href={postEdges[0].node.fields.slug}>
+                                        <Img fluid={postEdges[0].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                    </a>
+                                </Col>
+                                <Col sm={12} md={6} md={6} className="pt-4 pt-md-0">
+                                    <a href={postEdges[1].node.fields.slug}>
+                                        <Img fluid={postEdges[1].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                    </a>
+                                </Col>
+                            </Row>
+                            <Row className="mt-4">
+                                <Col sm={12} md={6}>
+                                    <a href={postEdges[2].node.fields.slug}>
+                                        <Img fluid={postEdges[2].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                    </a>
+                                </Col>
+                                <Col sm={12} md={6} className="pt-4 pt-md-0">
+                                    <a href={postEdges[3].node.fields.slug}>
+                                        <Img fluid={postEdges[3].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                    </a>
+                                </Col>
+                            </Row>
+                            <Row className="mt-4">
+                                <Col>
+                                    <a className="btn btn-primary btn-block" href="/events">See all Events</a>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col md={12} lg={4} className="py-2 py-lg-0">
+                    <Sidebar />
+                </Col>
+            </Row>
+        </Layout>
+    );
 }
 
 export default Index;
-
-/* eslint no-undef: "off" */
-export const pageQuery = graphql`
-  query {
-    index: allMarkdownRemark(
-      limit: 4
-      sort: { fields: [fields___date], order: DESC }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            date
-          }
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            featuredImage{
-                childImageSharp{
-                  fluid(maxWidth: 800, quality: 80){
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-            }
-            date
-          }
-        }
-      }
-    }
-    execom: allExecomMembersJson(
-        filter: { year: { eq: "2019" } }
-      ) {
-        edges {
-          node {
-              execom{
-                  execomName
-                  execomColor
-                  chair{
-                      name
-                      designation
-                      image{
-                          childImageSharp{
-                              fluid(maxWidth: 180, quality: 100){
-                                  ...GatsbyImageSharpFluid_withWebp
-                              }
-                          }
-                      }
-                  }
-              }
-          }
-        }
-      }
-  }
-`;
