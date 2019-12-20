@@ -60,3 +60,6 @@ bundle-stats.json
 
 #vscode workspace setting
 .vscode
+
+#environment variables
+.env.*

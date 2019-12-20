@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { Badge, Row, Col, Card } from "react-bootstrap";
 import PostTags from "../PostTags/PostTags";
 import Img from "gatsby-image";
-import { FaClock } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
 import './PostListing.scss';
@@ -45,14 +45,14 @@ class PostListing extends React.Component {
     render() {
         const postList = this.getPostList();
         return (
-            <>
+            <Row>
                 {/* Your post list here. */
                     postList.map(post => (
                         // <Link to={post.path} key={post.title}>
                         //   <h1>{post.title}</h1>
                         // </Link>
-                        <Row key={post.slug} className="my-5">
-                            <Col>
+                        // <Row key={post.slug} className="my-5">
+                            <Col sm={12} key={post.slug} className="py-5">
                                 <Card className="post w-100 pb-2">
                                     <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
                                     <Card.Body>
@@ -60,10 +60,10 @@ class PostListing extends React.Component {
                                             {post.title}
                                         </Card.Title>
                                         <span>
-                                            <FaClock className="text-muted" />
+                                            <FaRegClock className="text-muted small" />
                                         </span>
 
-                                        <span className="ml-1 text-muted">
+                                        <span className="ml-1 text-muted small text-center">
                                             {post.date}
                                         </span>
                                         <Card.Text className="mt-3">{post.excerpt}</Card.Text>
@@ -73,10 +73,10 @@ class PostListing extends React.Component {
                                 </Card>
                             </Col>
 
-                        </Row>
+                        // </Row>
                     ))
                 }
-            </>
+            </Row>
         );
     }
 }

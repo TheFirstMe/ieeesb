@@ -10,10 +10,10 @@ import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
-import "./post.css";
+import "./post.scss";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { IconContext } from "react-icons";
-import { FaClock } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa";
 
 import { Row, Col, Card } from "react-bootstrap";
 {/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}></IconContext.Provider> */ }
@@ -45,15 +45,15 @@ export default class PostTemplate extends React.Component {
         <SEO postPath={slug} postNode={postNode} postSEO />
         <Row>
           <Col lg={8} md={12}>
-            <h1>{post.title}</h1>
-            <FaClock className="text-muted" />
+            <h1 className="mb-3">{post.title}</h1>
+            <FaRegClock className="text-muted" />
             <small className="ml-1 text-muted">
               {post.date}
             </small>
             <Card className="mt-4">
               <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
               <Card.Body>
-                <div className="mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <div className="post-content mt-3 mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
                 <PostTags tags={post.tags} />
               </Card.Body>
             </Card>

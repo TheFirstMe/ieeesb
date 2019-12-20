@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby';
 import { Row, Col } from 'react-bootstrap';
 import Img from "gatsby-image";
-import { FaClock } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa";
 const Filler = () => (
     <div
         className="hehe"
@@ -111,10 +111,10 @@ function LatestPosts() {
                                             </Link><br/>
                                             <small>
                                             <span>
-                                                <FaClock className="text-muted" />
+                                                <FaRegClock className="text-muted" />
                                             </span>
 
-                                            <span className="ml-1 text-muted">
+                                            <span className="ml-1 text-muted" style={{fontSize: "90%"}}>
                                                 {post.date}
                                             </span>
                                             </small>
