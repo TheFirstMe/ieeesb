@@ -27,7 +27,7 @@ const Filler = () => (
 export default class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
-    const { slug } = pageContext;
+    const { slug, nextslug, prevslug } = pageContext;
     const postNode = data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -53,9 +53,16 @@ export default class PostTemplate extends React.Component {
             <Card className="mt-4">
               <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
               <Card.Body>
+                {post.venue && <div className="mt-1"> <strong>Venue: </strong>{post.venue} </div> }
                 <div className="post-content mt-3 mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
                 <PostTags tags={post.tags} />
               </Card.Body>
+              <Card.Footer>
+                <div className="d-flex justify-content-between">
+                  <a className="btn btn-primary" href={prevslug}>Previous</a>
+                  <a className="btn btn-primary" href={nextslug}>Next</a>
+                </div>
+              </Card.Footer>
             </Card>
             <div className="my-5">
               <h3 className="text-center">Share this post</h3>
@@ -96,6 +103,7 @@ export const pageQuery = graphql`
         date(formatString: "MMM Do YYYY")
         category
         tags
+        venue
         featuredImage{
           childImageSharp{
             fluid(maxWidth: 800, quality: 80){

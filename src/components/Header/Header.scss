@@ -5,6 +5,16 @@
   background-color: #ecebe9;
 }
 
+.search-button.btn{
+  padding: 0 15px;
+    &.btn-outline-dark:hover{
+      color: #343a40;
+    }
+    &.btn-outline-light:hover{
+      color: #fff;
+    }
+}
+
 .custom-navbar {
   background-color: #dad7d8;
   transition: all 1s;

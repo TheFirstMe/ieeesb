@@ -147,7 +147,9 @@ class MainHeader extends React.Component {
                                     // className="mr-sm-2" 
                                     />
                                     <InputGroup.Append>
-                                        <Button size="md" variant={this.state.btnVariant}>Search</Button>
+                                        <Button className="search-button" variant={this.state.btnVariant}>
+                                            <FaSearch />
+                                        </Button>
                                         {/* <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
                                     </InputGroup.Append>
                                 </InputGroup>

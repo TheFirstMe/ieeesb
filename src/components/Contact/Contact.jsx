@@ -16,7 +16,8 @@ const ContactForm = () => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={handleSubmit} method="POST" data-netlify="true" name="Contact Form">
+      <input type="hidden" name="form-name" value="Contact Form" />
       <Form.Row>
         <Form.Group as={Col} controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
@@ -24,6 +25,7 @@ const ContactForm = () => {
             required
             type="text"
             placeholder="First name"
+            name="first name"
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
@@ -33,6 +35,7 @@ const ContactForm = () => {
             required
             type="text"
             placeholder="Last name"
+            name="last name"
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
@@ -40,7 +43,7 @@ const ContactForm = () => {
       <Form.Row>
         <Form.Group as={Col} controlId="validationCustom03">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Email" required />
+          <Form.Control type="email" placeholder="Email" required name="email" />
           <Form.Control.Feedback type="invalid">
             Please provide a valid email.
             </Form.Control.Feedback>
@@ -49,7 +52,7 @@ const ContactForm = () => {
       <Form.Row>
         <Form.Group as={Col} controlId="validationCustom04">
           <Form.Label>Phone Number</Form.Label>
-          <Form.Control type="tel" placeholder="Phone Number" required />
+          <Form.Control type="tel" placeholder="Phone Number" required name="phone no"/>
           <Form.Control.Feedback type="invalid">
             Please provide a valid phone number.
             </Form.Control.Feedback>
@@ -58,7 +61,7 @@ const ContactForm = () => {
       <Form.Row>
         <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
           <Form.Label>Comments</Form.Label>
-          <Form.Control as="textarea" rows="3" placeholder="Comments" required />
+          <Form.Control as="textarea" rows="3" placeholder="Comments" required name="comments" />
           <Form.Control.Feedback type="invalid" >
             Please provide some valid comments.
           </Form.Control.Feedback>

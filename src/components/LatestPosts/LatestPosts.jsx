@@ -120,7 +120,7 @@ function LatestPosts() {
                                             </small>
                                         </PostText>
                                     </Post>
-                                    <p className="text-muted mt-3" >
+                                    <p className="text-muted small mt-3" >
                                         {
                                             post.excerpt.length > 51 ?
                                                 `${post.excerpt.substring(0, 50)}...` :
