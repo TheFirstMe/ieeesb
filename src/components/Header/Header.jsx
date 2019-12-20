@@ -138,7 +138,7 @@ class MainHeader extends React.Component {
                                 }
                             </Nav>
                             <Form inline className="pb-3 pb-md-0">
-                                <InputGroup className="mx-auto">
+                                <InputGroup className="mx-auto" style={{width:"auto"}}>
                                     <Form.Control
                                         type="text"
                                         placeholder="Search"

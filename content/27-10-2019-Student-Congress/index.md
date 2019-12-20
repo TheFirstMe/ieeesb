@@ -4,7 +4,7 @@ featuredImage: ./2.jpg
 category: "sb"
 date: "2019-10-27"
 venue: "Main Auditorium"
-slug: "all-kerala-student-congress-2019"
+slug: "aksc-2019"
 ---
 
 The IEEE All Kerala Student Congress 2019 (AKSC'19) was held at Government College of Engineering Kannur, on 25th, 26th and 27th of October 2019. Congress sees annual participation of almost 120 students from across the length and breadth of the state. It is a techno-managerial event which gave opportunities for student delegates to network among their peers and gets exposed to the various opportunities within IEEE.
