@@ -16,7 +16,7 @@ import { IconContext } from "react-icons";
 import { FaRegClock } from "react-icons/fa";
 
 import { Row, Col, Card } from "react-bootstrap";
-{/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}></IconContext.Provider> */ }
+/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}></IconContext.Provider> */ 
 
 const Filler = () => (
   <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
