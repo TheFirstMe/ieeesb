@@ -110,7 +110,7 @@ class MainHeader extends React.Component {
                     <Container>
                         <Navbar.Brand href="/"><Logo height={50} /></Navbar.Brand>
                         <Navbar.Toggle />
-                        <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" el="noopener noreferrer" >
+                        <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" rel="noopener noreferrer" >
                             <IEEE />
                         </a>
                     </Container>

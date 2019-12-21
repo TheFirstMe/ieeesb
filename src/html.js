@@ -24,7 +24,7 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <script
+        {/* <script
           src="https://s3-us-west-2.amazonaws.com/ieeeshutpages/gdpr/settings.js"
         />
         <link
@@ -43,7 +43,7 @@ export default function HTML(props) {
                     });
    	            `,
           }}
-        />
+        /> */}
       </body>
     </html>
   )

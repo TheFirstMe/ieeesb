@@ -20,6 +20,7 @@ const Primary = () => (
                 href="https://www.ieee.org/go/join_student/"
                 title="Join IEEE"
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ marginBottom: "45px" }}
             >
                 Join IEEE
