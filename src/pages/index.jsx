@@ -216,10 +216,31 @@ const Index = () => {
                             <h3 className="boxed">
                                 <span>Events</span>
                             </h3>
-                            <Row className="mt-4">
+                            <Row>
+                            {
+                                postEdges.map(({node}) => {
+                                    console.log(node);
+                                    let featuredImage = node.frontmatter.featuredImage;
+                                    return(
+                                        <Col key={node.fields.slug} sm={12} md={6} md={6} className="pt-4">
+                                    <a href={node.fields.slug}>
+                                        <Img 
+                                            sizes={{...featuredImage.childImageSharp.fluid, aspectRatio: 5/3}}                                        
+                                            fluid={featuredImage.childImageSharp.fluid} />
+                                    </a>
+                                </Col>
+                                    )
+                                })
+                                
+                            }
+                            </Row>
+                            
+                            {/* <Row className="mt-4">
                                 <Col sm={12} md={6}>
                                     <a href={postEdges[0].node.fields.slug}>
-                                        <Img fluid={postEdges[0].node.frontmatter.featuredImage.childImageSharp.fluid} />
+                                        <Img
+                                        sizes={{...postEdges[0].node.frontmatter.featuredImage.childImageSharp.fluid, aspectRatio: 16 / 9}}
+                                        fluid={postEdges[0].node.frontmatter.featuredImage.childImageSharp.fluid} />
                                     </a>
                                 </Col>
                                 <Col sm={12} md={6} md={6} className="pt-4 pt-md-0">
@@ -239,12 +260,12 @@ const Index = () => {
                                         <Img fluid={postEdges[3].node.frontmatter.featuredImage.childImageSharp.fluid} />
                                     </a>
                                 </Col>
-                            </Row>
+                            </Row>*/}
                             <Row className="mt-4">
                                 <Col>
                                     <a className="btn btn-primary btn-block" href="/events">See all Events</a>
                                 </Col>
-                            </Row>
+                            </Row> 
                         </Col>
                     </Row>
                 </Col>

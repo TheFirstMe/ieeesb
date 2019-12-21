@@ -55,7 +55,7 @@ export default class PostTemplate extends React.Component {
               <Card.Body>
                 {post.venue && <div className="mt-1"> <strong>Venue: </strong>{post.venue} </div> }
                 <div className="post-content mt-3 mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
-                <PostTags tags={post.tags} />
+                <PostTags isPost={true} tags={post.tags} />
               </Card.Body>
               <Card.Footer>
                 <div className="d-flex justify-content-between">

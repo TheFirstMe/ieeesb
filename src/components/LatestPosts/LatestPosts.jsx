@@ -34,7 +34,7 @@ function LatestPosts() {
             query={graphql`
           query MainLayoutQuery {
             allMarkdownRemark(
-              limit: 3
+              limit: 5
               sort: { fields: [fields___date], order: DESC }
             ) {
               edges {
@@ -103,8 +103,10 @@ function LatestPosts() {
                                     </p> */}
                                     <Post className="my-3">
                                         <PostImage>
-                                            <Img fluid={post.featuredImage.childImageSharp.fluid} />
-                                        </PostImage>
+                                            <Link style={{ textDecoration: 'none' }} to={post.path}>
+                                                    <Img fluid={post.featuredImage.childImageSharp.fluid} />  
+                                            </Link>
+                                        </PostImage> 
                                         <PostText>
                                             <Link style={{ textDecoration: 'none' }} to={post.path}>
                                                 {post.title}
@@ -120,13 +122,11 @@ function LatestPosts() {
                                             </small>
                                         </PostText>
                                     </Post>
-                                    <p className="text-muted small mt-3" >
+                                    {/* <p className="text-muted small mt-3" >
                                         {
-                                            post.excerpt.length > 51 ?
-                                                `${post.excerpt.substring(0, 50)}...` :
-                                                `${post.excerpt}`
+                                            post.excerpt
                                         }
-                                    </p>
+                                    </p> */}
                                 </Col>
                             </Row>
                         ))}

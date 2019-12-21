@@ -1,9 +1,12 @@
 //custom variables
+$enable-responsive-font-sizes: true;
+
 $theme-colors: (
   "primary": #006699,
   "ieee-black": #000
 );
 
+$link-color: #006699;
 $font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
   "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 

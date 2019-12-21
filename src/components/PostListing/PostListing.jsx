@@ -52,9 +52,12 @@ class PostListing extends React.Component {
                         //   <h1>{post.title}</h1>
                         // </Link>
                         // <Row key={post.slug} className="my-5">
-                            <Col sm={12} key={post.slug} className="py-5">
-                                <Card className="post w-100 pb-2">
-                                    <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
+                            <Col sm={12} xl={6} key={post.slug} className="py-5 py-xl-3">
+                                <Card className="post w-100">
+                                    <Link to={post.path}>
+                                        <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
+                                    </Link>
+                                    
                                     <Card.Body>
                                         <Card.Title>
                                             {post.title}
@@ -66,9 +69,12 @@ class PostListing extends React.Component {
                                         <span className="ml-1 text-muted small text-center">
                                             {post.date}
                                         </span>
-                                        <Card.Text className="mt-3">{post.excerpt}</Card.Text>
+                                        <Card.Text className="mt-3 small">
+                                            {post.excerpt}
+                                            <Link className="text-decoration-none" to={post.path}> Read more</Link>    
+                                        </Card.Text>
                                         <PostTags tags={post.tags} />
-                                        <Link to={post.path} className="btn btn-primary float-right">Read more</Link>
+                                        {/* <Link to={post.path} className="btn btn-primary float-right">Read more</Link> */}
                                     </Card.Body>
                                 </Card>
                             </Col>

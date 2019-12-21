@@ -1,6 +1,6 @@
 ---
 title: "Tech Quiz"
-featuredImage: ./1.png
+featuredImage: ./pels-tech-quiz-poster.jpg
 category: "pels"
 slug: "tech-quiz-09-19"
 date: "2019-09-04"
