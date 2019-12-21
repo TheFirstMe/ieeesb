@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby';
 import { Row, Col } from 'react-bootstrap';
 import Img from "gatsby-image";
-import { FaRegClock } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 const Filler = () => (
     <div
         className="hehe"
@@ -111,15 +111,26 @@ function LatestPosts() {
                                             <Link style={{ textDecoration: 'none' }} to={post.path}>
                                                 {post.title}
                                             </Link><br/>
-                                            <small>
+                                            <div className="small" 
+                                                 style={{
+                                                    display: "inline-flex",
+                                                    alignItems: "center",
+                                                    padding: "3px 0px"
+                                                }}>
+                                                <FaCalendarAlt className="text-muted" />
+                                                <span className="text-muted ml-1" style={{fontSize: "90%"}}>
+                                                    {post.date}
+                                                </span>
+                                            </div>
+                                            {/* <small>
                                             <span>
-                                                <FaRegClock className="text-muted" />
+                                                <FaCalendarAlt className="text-muted" />
                                             </span>
 
-                                            <span className="ml-1 text-muted" style={{fontSize: "90%"}}>
+                                            <span className="ml-1 text-muted" style={{fontSize: "70%"}}>
                                                 {post.date}
                                             </span>
-                                            </small>
+                                            </small> */}
                                         </PostText>
                                     </Post>
                                     {/* <p className="text-muted small mt-3" >

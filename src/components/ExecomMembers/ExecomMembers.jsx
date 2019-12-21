@@ -19,7 +19,6 @@ export const Member = ({
     borderTopColor = '#1e73be',
     image = 1
 }) => {
-    console.log(name,image)
     return (
         <Card style={{ borderTopColor: borderTopColor,height: "230px" }} className="member rounded-0">
             <div className="mx-auto showcase">
@@ -41,7 +40,7 @@ class ExecomMembers extends Component {
         return (
             <>
                 {
-                    execom.map(({execomName, execomColor, chair, members, key}) => {
+                    execom.map(({execomName, execomColor, chair, members},key) => {
                         let execomMembers = [].concat(members)
                         execomMembers.unshift(chair)
                         return (
@@ -51,9 +50,8 @@ class ExecomMembers extends Component {
                                         <span>{execomName}</span>
                                     </h3>
                                     <Row className="mt-5 mb-3">
-                                        <>
                                             {
-                                                execomMembers.map(({name,designation,image,key}) => {
+                                                execomMembers.map(({name,designation,image},key) => {
                                                     let md;
                                                     return (
                                                         <Col className="space" md={4} key={key}>
@@ -62,7 +60,6 @@ class ExecomMembers extends Component {
                                                     )
                                                 })
                                             }
-                                        </>
                                     </Row>
                                 </Col>
                             </Row>

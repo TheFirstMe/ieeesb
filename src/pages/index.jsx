@@ -175,7 +175,7 @@ const Index = () => {
                     </h3>
                     <Row className="boxed-content">
                         {
-                            execom.map(({ execomName, execomColor, chair, key }) => {
+                            execom.map(({ execomName, execomColor, chair },key) => {
                                 let designation;
                                 if (execomName.toLowerCase() !== "student branch")
                                     designation = execomName.split(" ")[0] + " " + chair.designation;
@@ -199,7 +199,7 @@ const Index = () => {
             </Row>
             <Row className="mt-5">
                 <Col md={12} lg={8} className="py-2 py-lg-0">
-                    <Row>
+                    {/* <Row>
                         <Col>
                             <h3 className="boxed">
                                 <span>Upcoming Events</span>
@@ -210,19 +210,18 @@ const Index = () => {
                                 </Col>
                             </Row>
                         </Col>
-                    </Row>
-                    <Row className="mt-5">
+                    </Row> */}
+                    <Row>
                         <Col>
                             <h3 className="boxed">
                                 <span>Events</span>
                             </h3>
                             <Row>
                             {
-                                postEdges.map(({node}) => {
-                                    console.log(node);
+                                postEdges.map(({node},key) => {
                                     let featuredImage = node.frontmatter.featuredImage;
                                     return(
-                                        <Col key={node.fields.slug} sm={12} md={6} md={6} className="pt-4">
+                                        <Col key={key} sm={12} md={6} md={6} className="pt-4">
                                     <a href={node.fields.slug}>
                                         <Img 
                                             sizes={{...featuredImage.childImageSharp.fluid, aspectRatio: 5/3}}                                        

@@ -102,19 +102,21 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
+        lang: `en`,
         display: "minimal-ui",
-        icons: [
-          {
-            src: "/logos/logo-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "/logos/logo-512x512.png",
-            sizes: "512x512",
-            type: "image/png"
-          }
-        ]
+        icon: `src/favicon.png`
+        // icons: [
+        //   {
+        //     src: "/src/assets/svg/logo.svg",
+        //     sizes: "192x192",
+        //     type: "image/svg"
+        //   },
+        //   // {
+        //   //   src: "/logos/logo-512x512.png",
+        //   //   sizes: "512x512",
+        //   //   type: "image/png"
+        //   // }
+        // ]
       }
     },
     "gatsby-plugin-offline",
@@ -124,7 +126,7 @@ module.exports = {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata;
           ret.allMarkdownRemark = ref.query.allMarkdownRemark;
-          ret.generator = "GatsbyJS Advanced Starter";
+          ret.generator = "IEEE SB GCEK";
           return ret;
         },
         query: `

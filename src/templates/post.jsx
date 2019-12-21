@@ -13,7 +13,7 @@ import "./b16-tomorrow-dark.css";
 import "./post.scss";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { IconContext } from "react-icons";
-import { FaRegClock } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 
 import { Row, Col, Card } from "react-bootstrap";
 /* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}></IconContext.Provider> */ 
@@ -36,7 +36,6 @@ export default class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
-    console.log(post);
     return (
       <Layout>
         <Helmet>
@@ -46,10 +45,17 @@ export default class PostTemplate extends React.Component {
         <Row>
           <Col lg={8} md={12}>
             <h1 className="mb-3">{post.title}</h1>
-            <FaRegClock className="text-muted" />
-            <small className="ml-1 text-muted">
-              {post.date}
-            </small>
+            <div 
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "3px 0px"
+              }}>
+              <FaCalendarAlt className="text-muted" />
+              <span className="text-muted ml-2" style={{fontSize: "90%"}}>
+                  {post.date}
+              </span>
+            </div>
             <Card className="mt-4">
               <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
               <Card.Body>

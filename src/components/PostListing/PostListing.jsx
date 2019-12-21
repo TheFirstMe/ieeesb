@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { Badge, Row, Col, Card } from "react-bootstrap";
 import PostTags from "../PostTags/PostTags";
 import Img from "gatsby-image";
-import { FaRegClock } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
 import './PostListing.scss';
@@ -47,12 +47,12 @@ class PostListing extends React.Component {
         return (
             <Row>
                 {/* Your post list here. */
-                    postList.map(post => (
+                    postList.map((post, key) => (
                         // <Link to={post.path} key={post.title}>
                         //   <h1>{post.title}</h1>
                         // </Link>
                         // <Row key={post.slug} className="my-5">
-                            <Col sm={12} xl={6} key={post.slug} className="py-5 py-xl-3">
+                            <Col sm={12} xl={6} key={key} className="py-5 py-xl-3">
                                 <Card className="post w-100">
                                     <Link to={post.path}>
                                         <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
@@ -62,13 +62,17 @@ class PostListing extends React.Component {
                                         <Card.Title>
                                             {post.title}
                                         </Card.Title>
-                                        <span>
-                                            <FaRegClock className="text-muted small" />
-                                        </span>
-
-                                        <span className="ml-1 text-muted small text-center">
-                                            {post.date}
-                                        </span>
+                                        <div className="small" 
+                                                 style={{
+                                                    display: "inline-flex",
+                                                    alignItems: "center",
+                                                    padding: "3px 0px"
+                                                }}>
+                                                <FaCalendarAlt className="text-muted" />
+                                                <span className="text-muted ml-1" style={{fontSize: "90%"}}>
+                                                    {post.date}
+                                                </span>
+                                        </div>
                                         <Card.Text className="mt-3 small">
                                             {post.excerpt}
                                             <Link className="text-decoration-none" to={post.path}> Read more</Link>    

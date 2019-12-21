@@ -16,7 +16,7 @@ const ContactForm = () => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit} method="POST" data-netlify="true" name="Contact Form">
+    <Form noValidate validated={validated} onSubmit={handleSubmit} method="POST" data-netlify="true" name="Contact Form" action="/thank-you">
       <input type="hidden" name="form-name" value="Contact Form" />
       <Form.Row>
         <Form.Group as={Col} controlId="validationCustom01">
