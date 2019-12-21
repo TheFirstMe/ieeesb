@@ -14,7 +14,11 @@ const FooterNav = ({ className, Links }) => {
                 {
                     Links.map((link, key) => (
                         <Nav.Item key={key}>
-                            <Nav.Link href={link.url} className="test" target={link.self ? "_self":"_blank"}>{link.title}</Nav.Link>
+                            <Nav.Link
+                                role="tab" data-rb-event-key={link.url} tabindex="-1" aria-selected="false"
+                                href={link.url} 
+                                className="test" 
+                                target={link.self ? "_self":"_blank"} rel="noopener noreferrer">{link.title}</Nav.Link>
                         </Nav.Item>
                     ))
                 }
@@ -32,6 +36,7 @@ const Copyright = () => (
             <a href="http://www.ieee.org/about/help/site_terms_conditions.html"
                 target="_blank"
                 className="text-white"
+                rel="noopener noreferrer"
             >
                 <u>IEEE Terms and Conditions</u>
             </a>.<br/>

@@ -7,7 +7,7 @@ class UserLinks extends Component {
     const { userLinks } = this.props.config;
     const { labeled } = this.props;
     return userLinks.map(link => (
-      <SocialIcon key={link.label} url={link.url} fgColor="#ffffff" target="_blank" style={{ height: 35, width: 35, margin: "0 0 0 22px" }} />
+      <SocialIcon key={link.label} url={link.url} fgColor="#ffffff" rel="noopener noreferrer" target="_blank" style={{ height: 35, width: 35, margin: "0 0 0 22px" }} />
     ));
   }
   render() {

@@ -19,7 +19,7 @@ const MetaHeader = ({ className, links }) => {
                         {
                             links.map((link, key) => (
                                 <Nav.Item key={key}>
-                                    <Nav.Link href={link.url} target="_blank">{link.title}</Nav.Link>
+                                    <Nav.Link href={link.url} target="_blank" rel="noopener noreferrer">{link.title}</Nav.Link>
                                 </Nav.Item>
                             ))
                         }
@@ -110,7 +110,7 @@ class MainHeader extends React.Component {
                     <Container>
                         <Navbar.Brand href="/"><Logo height={50} /></Navbar.Brand>
                         <Navbar.Toggle />
-                        <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" >
+                        <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" el="noopener noreferrer" >
                             <IEEE />
                         </a>
                     </Container>
