@@ -6,6 +6,11 @@ import { Link } from 'gatsby';
 import { Location } from '@reach/router';
 import Logo from "../../assets/svg/logo.svg";
 import { FaSearch } from 'react-icons/fa';
+import Search from "../Search"
+const searchIndices = [
+//   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Events`, hitComp: `PostHit` },
+]
 const IEEE = () => (
     <img height={30} src={require("../../assets/ieee.png")} alt="IEEE" />
 )
@@ -137,25 +142,24 @@ class MainHeader extends React.Component {
                                     ))
                                 }
                             </Nav>
-                            <Form inline className="pb-3 pb-md-0">
+                            {/* <Form inline className="pb-3 pb-md-0">
                                 <InputGroup className="mx-auto" style={{width:"auto"}}>
                                     <Form.Control
                                         type="text"
                                         placeholder="Search"
                                         aria-describedby="inputGroupPrepend"
                                         size="md"
-                                    // className="mr-sm-2" 
+                           
                                     />
                                     <InputGroup.Append>
                                         <Button className="search-button" variant={this.state.btnVariant}>
                                             <FaSearch />
                                         </Button>
-                                        {/* <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
+     
                                     </InputGroup.Append>
                                 </InputGroup>
 
-                                {/* <Button size="md" variant={this.state.btnVariant}>Search</Button> */}
-                            </Form>
+                            </Form> */}
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
@@ -197,6 +201,7 @@ const Header = ({ pathName }) => {
             <StyledMetaHeader links={metalinks} />
             {/* <Component test="d" /> */}
             <MainHeader links={navlinks} />
+            <Search indices={searchIndices} />
         </>
     );
 }
