@@ -8,7 +8,7 @@ import { useOnClickOutside } from "../Hooks"
 import algoliasearch from "algoliasearch/lite"
 
 import { Root, HitsWrapper, PoweredBy } from "./styles"
-import Input from "./Input"
+import Input from "./input"
 import Hits from "./Hits"
 // import * as hitComps from "./hitComps"
 
