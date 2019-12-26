@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Navbar, Nav, Form, InputGroup, FormControl, Button } from 'react-bootstrap';
 import "./Header.scss"
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
 import Logo from "../../assets/svg/logo.svg";
@@ -9,11 +9,19 @@ import { FaSearch } from 'react-icons/fa';
 import Search from "../Search"
 const searchIndices = [
 //   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
-  { name: `Posts`, title: `Events`, hitComp: `PostHit` },
+  { name: `Posts`, title: `Events`, type: `postHit` },
 ]
 const IEEE = () => (
     <img height={30} src={require("../../assets/ieee.png")} alt="IEEE" />
 )
+
+const darkTheme = {
+    color: "#212122"
+}
+
+const lightTheme = {
+    color: "white"
+}
 
 const MetaHeader = ({ className, links }) => {
     return (
@@ -76,7 +84,7 @@ class MainHeader extends React.Component {
         this.state = {
             navExpanded: false,
             active: true,
-            stuck: '',
+            stuck: null,
             dark: '',
             btnVariant: 'outline-dark',
             fixed: ''
@@ -121,10 +129,10 @@ class MainHeader extends React.Component {
                     </Container>
                 </Navbar>
                 <Component test={this.test} />
-                <Navbar expanded={this.state.navExpanded} expand="md" bg={this.state.dark} className={"custom-navbar p-0 " + this.state.stuck} sticky="top">
+                <Navbar expanded={this.state.navExpanded} expand="md" bg={!this.state.navExpanded && this.state.dark} className={"custom-navbar p-0 " + this.state.stuck} sticky="top">
                     <Container className="pl-0">
-                        <Navbar.Collapse className="text-center">
-                            <Nav className="mr-auto" onSelect={this.closeNav}>
+                        <Navbar.Collapse className="">
+                            <Nav className="mr-auto pl-3 pl-md-0" onSelect={this.closeNav}>
                                 {
                                     this.props.links.map((link, key) => (
                                         <Location key={key}>
@@ -142,6 +150,10 @@ class MainHeader extends React.Component {
                                     ))
                                 }
                             </Nav>
+                            <ThemeProvider theme={this.state.stuck ? darkTheme : lightTheme} >
+                                <Search  indices={searchIndices} />
+                            </ThemeProvider>
+                            
                             {/* <Form inline className="pb-3 pb-md-0">
                                 <InputGroup className="mx-auto" style={{width:"auto"}}>
                                     <Form.Control
@@ -201,7 +213,6 @@ const Header = ({ pathName }) => {
             <StyledMetaHeader links={metalinks} />
             {/* <Component test="d" /> */}
             <MainHeader links={navlinks} />
-            <Search indices={searchIndices} />
         </>
     );
 }
