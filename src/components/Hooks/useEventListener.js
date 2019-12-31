@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function useEventListener(eventNames, handler, element = null) {
+export function useEventListener(eventNames, handler, element = globalThis) {
   // Create a ref that stores the handler.
   const savedHandler = useRef()
   if (!Array.isArray(eventNames)) eventNames = [eventNames]
@@ -13,7 +13,6 @@ export function useEventListener(eventNames, handler, element = null) {
   useEffect(() => (savedHandler.current = handler), [handler])
 
   useEffect(() => {
-    element = globalThis
     const elementSupportsListener = element && element.addEventListener
     if (!elementSupportsListener) return
 
