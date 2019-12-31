@@ -62,4 +62,4 @@ bundle-stats.json
 .vscode
 
 #environment variables
-.env.*
+.env
