@@ -55,7 +55,10 @@ class PostListing extends React.Component {
                             <Col sm={12} xl={6} key={key} className="py-5 py-xl-3">
                                 <Card className="post w-100">
                                     <Link to={post.path}>
-                                        <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
+                                        <Img 
+                                            fluid={post.featuredImage.childImageSharp.fluid} 
+                                            placeholderStyle={{ filter: "blur(20px)" }} 
+                                            className="card-img-top" />
                                     </Link>
                                     
                                     <Card.Body>

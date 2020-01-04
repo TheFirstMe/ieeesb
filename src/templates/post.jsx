@@ -56,12 +56,16 @@ export default class PostTemplate extends React.Component {
                   {post.date}
               </span>
             </div>
-            <Card className="mt-4">
-              <Img fluid={post.featuredImage.childImageSharp.fluid} className="card-img-top" />
+            <PostTags tags={post.tags} />
+            <Card className="mt-4 border-0">
+              <Img 
+                fluid={post.featuredImage.childImageSharp.fluid} 
+                placeholderStyle={{ filter: "blur(20px)" }} 
+                className="card-img-top" />
               <Card.Body>
                 {post.venue && <div className="mt-1"> <strong>Venue: </strong>{post.venue} </div> }
                 <div className="post-content mt-3 mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
-                <PostTags isPost={true} tags={post.tags} />
+                
               </Card.Body>
               <Card.Footer>
                 <div className="d-flex justify-content-between">

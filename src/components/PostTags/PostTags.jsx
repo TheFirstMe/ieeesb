@@ -9,18 +9,25 @@ class PostTags extends Component {
     return (
       <>
         { isPost && tags && <p className="text-muted">Tags:</p>}
-        <ul className="post-tags">
+        <ul className="post-tags mt-3">
           {tags &&
-            tags.map(tag => (
-              <li key={tag}>
-                <Link
-                  to={`/tags/${_.kebabCase(tag)}`}
-                >
-                  <Badge variant="primary" className="text-uppercase">{tag}</Badge>
-                </Link>
-              </li>
-
-            ))}
+            tags.map(tag => {
+              const variants = {
+                "sb": "primary",
+                "ias": "success",
+                "pels": "danger",
+                "wie": "purple"
+              }
+              const variant = variants[tag] ? variants[tag] : "dark"
+              return (
+                <li key={tag}>
+                  <Link
+                    to={`/tags/${_.kebabCase(tag)}`}
+                  >
+                    <Badge variant={variant} className="text-lowercase rounded-sm">{tag}</Badge>
+                  </Link>
+                </li>
+            )})}
         </ul>
       </>
     );

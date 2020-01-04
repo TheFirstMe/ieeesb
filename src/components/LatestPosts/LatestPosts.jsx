@@ -104,7 +104,10 @@ function LatestPosts() {
                                     <Post className="my-3">
                                         <PostImage>
                                             <Link style={{ textDecoration: 'none' }} to={post.path}>
-                                                    <Img fluid={post.featuredImage.childImageSharp.fluid} />  
+                                                    <Img 
+                                                        fluid={post.featuredImage.childImageSharp.fluid} 
+                                                        placeholderStyle={{ filter: "blur(20px)" }}     
+                                                    />  
                                             </Link>
                                         </PostImage> 
                                         <PostText>

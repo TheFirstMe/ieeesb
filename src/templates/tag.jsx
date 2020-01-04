@@ -47,7 +47,7 @@ export const pageQuery = graphql`
                 }
               }
             }
-            date
+            date(formatString: "MMM Do YYYY")
           }
         }
       }

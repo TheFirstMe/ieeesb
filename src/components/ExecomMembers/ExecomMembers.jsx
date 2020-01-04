@@ -23,7 +23,11 @@ export const Member = ({
         <Card style={{ borderTopColor: borderTopColor,height: "230px" }} className="member rounded-0">
             <div className="mx-auto showcase">
                 {/* <img src={image} className="rounded-circle showcase-img img-fluid" /> */}
-                <Img className="rounded-circle showcase-img" fluid={image.childImageSharp.fluid} />
+                <Img 
+                    className="rounded-circle showcase-img" 
+                    fluid={image.childImageSharp.fluid} 
+                    placeholderStyle={{ filter: "blur(15px)" }}
+                />
             </div>
             <Card.Body className="text-center my-3">
                 <Card.Title>{name}</Card.Title>

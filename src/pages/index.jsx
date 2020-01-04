@@ -225,7 +225,9 @@ const Index = () => {
                                     <a href={node.fields.slug}>
                                         <Img 
                                             sizes={{...featuredImage.childImageSharp.fluid, aspectRatio: 5/3}}                                        
-                                            fluid={featuredImage.childImageSharp.fluid} />
+                                            fluid={featuredImage.childImageSharp.fluid} 
+                                            placeholderStyle={{ filter: "blur(20px)" }}
+                                        />
                                     </a>
                                 </Col>
                                     )
