@@ -46,6 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const postPage = path.resolve("src/templates/post.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
   const categoryPage = path.resolve("src/templates/category.jsx");
+  const eventPage = path.resolve("src/templates/events.jsx");
 
   const markdownQueryResult = await graphql(
     `
@@ -94,6 +95,22 @@ exports.createPages = async ({ graphql, actions }) => {
     if (dateB.isBefore(dateA)) return -1;
 
     return 0;
+  });
+
+  const postsPerPage = 8
+  const numPages = Math.ceil(postsEdges.length / postsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/event/` : `/event/${i + 1}/`, 
+      component: eventPage,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      },
+    });
   });
 
   postsEdges.forEach((edge, index) => {

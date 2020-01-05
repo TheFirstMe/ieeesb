@@ -49,10 +49,11 @@ export default class PostTemplate extends React.Component {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  padding: "3px 0px"
+                  padding: "3px 0px",
+                  fontSize: "80%"
               }}>
               <FaCalendarAlt className="text-muted" />
-              <span className="text-muted ml-2" style={{fontSize: "90%"}}>
+              <span className="text-muted" style={{marginTop: "1px", marginLeft: "6px"}}>
                   {post.date}
               </span>
             </div>

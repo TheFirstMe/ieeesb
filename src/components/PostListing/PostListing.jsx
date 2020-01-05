@@ -65,16 +65,18 @@ class PostListing extends React.Component {
                                         <Card.Title>
                                             {post.title}
                                         </Card.Title>
-                                        <div className="small" 
-                                                 style={{
-                                                    display: "inline-flex",
-                                                    alignItems: "center",
-                                                    padding: "3px 0px"
-                                                }}>
-                                                <FaCalendarAlt className="text-muted" />
-                                                <span className="text-muted ml-1" style={{fontSize: "90%"}}>
-                                                    {post.date}
-                                                </span>
+                                        <div 
+                                            style={{
+                                                display: "inline-flex",
+                                                alignItems: "center",
+                                                padding: "3px 0px",
+                                                fontSize: "70%"
+                                            }}
+                                        >
+                                        <FaCalendarAlt className="text-muted" />
+                                        <span className="text-muted" style={{marginLeft: "5px"}}>
+                                            {post.date}
+                                        </span>
                                         </div>
                                         <Card.Text className="mt-3 small">
                                             {post.excerpt}
