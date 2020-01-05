@@ -6,16 +6,20 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import PostListing from "../components/PostListing/PostListing";
 import Sidebar from "../components/Sidebar/Sidebar";
-
 import { Row, Col } from "react-bootstrap";
-
+import Pagination from "../components/Pagination";
 
 export default class EventsTemplate extends React.Component {
   render() {
-    const postEdges = this.props.data.allMarkdownRemark.edges
+    const { data, pageContext } = this.props;
+    const postEdges = data.allMarkdownRemark.edges;
+    const { numPages, currentPage } = pageContext;
+    const events = Array.from(Array(6).keys())
+    console.log(events)
     return (
-        <Layout>
+      <Layout>
         <Helmet title={`Events | ${config.siteTitle}`} />
+        <SEO />
         <Row>
           <Col>
             <Row>
@@ -26,6 +30,11 @@ export default class EventsTemplate extends React.Component {
                 <div className="boxed-content">
                   <PostListing postEdges={postEdges} />
                 </div>
+              </Col>
+            </Row>
+            <Row className="my-3">
+              <Col>
+                <Pagination context={pageContext} />
               </Col>
             </Row>
           </Col>

@@ -20,6 +20,10 @@ body {
   color: #333;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 h3.boxed {
   border-top: 1px solid rgba(0, 102, 153, 0.1) !important;
   font-size: 20px;

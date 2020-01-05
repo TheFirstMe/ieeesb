@@ -102,7 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/event/` : `/event/${i + 1}/`, 
+      path: i === 0 ? `/events/` : `/events/${i + 1}/`, 
       component: eventPage,
       context: {
         limit: postsPerPage,
