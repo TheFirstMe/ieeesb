@@ -25,21 +25,22 @@
 
   
   .nav-item {
-    padding: 5px 20px;
-    @include media-breakpoint-down(lg){
-      padding: 10px 5px;
-    }
+    // padding: 5px 20px;
     &.active{
-      @include media-breakpoint-up(md){
-        background-color: #ecebe9;
-      }
       text-shadow: none;
       .nav-link {
         color: #00629b;
+        @include media-breakpoint-up(md){
+          background-color: #ecebe9;
+        }
       }
     }
     .nav-link {
       color: #212122;
+      padding: 13px 30px;
+      @include media-breakpoint-down(lg){
+        padding: 13px 10px;
+      }
     }
 
     @include media-breakpoint-up(lg) {
@@ -70,14 +71,14 @@
   }
   transition: all 0.25s ease-in;
   &.stuck {
-      @include media-breakpoint-up(lg) {
+      @include media-breakpoint-up(md) {
         transition: all 0.5 ease-in;
     .nav-item {
       &.active{
-        background-color: #fff;
         text-shadow: none;
         .nav-link {
           color: #212122;
+          background-color: #fff;
         }
       }
       .nav-link {

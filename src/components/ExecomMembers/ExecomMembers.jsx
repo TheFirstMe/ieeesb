@@ -27,6 +27,8 @@ export const Member = ({
                     className="rounded-circle showcase-img" 
                     fluid={image.childImageSharp.fluid} 
                     placeholderStyle={{ filter: "blur(15px)" }}
+                    alt={name}
+                    title={name}
                 />
             </div>
             <Card.Body className="text-center my-3">

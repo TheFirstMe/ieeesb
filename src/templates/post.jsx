@@ -71,7 +71,9 @@ export default class PostTemplate extends React.Component {
               <Img
                 fluid={post.featuredImage.childImageSharp.fluid}
                 placeholderStyle={{ filter: "blur(20px)" }}
-                className="card-img-top" />
+                className="card-img-top" 
+                title={post.title}
+                alt={post.title} />
               <Card.Body>
                 {post.venue && <div className="mt-2"> <strong>Venue: </strong>{post.venue} </div>}
                 <div className="post-content mt-3" dangerouslySetInnerHTML={{ __html: postNode.html }} />

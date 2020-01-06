@@ -53,15 +53,15 @@ const PaginationDropdownDiv = styled.div`
 
 export default class Pagination extends React.Component {
   changePage = e => {
-    navigate(e.target.value ? `/events/${e.target.value}` : `/events/`)
+    navigate(e.target.value ? `/events/page/${e.target.value}` : `/events/`)
   }
   render() {
     const { numPages, currentPage } = this.props.context
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
     const prevPageNum =
-      currentPage - 1 === 1 ? `` : `${(currentPage - 1).toString()}`
-    const nextPageNum = (currentPage + 1).toString()
+      currentPage - 1 === 1 ? `` : `page/${(currentPage - 1).toString()}`
+    const nextPageNum = `page/${(currentPage + 1).toString()}`
     const prevPageLink = isFirst ? null : `/events/${prevPageNum}`
     const nextPageLink = isLast ? null : `/events/${nextPageNum}`
 

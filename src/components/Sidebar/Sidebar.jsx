@@ -31,7 +31,7 @@ const Primary = () => (
 
 
 const Sidebar = ({ type = 'primary' }) => (
-    <Row className="ml-lg-1">
+    <Row className="ml-lg-1 pt-4 pt-lg-0">
         <Col xs={12}>
             {
                 (type === 'primary' && <Primary />)

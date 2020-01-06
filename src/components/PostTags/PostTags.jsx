@@ -5,7 +5,7 @@ import { Badge } from 'react-bootstrap';
 import "./PostTags.scss";
 class PostTags extends Component {
   render() {
-    const { tags, isPost } = this.props;
+    const { tags, isPost, isStretched } = this.props;
     return (
       <>
         { isPost && tags && <p className="text-muted">Tags:</p>}
@@ -23,6 +23,7 @@ class PostTags extends Component {
                 <li key={tag}>
                   <Link
                     to={`/tags/${_.kebabCase(tag)}`}
+                    style={ isStretched ? {zIndex: 2, position: "relative"} : null}
                   >
                     <Badge variant={variant} className="text-lowercase rounded-sm">{tag}</Badge>
                   </Link>
