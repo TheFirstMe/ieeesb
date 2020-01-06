@@ -17,7 +17,7 @@ class About extends Component {
           </h3>
           <Row className="mt-4">
             <Col xs={12}>
-              <p className="text-muted">
+              <p>
                 IEEE, an association dedicated to advancing innovation and
                 technological excellence for the benefit of humanity, is
                 the world's largest technical professional society. It
@@ -30,7 +30,7 @@ class About extends Component {
                 the world to share, collaborate, network, debate,
                 and engage with one another.
                   </p>
-              <p className="text-muted">
+              <p>
                 The IEEE Student Branch of GCEK came into existence
                   on 5<sup>th</sup> June 2009. Since then we have conducted several
                       programs for the benefit of students.
@@ -45,7 +45,7 @@ class About extends Component {
           </h3>
           <Row className="mt-4">
             <Col>
-              <p className="text-muted">
+              <p>
                 IEEE's core purpose is to foster technological innovation and excellence for the benefit of humanity
                   </p>
             </Col>
@@ -58,7 +58,7 @@ class About extends Component {
           </h3>
           <Row className="mt-4">
             <Col>
-              <p className="text-muted">
+              <p>
                 IEEE will be essential to the global technical community and to technical professionals everywhere,
                 and be universally recognized for the contributions of technology and of technical professionals
                 in improving global conditions.
@@ -75,19 +75,19 @@ class About extends Component {
             <Col>
               <ul>
                 <li>
-                  <span className="text-muted">
+                  <span>
                     Provide technically vital forums for the discussion, development, and dissemination of
                     authoritative knowledge related to traditional technologies, while focusing more of our
                      resources towards serving the professionals working on emerging and disruptive technologies.
                      </span>
                 </li>
                 <li>
-                  <span className="text-muted">
+                  <span>
                     Lead humanitarian efforts around the world to use technology to solve the world’s most challenging problems.
                      </span>
                 </li>
                 <li>
-                  <span className="text-muted">
+                  <span>
                     Leverage IEEE’s technology-related insight to provide governments, NGOs and other organizations,
                     and the public with innovative and practical recommendations to address public policy issues.
                      </span>

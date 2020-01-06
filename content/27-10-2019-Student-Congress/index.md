@@ -45,7 +45,7 @@ A motivational talk by NSG Commando P V Maneesh created a sense of inspiration a
 
 The next session by Adam Harry, the first transgender pilot, who shared his complete heart touching story of hardships and struggles that he had to face for being born as a transgender. He stresses that through school curriculum, students from a young age should be taught about the transgender community. "It's hard to live like an orphan when our parents are alive, he concludes. It was then followed by a photo session.
 
-![AKSC Photo Session](./aksc-photo-session.jpg.jpg)
+![AKSC Photo Session](./aksc-photo-session.jpg)
 
 #### Day 3
 <br>

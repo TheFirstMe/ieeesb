@@ -32,7 +32,7 @@ export default class EventsTemplate extends React.Component {
                 </div>
               </Col>
             </Row>
-            <Row className="my-3">
+            <Row className="mt-0 mt-md-3">
               <Col>
                 <Pagination context={pageContext} />
               </Col>
@@ -60,6 +60,10 @@ export const eventQuery = graphql`
                     fields {
                         slug
                     }
+                    excerpt(
+                      pruneLength: 120,
+                      truncate:true
+                    )
                     frontmatter {
                         title
                         tags

@@ -16,18 +16,27 @@ import { IconContext } from "react-icons";
 import { FaCalendarAlt } from "react-icons/fa";
 
 import { Row, Col, Card } from "react-bootstrap";
-/* <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}></IconContext.Provider> */ 
+import PrevAndNext from "../components/prev-and-next";
 
-const Filler = () => (
-  <div className="w-100" style={{ height: "350px", backgroundColor: 'grey' }} >
-  </div>
-);
+import styled from "styled-components";
 
+const PaginationDiv = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding: 2rem 0.3rem;
+  border-top: 1.5px solid rgba(231, 233, 238,0.5);
+  border-bottom: 1.5px solid rgba(231, 233, 238,0.5);
+  @media (min-width: 768px) { 
+    padding: 2.5rem 1.8rem;
+  }
+`
 
 export default class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
-    const { slug, nextslug, prevslug } = pageContext;
+    const { slug, nextslug, prevslug, prevtitle, nexttitle } = pageContext;
+    console.log(prevtitle)
     const postNode = data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -45,41 +54,51 @@ export default class PostTemplate extends React.Component {
         <Row>
           <Col lg={8} md={12}>
             <h1 className="mb-3">{post.title}</h1>
-            <div 
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  padding: "3px 0px",
-                  fontSize: "80%"
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "3px 0px",
+                fontSize: "80%"
               }}>
               <FaCalendarAlt className="text-muted" />
-              <span className="text-muted" style={{marginTop: "1px", marginLeft: "6px"}}>
-                  {post.date}
+              <span className="text-muted" style={{ marginTop: "1px", marginLeft: "6px" }}>
+                {post.date}
               </span>
             </div>
             <PostTags tags={post.tags} />
             <Card className="mt-4 border-0">
-              <Img 
-                fluid={post.featuredImage.childImageSharp.fluid} 
-                placeholderStyle={{ filter: "blur(20px)" }} 
+              <Img
+                fluid={post.featuredImage.childImageSharp.fluid}
+                placeholderStyle={{ filter: "blur(20px)" }}
                 className="card-img-top" />
               <Card.Body>
-                {post.venue && <div className="mt-1"> <strong>Venue: </strong>{post.venue} </div> }
-                <div className="post-content mt-3 mb-5" dangerouslySetInnerHTML={{ __html: postNode.html }} />
-                
+                {post.venue && <div className="mt-2"> <strong>Venue: </strong>{post.venue} </div>}
+                <div className="post-content mt-3" dangerouslySetInnerHTML={{ __html: postNode.html }} />
               </Card.Body>
-              <Card.Footer>
-                <div className="d-flex justify-content-between">
-                  <a className="btn btn-primary" href={prevslug}>Previous</a>
-                  <a className="btn btn-primary" href={nextslug}>Next</a>
-                </div>
+              <Card.Footer className="border" style={{
+                backgroundColor: "white"
+              }}>
+                <SocialLinks postPath={slug} postNode={postNode} mobile />
               </Card.Footer>
             </Card>
-            <div className="my-5">
-              <h3 className="text-center">Share this post</h3>
-              <SocialLinks postPath={slug} postNode={postNode} />
-            </div>
-
+            <PaginationDiv className="mb-5">
+              <PrevAndNext
+                prev={
+                  prevtitle && {
+                    title: prevtitle,
+                    link: prevslug
+                  }
+                }
+                next={
+                  nexttitle && {
+                    title: nexttitle,
+                    link: nextslug
+                  }
+                }
+              >
+              </PrevAndNext>
+            </PaginationDiv>
             {/* <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta mt-5">

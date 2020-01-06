@@ -52,7 +52,7 @@ class PostListing extends React.Component {
                         //   <h1>{post.title}</h1>
                         // </Link>
                         // <Row key={post.slug} className="my-5">
-                            <Col sm={12} xl={6} key={key} className="py-5 py-xl-3">
+                            <Col sm={12} xl={6} key={key} className="py-3">
                                 <Card className="post w-100">
                                     <Link to={post.path}>
                                         <Img 

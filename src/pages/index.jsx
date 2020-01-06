@@ -148,7 +148,7 @@ const Index = () => {
                         <span>IEEE SB GCEK</span>
                     </h3>
                     <div className="boxed-content">
-                        <p className="text-muted">
+                        <p>
                             The IEEE Student Branch of GCEK came into existence
                                 on 5<sup>th</sup> June 2009. Since then we have conducted several
                             programs for the benefit of students.

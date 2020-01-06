@@ -2,17 +2,17 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     align-content: center;
     align-items: center;
-    margin: 15px 0;
+    justify-content: space-evenly;
+    span{
+        font-weight: bold;
+    }
+    button{
+        margin: 5px 5px;
+        cursor: pointer;
+    }
 }
-
-.social-links > div {
-    margin: 5px 15px;
-    cursor: pointer;
-}
-
 .share-count {
     text-align: center;
 }

@@ -4,19 +4,20 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   TelegramShareButton,
+  WhatsappShareButton,
   RedditShareButton,
   FacebookShareCount,
-  LinkedinShareCount,
   RedditShareCount,
   FacebookIcon,
   TwitterIcon,
   TelegramIcon,
   LinkedinIcon,
+  WhatsappIcon,
   RedditIcon
 } from "react-share";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
-import "./SocialLinks.css";
+import "./SocialLinks.scss";
 
 class SocialLinks extends Component {
   render() {
@@ -31,31 +32,32 @@ class SocialLinks extends Component {
 
     return (
       <div className="social-links">
-        <RedditShareButton url={url} title={post.title}>
+        {/* <RedditShareButton url={url} title={post.title}>
           <RedditIcon round size={iconSize} />
           <RedditShareCount url={url}>
             {count => renderShareCount(count)}
           </RedditShareCount>
-        </RedditShareButton>
+        </RedditShareButton> */}
         <TwitterShareButton url={url} title={post.title}>
           <TwitterIcon round size={iconSize} />
         </TwitterShareButton>
         <FacebookShareButton url={url} quote={postNode.excerpt}>
           <FacebookIcon round size={iconSize} />
-          <FacebookShareCount url={url}>
+          {/* <FacebookShareCount url={url}>
             {count => renderShareCount(count)}
-          </FacebookShareCount>
+          </FacebookShareCount> */}
         </FacebookShareButton>
         <LinkedinShareButton
           url={url}
           title={post.title}
-          description={postNode.excerpt}
+          summary={postNode.excerpt}
+          source={`IEEE SB GCEK`}
         >
           <LinkedinIcon round size={iconSize} />
-          <LinkedinShareCount url={url}>
-            {count => renderShareCount(count)}
-          </LinkedinShareCount>
         </LinkedinShareButton>
+        <WhatsappShareButton title={post.title} url={url} separator=" ">
+          <WhatsappIcon round size={iconSize} />
+        </WhatsappShareButton>
         <TelegramShareButton url={url}>
           <TelegramIcon round size={iconSize} />
         </TelegramShareButton>
