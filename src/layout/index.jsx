@@ -16,7 +16,6 @@ export default class MainLayout extends React.Component {
                 <Helmet>
                     <html lang="en" />
                     <meta name="description" content={config.siteDescription} />
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script>
                 </Helmet>
                 <div className="site">
                     <Header />
