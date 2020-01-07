@@ -29,6 +29,8 @@ export const Member = ({
                     placeholderStyle={{ filter: "blur(15px)" }}
                     alt={name}
                     title={name}
+                    backgroundColor
+                    onLoad={ () => console.log("Image loaded")}
                 />
             </div>
             <Card.Body className="text-center my-3">
