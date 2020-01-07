@@ -17,7 +17,7 @@ export const Member = ({
                 <Img 
                     className="rounded-circle showcase-img" 
                     fluid={image.childImageSharp.fluid} 
-                    placeholderStyle={{ filter: "blur(15px)" }}
+                    // placeholderStyle={{ filter: "blur(15px)" }}
                     alt={name}
                     title={name}
                     backgroundColor
