@@ -7,7 +7,7 @@ require("dotenv").config()
 module.exports = {
   pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
   siteMetadata: {
-    siteUrl: urljoin(config.siteUrl, config.pathPrefix),
+    siteUrl: config.siteUrl,
     rssMetadata: {
       site_url: urljoin(config.siteUrl, config.pathPrefix),
       feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
@@ -21,6 +21,32 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        // useAutoGen: required 'true' to use autogen
+        useAutoGen: true,
+        // updateCrumbLabels: optional, update specific crumbLabels in the path
+        crumbLabelUpdates: [
+          {
+            pathname: '/events',
+            crumbLabel: 'Events'
+          },
+          {
+            pathname: '/execom-members',
+            crumbLabel: 'Execom Members'
+          },
+          {
+            pathname: '/about',
+            crumbLabel: 'About'
+          },
+          {
+            pathname: '/contact',
+            crumbLabel: 'Contact'
+          }
+        ],
+     },
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     "gatsby-plugin-styled-components",

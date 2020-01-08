@@ -4,7 +4,7 @@ const config = {
   siteTitleAlt: "IEEE SB GCEK", // Alternative site title for SEO.
   siteLogo: "/logos/ieee.png", // Logo used for SEO and manifest.
   siteUrl: "https://ieeesbgcek.org", // Domain of your website without pathPrefix.
-  pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
+  pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: "The official website for the IEEE Student Branch of GCEK.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   // siteFBAppID: "1825356251115265", // FB Application ID for using app insights

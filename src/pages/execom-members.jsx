@@ -8,10 +8,13 @@ import { Row, Col } from "react-bootstrap";
 
 import { useExecom } from "../components/Hooks/Execom";
 // this.props.data.allExecomMembersJson.edges[0]
-const ExecomMembersPage = () => {
+export default ({pageContext}) => {
+    const {
+        breadcrumb: { crumbs },
+      } = pageContext
     const data = useExecom();
     return (
-        <Layout>
+        <Layout crumbs={crumbs} crumbLabel="Execom Members">
             <Helmet title={`Execom Members | ${config.siteTitle}`} />
             <Row>
                 <Col md={12} lg={8} className="py-2 py-lg-0">
@@ -24,45 +27,3 @@ const ExecomMembersPage = () => {
         </Layout>
     );
 }
-
-export default ExecomMembersPage;
-
-// export const memberQuery = graphql`
-//   query MemberQuery {
-//     allExecomMembersJson(
-//       filter: { year: { eq: "2019" } }
-//     ) {
-//       edges {
-//         node {
-//             execom{
-//                 execomName
-//                 execomColor
-//                 chair{
-//                     name
-//                     designation
-//                     image{
-//                         childImageSharp{
-//                             fluid(maxWidth: 180, quality: 80){
-//                                 ...GatsbyImageSharpFluid_withWebp
-//                             }
-//                         }
-//                     }
-//                 }
-//                 members{
-//                     name
-//                     designation
-//                     image{
-//                         childImageSharp{
-//                             fluid(maxWidth: 180, quality: 80){
-//                                 ...GatsbyImageSharpFluid_withWebp
-
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//       }
-//     }
-//   }
-// `;

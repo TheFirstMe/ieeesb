@@ -10,7 +10,6 @@ import Img from "gatsby-image";
 import config from "../../data/SiteConfig";
 import { Container, Row, Col, Button as B } from "react-bootstrap";
 import Sidebar from "../components/Sidebar/Sidebar";
-import Calendar from "../components/Calendar/Calendar";
 import { Member } from "../components/ExecomMembers/ExecomMembers";
 import styled from "styled-components";
 

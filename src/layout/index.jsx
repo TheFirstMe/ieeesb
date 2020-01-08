@@ -2,15 +2,15 @@ import React from "react";
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 import "../scss/index.scss"
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import "./index.scss";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-// import PostTags from "components/PostTags/PostTags";
+import Breadcrumb from "../components/Breadcrumbs";
 
 export default class MainLayout extends React.Component {
     render() {
-        const { children } = this.props;
+        const { children, crumbs, crumbLabel } = this.props;
         return (
             <>
                 <Helmet>
@@ -21,6 +21,11 @@ export default class MainLayout extends React.Component {
                     <Header />
                     <div className="site-content pt-lg-3">
                         <Container>
+                            <Row>
+                                <Col>
+                                    { <Breadcrumb crumbs={crumbs} crumbLabel={crumbLabel} />}
+                                </Col>
+                            </Row>
                             {children}
                         </Container>
                     </div>

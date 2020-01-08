@@ -43,9 +43,9 @@ class SocialLinks extends Component {
         </TwitterShareButton>
         <FacebookShareButton url={url} quote={postNode.excerpt}>
           <FacebookIcon round size={iconSize} />
-          {/* <FacebookShareCount url={url}>
-            {count => renderShareCount(count)}
-          </FacebookShareCount> */}
+          {/* <div className="share-count"> */}
+            <FacebookShareCount url={url} />
+          {/* </div> */}
         </FacebookShareButton>
         <LinkedinShareButton
           url={url}

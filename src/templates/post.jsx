@@ -12,12 +12,10 @@ import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
 import Sidebar from "../components/Sidebar/Sidebar";
-import { IconContext } from "react-icons";
 import { FaCalendarAlt } from "react-icons/fa";
 
 import { Row, Col, Card } from "react-bootstrap";
 import PrevAndNext from "../components/prev-and-next";
-
 import styled from "styled-components";
 
 const PaginationDiv = styled.div`
@@ -32,93 +30,91 @@ const PaginationDiv = styled.div`
   }
 `
 
-export default class PostTemplate extends React.Component {
-  render() {
-    const { data, pageContext } = this.props;
-    const { slug, nextslug, prevslug, prevtitle, nexttitle } = pageContext;
-    console.log(prevtitle)
-    const postNode = data.markdownRemark;
-    const post = postNode.frontmatter;
-    if (!post.id) {
-      post.id = slug;
-    }
-    if (!post.category_id) {
-      post.category_id = config.postDefaultCategoryID;
-    }
-    return (
-      <Layout>
-        <Helmet>
-          <title>{`${post.title} | ${config.siteTitle}`}</title>
-        </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
-        <Row>
-          <Col lg={8} md={12}>
-            <h1 className="mb-3">{post.title}</h1>
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                padding: "3px 0px",
-                fontSize: "80%"
-              }}>
-              <FaCalendarAlt className="text-muted" />
-              <span className="text-muted" style={{ marginTop: "1px", marginLeft: "6px" }}>
-                {post.date}
-              </span>
-            </div>
-            <PostTags tags={post.tags} />
-            <Card className="mt-4 border-0">
-              <Img
-                fluid={post.featuredImage.childImageSharp.fluid}
-                placeholderStyle={{ filter: "blur(20px)" }}
-                className="card-img-top" 
-                title={post.title}
-                alt={post.title} />
-              <Card.Body>
-                {post.venue && <div className="mt-2"> <strong>Venue: </strong>{post.venue} </div>}
-                <div className="post-content mt-3" dangerouslySetInnerHTML={{ __html: postNode.html }} />
-              </Card.Body>
-              <Card.Footer className="border" style={{
-                backgroundColor: "white"
-              }}>
-                <SocialLinks postPath={slug} postNode={postNode} mobile />
-              </Card.Footer>
-            </Card>
-            <PaginationDiv className="mb-5">
-              <PrevAndNext
-                prev={
-                  prevtitle && {
-                    title: prevtitle,
-                    link: prevslug
-                  }
+const PostTemplate = ( {data, pageContext} ) => {
+  const { slug, nextslug, prevslug, prevtitle, nexttitle, breadcrumb: { crumbs } } = pageContext;
+  const postNode = data.markdownRemark;
+  const post = postNode.frontmatter;
+  if (!post.id) {
+    post.id = slug;
+  }
+  if (!post.category_id) {
+    post.category_id = config.postDefaultCategoryID;
+  }
+  return (
+    <Layout crumbs={crumbs} crumbLabel={post.title} >
+      <Helmet>
+        <title>{`${post.title} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO postPath={slug} postNode={postNode} postSEO />
+      <Row>
+        <Col lg={8} md={12}>
+          <h1 className="mb-3">{post.title}</h1>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "3px 0px",
+              fontSize: "80%"
+            }}>
+            <FaCalendarAlt className="text-muted" />
+            <span className="text-muted" style={{ marginTop: "1px", marginLeft: "6px" }}>
+              {post.date}
+            </span>
+          </div>
+          <PostTags tags={post.tags} />
+          <Card className="mt-4 border-0">
+            <Img
+              fluid={post.featuredImage.childImageSharp.fluid}
+              placeholderStyle={{ filter: "blur(20px)" }}
+              className="card-img-top"
+              title={post.title}
+              alt={post.title} />
+            <Card.Body>
+              {post.venue && <div className="mt-2"> <strong>Venue: </strong>{post.venue} </div>}
+              <div className="post-content mt-3" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            </Card.Body>
+            <Card.Footer className="border" style={{
+              backgroundColor: "white"
+            }}>
+              <SocialLinks postPath={slug} postNode={postNode} mobile />
+            </Card.Footer>
+          </Card>
+          <PaginationDiv className="mb-5">
+            <PrevAndNext
+              prev={
+                prevtitle && {
+                  title: prevtitle,
+                  link: prevslug
                 }
-                next={
-                  nexttitle && {
-                    title: nexttitle,
-                    link: nextslug
-                  }
+              }
+              next={
+                nexttitle && {
+                  title: nexttitle,
+                  link: nextslug
                 }
-              >
-              </PrevAndNext>
-            </PaginationDiv>
-            {/* <h1>{post.title}</h1>
+              }
+            >
+            </PrevAndNext>
+          </PaginationDiv>
+          {/* <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta mt-5">
               
               <SocialLinks postPath={slug} postNode={postNode} />
             </div>
             */}
-            {/* <UserInfo config={config} /> */}
-            <Disqus postNode={postNode} />
-          </Col>
-          <Col md={12} lg={4} className="py-2 py-lg-0">
-            <Sidebar type="secondary" />
-          </Col>
-        </Row>
-      </Layout>
-    );
-  }
+          {/* <UserInfo config={config} /> */}
+          <Disqus postNode={postNode} />
+        </Col>
+        <Col md={12} lg={4} className="py-2 py-lg-0">
+          <Sidebar type="secondary" />
+        </Col>
+      </Row>
+    </Layout>
+  );
 }
+
+export default PostTemplate
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

@@ -13,11 +13,12 @@ export default class EventsTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
     const postEdges = data.allMarkdownRemark.edges;
-    const { numPages, currentPage } = pageContext;
+    const {
+      breadcrumb: { crumbs },
+    } = pageContext
     const events = Array.from(Array(6).keys())
-    console.log(events)
     return (
-      <Layout>
+      <Layout crumbs={crumbs} crumbLabel="Events">
         <Helmet title={`Events | ${config.siteTitle}`} />
         <SEO />
         <Row>

@@ -19,7 +19,7 @@ export const useExecom = (chair=false) => {
                                     image{
                                         childImageSharp{
                                             fluid(maxWidth: 180, quality: 80){
-                                                ...GatsbyImageSharpFluid_withWebp_noBase64
+                                                ...GatsbyImageSharpFluid_withWebp
                                             }
                                         }
                                     }
@@ -30,7 +30,7 @@ export const useExecom = (chair=false) => {
                                     image{
                                         childImageSharp{
                                             fluid(maxWidth: 180, quality: 80){
-                                                ...GatsbyImageSharpFluid_withWebp_noBase64   
+                                                ...GatsbyImageSharpFluid_withWebp
                                             }
                                         }
                                     }
