@@ -12,7 +12,7 @@ const searchIndices = [
   { name: `Posts`, title: `Events`, type: `postHit` },
 ]
 const IEEE = () => (
-    <img height={30} src={require("../../assets/ieee.png")} alt="IEEE" />
+    <img src={require("../../assets/ieee.png")} alt="IEEE" />
 )
 
 const darkTheme = {
