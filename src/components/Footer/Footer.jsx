@@ -10,15 +10,17 @@ import { SocialIcon } from 'react-social-icons';
 const FooterNav = ({ className, Links }) => {
     return (
         <div className={className}>
-            <Nav className="flex-column flex-md-row">
+            <Nav className="flex-column flex-md-row" aria-label="Footer">
                 {
                     Links.map((link, key) => (
                         <Nav.Item key={key}>
                             <Nav.Link
-                                role="tab" data-rb-event-key={link.url} tabIndex="-1" aria-selected="false"
-                                href={link.url} 
-                                className="test" 
-                                target={link.self ? "_self":"_blank"} rel="noopener noreferrer">{link.title}</Nav.Link>
+                                href={link.url}
+                                className="test"
+                                target={link.self ? "_self" : "_blank"} rel="noopener noreferrer">
+                                {link.title}
+                                <div class="mask"></div>
+                            </Nav.Link>
                         </Nav.Item>
                     ))
                 }
@@ -39,7 +41,7 @@ const Copyright = () => (
                 rel="noopener noreferrer"
             >
                 <u>IEEE Terms and Conditions</u>
-            </a>.<br/>
+            </a>.<br />
             A not-for-profit organization, IEEE is the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity.
         </p>
     </>

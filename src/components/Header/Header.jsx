@@ -28,7 +28,7 @@ const MetaHeader = ({ className, links }) => {
         <div className={className + " d-none d-md-block"}>
             <Container>
                 <Row>
-                    <Nav>
+                    <Nav aria-label="IEEE Meta Navbar">
                         {
                             links.map((link, key) => (
                                 <Nav.Item key={key}>
@@ -117,6 +117,7 @@ class MainHeader extends React.Component {
                 <Navbar
                     onToggle={this.setNavExpanded}
                     expanded={this.state.navExpanded}
+                    aria-label="Primary Header"
                     expand="md"
                     className="site-identifier px-3"
                 >
@@ -145,7 +146,11 @@ class MainHeader extends React.Component {
                                                             (pathName === link.url) 
                                                                 || 
                                                             (pathName.includes(link.url) && link.url!='/')  ? 'active' : ''} >
-                                                        <Nav.Link href={link.url} className="text-nowrap">{link.title}</Nav.Link>
+                                                        <Nav.Link 
+                                                            href={link.url} 
+                                                            aria-current={(pathName === link.url) 
+                                                            ? 'page' : null}
+                                                            className="text-nowrap">{link.title}</Nav.Link>
                                                     </Nav.Item>
                                                 )
                                             }}

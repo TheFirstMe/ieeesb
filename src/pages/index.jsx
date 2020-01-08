@@ -214,9 +214,8 @@ const Index = () => {
                                     return(
                                         <Col key={key} sm={12} md={6} md={6} className="pt-4">
                                     <a href={node.fields.slug}>
-                                        <Img 
-                                            sizes={{...featuredImage.childImageSharp.fluid, aspectRatio: 5/3}}                                        
-                                            fluid={featuredImage.childImageSharp.fluid} 
+                                        <Img                                       
+                                            fluid={featuredImage.childImageSharp.thumbnail} 
                                             placeholderStyle={{ filter: "blur(20px)" }}
                                             alt={node.frontmatter.title}
                                             title={node.frontmatter.title}

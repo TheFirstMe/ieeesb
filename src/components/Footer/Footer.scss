@@ -34,29 +34,47 @@
   .nav .nav-item {
     a {
       font-family: "Open Sans Condensed";
+      padding-right: 16px;
+      padding-left: 16px;
+      padding-top: 17px;
+      padding-bottom: 17px;
+      position: relative;
       text-transform: uppercase;
       font-weight: 700;
       line-height: 15px;
       color: white;
       &:hover {
-        color: #00629B;
+        color: #00629b;
       }
     }
-    p{
-        padding-bottom: 20px;
+    p {
+      padding-bottom: 20px;
     }
-    
+    .mask {
+      position: absolute;
+      top: 50%;
+      left: -10px;
+      width: 18px;
+      height: 1px;
+      background-color: rgba(117, 120, 123, 0.4);
+      transform: rotate(90deg);
+    }
+    @include media-breakpoint-down(md){
+      .mask{
+        display: none;
+      }
+    }
     @include media-breakpoint-up(md) {
-      a {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
       &:first-child a {
+        .mask{
+          display: none;
+        }
         padding-left: 0px;
       }
       &:not(:last-child) a {
-        border-right: 1px solid rgba(117, 120, 123, 0.4);
+        // border-right: 1px solid rgba(117, 120, 123, 0.4);
       }
     }
   }
 }
+
