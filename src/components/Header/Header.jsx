@@ -140,7 +140,11 @@ class MainHeader extends React.Component {
                                                 let pathName = location.pathname === '/' ? "/" : location.pathname.replace(/\/+/g, "/");
                                                 pathName = pathName === '/' ? "/" : pathName.replace(/\/+$/, "");
                                                 return (
-                                                    <Nav.Item className={pathName === link.url ? 'active' : ''} >
+                                                    <Nav.Item 
+                                                        className={
+                                                            (pathName === link.url) 
+                                                                || 
+                                                            (pathName.includes(link.url) && link.url!='/')  ? 'active' : ''} >
                                                         <Nav.Link href={link.url} className="text-nowrap">{link.title}</Nav.Link>
                                                     </Nav.Item>
                                                 )

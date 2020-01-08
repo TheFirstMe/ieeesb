@@ -15,7 +15,7 @@ const FooterNav = ({ className, Links }) => {
                     Links.map((link, key) => (
                         <Nav.Item key={key}>
                             <Nav.Link
-                                role="tab" data-rb-event-key={link.url} tabindex="-1" aria-selected="false"
+                                role="tab" data-rb-event-key={link.url} tabIndex="-1" aria-selected="false"
                                 href={link.url} 
                                 className="test" 
                                 target={link.self ? "_self":"_blank"} rel="noopener noreferrer">{link.title}</Nav.Link>
