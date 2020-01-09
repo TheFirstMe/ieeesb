@@ -1,9 +1,19 @@
 .post-meta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.gatsby-resp-image-background-image{
-    filter: blur(20px);
+.gatsby-resp-image-background-image {
+  filter: blur(20px);
 }
+
+// .LazyLoad {
+//   &:before {
+//     text-align: center;
+//     content: "Loading...";
+//   }
+//   &.is-visible:before {
+//     content: "";
+//   }
+// }

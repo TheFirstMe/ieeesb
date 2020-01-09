@@ -13,7 +13,7 @@ import "./b16-tomorrow-dark.css";
 import "./post.scss";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { FaCalendarAlt } from "react-icons/fa";
-
+import LazyLoad from 'react-lazy-load';
 import { Row, Col, Card } from "react-bootstrap";
 import PrevAndNext from "../components/prev-and-next";
 import styled from "styled-components";
@@ -30,7 +30,7 @@ const PaginationDiv = styled.div`
   }
 `
 
-const PostTemplate = ( {data, pageContext} ) => {
+const PostTemplate = ({ data, pageContext }) => {
   const { slug, nextslug, prevslug, prevtitle, nexttitle, breadcrumb: { crumbs } } = pageContext;
   const postNode = data.markdownRemark;
   const post = postNode.frontmatter;
@@ -104,7 +104,9 @@ const PostTemplate = ( {data, pageContext} ) => {
             </div>
             */}
           {/* <UserInfo config={config} /> */}
-          <Disqus postNode={postNode} />
+          <LazyLoad width="100%" onContentVisible={() => console.log('look ma I have been lazyloaded!')}>
+            <Disqus postNode={postNode} />
+          </LazyLoad>
         </Col>
         <Col md={12} lg={4} className="py-2 py-lg-0">
           <Sidebar type="secondary" />
