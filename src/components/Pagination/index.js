@@ -7,10 +7,13 @@ import styled from "styled-components"
 const PaginationDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0px -1.5rem;
+  margin: 0px -0.75rem;
   padding: 1.5rem;
   flex-direction: column;
   font-size: 0.875rem;
+  @media (min-width: 576px) { 
+    margin: 0rem -1.5rem;
+  }
   @media (min-width: 768px) {
     background: transparent;
     border-top: 0rem;

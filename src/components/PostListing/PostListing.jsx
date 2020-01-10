@@ -48,8 +48,8 @@ class PostListing extends React.Component {
             //   <h1>{post.title}</h1>
             // </Link>
             // <Row key={post.slug} className="my-5">
-            <Col sm={12} xl={6} key={key} className="py-3">
-              <Card className="post w-100">
+            <Col sm={12} md={6} lg={12} xl={6} key={key} className="d-flex py-3">
+              <Card className="post w-100 flex-fill">
                 <Link to={post.path} className="stretched-link">
                   <Img
                     fluid={post.featuredImage.childImageSharp.fluid}
