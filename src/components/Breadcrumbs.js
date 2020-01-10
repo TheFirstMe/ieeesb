@@ -5,11 +5,11 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 // import getActiveItemParents from "../util/navbar/get-active-item-parents"
 import styled from "styled-components"
 
-const Separator = styled.span.attrs(({ character = <MdChevronRight/> }) => ({
+const Separator = styled.span.attrs(({ character = <MdChevronRight/>}, props) => ({
   role: "presentation",
   children: character
 }))`
-  margin: 0rem 0.25rem;
+  margin: ${props => props.m ? props.m : "0rem 0.25rem"};
 `
 const BreadcrumbNav = styled.nav`
   display: ${props => props.mobile ? 'inherit' : 'none'};
@@ -59,7 +59,7 @@ const BreadCrumb = ({ crumbs, crumbLabel }) => {
       {/* render a smaller view on mobile viewports with only previous breadcrumb */}
       {activeCrumbParents && (
         <BreadcrumbNav className="text-muted" mobile>
-          <Separator character={<MdChevronLeft />} />
+          <Separator character={<MdChevronLeft />} m="0rem 0.25rem 0rem 0rem" />
           <Link
             to={
               activeCrumbParents[activeCrumbParents.length - 1]

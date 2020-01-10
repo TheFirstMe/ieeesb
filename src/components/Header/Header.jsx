@@ -122,7 +122,7 @@ class MainHeader extends React.Component {
                     className="site-identifier px-3"
                 >
                     <Container>
-                        <Navbar.Brand href="/"><Logo height={50} /></Navbar.Brand>
+                        <Navbar.Brand href="/"><Logo height={40} /></Navbar.Brand>
                         <Navbar.Toggle />
                         <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" rel="noopener noreferrer" >
                             <IEEE />
@@ -162,25 +162,6 @@ class MainHeader extends React.Component {
                             <ThemeProvider theme={this.state.stuck ? darkTheme : lightTheme} >
                                 <Search  indices={searchIndices} />
                             </ThemeProvider>
-                            
-                            {/* <Form inline className="pb-3 pb-md-0">
-                                <InputGroup className="mx-auto" style={{width:"auto"}}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Search"
-                                        aria-describedby="inputGroupPrepend"
-                                        size="md"
-                           
-                                    />
-                                    <InputGroup.Append>
-                                        <Button className="search-button" variant={this.state.btnVariant}>
-                                            <FaSearch />
-                                        </Button>
-     
-                                    </InputGroup.Append>
-                                </InputGroup>
-
-                            </Form> */}
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>

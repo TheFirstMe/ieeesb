@@ -17,14 +17,13 @@ class SEO extends Component {
         ? postMeta.description
         : postNode.excerpt;
       image = postMeta.featuredImage.childImageSharp.fluid.src;
-      postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
+      postURL = urljoin(config.siteUrl, postPath);
     } else {
       title = config.siteTitle;
       description = config.siteDescription;
       image = config.siteLogo;
     }
-
-    image = urljoin(config.siteUrl, config.pathPrefix, image);
+    image = urljoin(config.siteUrl, image);
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);
     const schemaOrgJSONLD = [
       {
@@ -93,7 +92,7 @@ class SEO extends Component {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:creator"
-          content={config.userTwitter ? config.userTwitter : ""}
+          content={config.userTwitter ? config.userTwitter : "IEEE SB GCEK"}
         />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
