@@ -17,8 +17,8 @@ export default class Calendar extends React.Component {
         }
     }
 
-    hasDateChanged(data,field) {
-        if (data == field && moment().isSame(this.state.dateObject, "date")) {
+    hasDateChanged(data, field, arg) {
+        if (data == field && moment().isSame(this.state.dateObject, arg)) {
             return false;
         }
         return true;
@@ -41,7 +41,6 @@ export default class Calendar extends React.Component {
     }
 
     firstDayOfMonth() {
-        // console.log(this);
         let dateObject = this.state.dateObject;
         let firstDay = moment(dateObject)
             .startOf("month")
@@ -69,15 +68,14 @@ export default class Calendar extends React.Component {
 
     MonthTable(props) {
         let months = [];
-        props.data.map(data => {
-            let currentMonth = !this.hasDateChanged(data, this.currentMonth()) ? "date-today" : "";
+        props.data.map((data, key) => {
+            let currentMonth = !this.hasDateChanged(data, moment().format("MMMM"), 'year') ? "date-today" : "";
             months.push(
                 <td
-                    key={data}
+                    key={key}
                     className={`calendar-month ${currentMonth}`}
                     onClick={e => {
                         this.setMonth(data)
-                        // console.log(this.setMonth)
                     }}
                 >
                     <span className="inner">{data}</span>
@@ -99,8 +97,8 @@ export default class Calendar extends React.Component {
         });
         rows.push(cells);
 
-        let monthlist = rows.map((d, i) => {
-            return <tr key={i} >{d}</tr>
+        let monthlist = rows.map((d, key) => {
+            return <tr key={key} >{d}</tr>
         });
 
         return (
@@ -153,11 +151,11 @@ export default class Calendar extends React.Component {
 
         let twleveYears = this.getDates(start, end);
 
-        twleveYears.map(data => {
-            let currentYear = !this.hasDateChanged(data, this.currentYear()) ? "date-today" : "";
+        twleveYears.map((data, key) => {
+            let currentYear = data === moment().format("Y") ? "date-today" : "";
             months.push(
                 <td
-                    key={data}
+                    key={key}
                     className={`calendar-year ${currentYear}`}
                     onClick={e => {
                         this.setYear(data);
@@ -181,8 +179,8 @@ export default class Calendar extends React.Component {
             }
         });
         rows.push(cells);
-        let yearList = rows.map((d, i) => (
-            <tr>{d}</tr>
+        let yearList = rows.map((d, key) => (
+            <tr key={key}>{d}</tr>
         ));
 
         return (
@@ -232,12 +230,8 @@ export default class Calendar extends React.Component {
 
     onDayClick(e, d) {
         this.setState({
-            selectedDay: d
-        },
-            () => {
-                console.log("SELECTED DAY: ", this.state.selectedDay);
-            }
-        );
+            selectedDay: d,
+        });
     }
 
     calendarLabel() {
@@ -252,9 +246,9 @@ export default class Calendar extends React.Component {
     }
 
     render() {
-        let weekdayshortname = this.weekdayshort.map(day => {
+        let weekdayshortname = this.weekdayshort.map((day, key) => {
             return (
-                <th key={day} className="calendar-week">
+                <th key={key} className="calendar-week">
                     {day}
                 </th>
             );
@@ -263,13 +257,13 @@ export default class Calendar extends React.Component {
         let blanks = [];
         for (let i = 0; i < this.firstDayOfMonth(); i++) {
             blanks.push(
-                <td className="calendar-day empty">{""}</td>
+                <td key={`blank ${i}`} className="calendar-day empty">{""}</td>
             );
         }
 
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let currentDay = !this.hasDateChanged(d, this.currentDay()) ? "date-today" : "";
+            let currentDay = !this.hasDateChanged(d, this.currentDay(), 'day') ? "date-today" : "";
             daysInMonth.push(
                 <td key={d} className={`calendar-day date-current ${currentDay}`}>
                     <span className="inner" onClick={(e) => this.onDayClick(e, d)}>
@@ -296,8 +290,8 @@ export default class Calendar extends React.Component {
             }
         });
 
-        let daysinmonth = rows.map((d, i) => {
-            return <tr key={i}>{d}</tr>
+        let daysinmonth = rows.map((d, key) => {
+            return <tr key={key}>{d}</tr>
         });
 
         return (

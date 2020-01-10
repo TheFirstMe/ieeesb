@@ -19,7 +19,7 @@ const FooterNav = ({ className, Links }) => {
                                 className="test"
                                 target={link.self ? "_self" : "_blank"} rel="noopener noreferrer">
                                 {link.title}
-                                <div class="mask"></div>
+                                <div className="mask"></div>
                             </Nav.Link>
                         </Nav.Item>
                     ))
