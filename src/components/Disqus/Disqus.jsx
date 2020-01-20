@@ -9,11 +9,18 @@ export const disqusConfig = ({ slug, title }) => ({
 
 export const Disqus = ({ slug, title }) => {
   const [ref, inView] = useInView({
-    threshold: 1,
+    rootMargin: '300px 0px',
     triggerOnce: true,
   })
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      id="comment-box"
+      style={{
+        minHeight: 104,
+      }}
+      className="my-4"
+    >
       {inView && <DiscussionEmbed {...disqusConfig({ slug, title })} />}
     </div>
   )

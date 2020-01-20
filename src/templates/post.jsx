@@ -23,8 +23,8 @@ const PaginationDiv = styled.div`
   margin-right: auto;
   position: relative;
   padding: 2rem 0.3rem;
-  border-top: 1.5px solid rgba(231, 233, 238,0.5);
-  border-bottom: 1.5px solid rgba(231, 233, 238,0.5);
+  //border-top: 1.5px solid rgba(231, 233, 238,0.5);
+  //border-bottom: 1.5px solid rgba(231, 233, 238,0.5);
   @media (min-width: 768px) { 
     padding: 2.5rem 1.8rem;
   }
@@ -110,7 +110,7 @@ const PostTemplate = ({ data, pageContext }) => {
           {/* <LazyLoad width="100%" onContentVisible={() => console.log('look ma I have been lazyloaded!')}>
             <DiscussionEmbed {...disqusConfig({ slug, title })} />
           </LazyLoad> */}
-          <Disqus slug={slug} title={title} />
+          {/* <Disqus slug={slug} title={title} /> */}
         </Col>
         <Col md={12} lg={4} className="py-2 py-lg-0">
           <Sidebar type="secondary" />
