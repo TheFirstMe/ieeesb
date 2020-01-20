@@ -23,7 +23,7 @@ export default class MainLayout extends React.Component {
                         <Container>
                             <Row>
                                 <Col>
-                                    { <Breadcrumb crumbs={crumbs} crumbLabel={crumbLabel} />}
+                                    <Breadcrumb crumbs={crumbs} crumbLabel={crumbLabel} />
                                 </Col>
                             </Row>
                             {children}

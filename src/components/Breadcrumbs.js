@@ -29,8 +29,12 @@ const BreadCrumb = ({ crumbs, crumbLabel }) => {
   // const activeItemParents = getActiveItemParents(itemList.items, activeItem, [])
   // const topLevel = itemList.key
   // const topLevelTitle = itemList.breadcrumbTitle || itemList.title
-  const activeCrumb = crumbs[crumbs.length - 1]
-  const activeCrumbParents = crumbs.slice(0, crumbs.length - 1)
+  let newCrumbs = crumbs
+  if (crumbs[1].pathname === '/events' && crumbs.length > 2) {
+    newCrumbs = crumbs.slice(0,2)
+  }
+  const activeCrumb = newCrumbs[newCrumbs.length - 1]
+  const activeCrumbParents = newCrumbs.slice(0, newCrumbs.length - 1)
   const activeCrumbLabel = crumbLabel || activeCrumb.crumbLabel
   // const parentCrumbs = crumbs.slice(0,crumbs.length-1)
   return (
