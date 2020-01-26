@@ -8,8 +8,8 @@ import Logo from "../../assets/svg/logo.svg";
 import { FaSearch } from 'react-icons/fa';
 import Search from "../Search"
 const searchIndices = [
-//   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
-  { name: `Posts`, title: `Events`, type: `postHit` },
+    //   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+    { name: `Posts`, title: `Events`, type: `postHit` },
 ]
 const IEEE = () => (
     <img src={require("../../assets/ieee.png")} alt="IEEE" />
@@ -74,6 +74,42 @@ export const StyledMetaHeader = styled(MetaHeader)`
     }
 `;
 
+const navlinks = [
+    { title: "Home", url: "/" },
+    { title: "About", url: "/about" },
+    { title: "Events", url: "/events" },
+    { title: "Execom Members", url: "/execom-members" },
+    { title: "Contact", url: "/contact" }
+];
+
+const HeaderNav = ({ closeNav }) => (
+    <Nav className="mr-auto pl-3 pl-md-0" onSelect={closeNav}>
+        {
+            navlinks.map((link, key) => (
+                <Location key={key}>
+                    {({ location }) => {
+                        let pathName = location.pathname === '/' ? "/" : location.pathname.replace(/\/+/g, "/");
+                        pathName = pathName === '/' ? "/" : pathName.replace(/\/+$/, "");
+                        return (
+                            <Nav.Item
+                                className={
+                                    (pathName === link.url)
+                                        ||
+                                        (pathName.includes(link.url) && link.url != '/') ? 'active' : ''} >
+                                <Nav.Link
+                                    href={link.url}
+                                    aria-current={(pathName === link.url)
+                                        ? 'page' : null}
+                                    className="text-nowrap">{link.title}</Nav.Link>
+                            </Nav.Item>
+                        )
+                    }}
+                </Location>
+
+            ))
+        }
+    </Nav>
+)
 
 class MainHeader extends React.Component {
     constructor(props) {
@@ -133,35 +169,13 @@ class MainHeader extends React.Component {
                 <Navbar expanded={this.state.navExpanded} expand="md" bg={!this.state.navExpanded && this.state.dark} className={"custom-navbar p-0 " + this.state.stuck} sticky="top">
                     <Container className="pl-0">
                         <Navbar.Collapse className="">
-                            <Nav className="mr-auto pl-3 pl-md-0" onSelect={this.closeNav}>
-                                {
-                                    this.props.links.map((link, key) => (
-                                        <Location key={key}>
-                                            {({ location }) => {
-                                                let pathName = location.pathname === '/' ? "/" : location.pathname.replace(/\/+/g, "/");
-                                                pathName = pathName === '/' ? "/" : pathName.replace(/\/+$/, "");
-                                                return (
-                                                    <Nav.Item 
-                                                        className={
-                                                            (pathName === link.url) 
-                                                                || 
-                                                            (pathName.includes(link.url) && link.url!='/')  ? 'active' : ''} >
-                                                        <Nav.Link 
-                                                            href={link.url} 
-                                                            aria-current={(pathName === link.url) 
-                                                            ? 'page' : null}
-                                                            className="text-nowrap">{link.title}</Nav.Link>
-                                                    </Nav.Item>
-                                                )
-                                            }}
-                                        </Location>
-
-                                    ))
-                                }
-                            </Nav>
+                            <HeaderNav closeNav={this.closeNav} />
                             <ThemeProvider theme={this.state.stuck ? darkTheme : lightTheme} >
-                                <Search  indices={searchIndices} />
+                                <Search indices={searchIndices}/>
                             </ThemeProvider>
+                            {/* <ThemeProvider theme={{ mobile: true }} >
+                                <Search indices={searchIndices} collapse />
+                            </ThemeProvider> */}
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>

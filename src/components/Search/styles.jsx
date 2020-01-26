@@ -4,12 +4,24 @@ import { Algolia } from 'styled-icons/fa-brands/Algolia'
 import { Search } from 'styled-icons/fa-solid/Search'
 
 export const Root = styled.div`
+ 
   position: relative;
   display: grid;
+  // ${props => props.theme.mobile && display}
+  // ${props => !props.theme.mobile && 'display: none;'}
   grid-gap: 1em;
   color: black;
 `
-
+const display = css`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+Root.defaultProps = {
+  theme: {
+    display: 'none'
+  }
+}
 export const SearchIcon = styled(Search)`
   width: 1em;
   pointer-events: none;
