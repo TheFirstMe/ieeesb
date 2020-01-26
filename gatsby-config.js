@@ -112,7 +112,9 @@ module.exports = {
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
-        color: config.themeColor
+        color: config.themeColor,
+        // Disable the loading spinner.
+        showSpinner: false,
       }
     },
     "gatsby-plugin-sharp",
