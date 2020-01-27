@@ -1,11 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
 import { MdChevronLeft, MdChevronRight } from "react-icons/md"
+import { Row, Col } from "react-bootstrap"
 // import getActiveItem from "../util/navbar/get-active-item"
 // import getActiveItemParents from "../util/navbar/get-active-item-parents"
 import styled from "styled-components"
 
-const Separator = styled.span.attrs(({ character = <MdChevronRight/>}, props) => ({
+const Separator = styled.span.attrs(({ character = <MdChevronRight /> }, props) => ({
   role: "presentation",
   children: character
 }))`
@@ -30,55 +31,57 @@ const BreadCrumb = ({ crumbs, crumbLabel }) => {
   // const topLevel = itemList.key
   // const topLevelTitle = itemList.breadcrumbTitle || itemList.title
   let newCrumbs = crumbs
-  if (crumbs[1].pathname === '/events' && crumbs.length > 2) {
-    newCrumbs = crumbs.slice(0,2)
+  if (crumbs[1].pathname === '/events' && crumbs.length === 4) {
+    newCrumbs = crumbs.slice(0, 2)
   }
   const activeCrumb = newCrumbs[newCrumbs.length - 1]
   const activeCrumbParents = newCrumbs.slice(0, newCrumbs.length - 1)
   const activeCrumbLabel = crumbLabel || activeCrumb.crumbLabel
   // const parentCrumbs = crumbs.slice(0,crumbs.length-1)
   return (
-    <>
-      {/* render the default view on desktop sizes with all links displayed */}
-      <BreadcrumbNav className="text-muted">
-        {/* <Link to="/">Home</Link>
+    <Row>
+      <Col>
+        {/* render the default view on desktop sizes with all links displayed */}
+        <BreadcrumbNav className="text-muted">
+          {/* <Link to="/">Home</Link>
         <Separator><MdChevronRight /></Separator>
         <Link to={`/${topLevel}/`}>{topLevelTitle}</Link>
         <Separator /> */}
-        {activeCrumbParents.map(crumb => {
-          const crumbLabel = crumb.crumbLabel
-          return (
-            <React.Fragment key={crumbLabel}>
-              <span>
-                <Link to={crumb.pathname}>{crumbLabel}</Link>
-              </span>
-              <Separator />
-            </React.Fragment>
-          )
-        })}
-        <span aria-current="page">
-          {activeCrumbLabel}
-        </span>
-      </BreadcrumbNav>
-      {/* render a smaller view on mobile viewports with only previous breadcrumb */}
-      {activeCrumbParents && (
-        <BreadcrumbNav className="text-muted" mobile>
-          <Separator character={<MdChevronLeft />} m="0rem 0.25rem 0rem 0rem" />
-          <Link
-            to={
-              activeCrumbParents[activeCrumbParents.length - 1]
-                ? activeCrumbParents[activeCrumbParents.length - 1].pathname
-                : `/`
-            }
-          >
-            {activeCrumbParents[activeCrumbParents.length - 1]
-              ? activeCrumbParents[activeCrumbParents.length - 1]
-                .crumbLabel
-              : "Home"}
-          </Link>
+          {activeCrumbParents.map(crumb => {
+            const crumbLabel = crumb.crumbLabel
+            return (
+              <React.Fragment key={crumbLabel}>
+                <span>
+                  <Link to={crumb.pathname}>{crumbLabel}</Link>
+                </span>
+                <Separator />
+              </React.Fragment>
+            )
+          })}
+          <span aria-current="page">
+            {activeCrumbLabel}
+          </span>
         </BreadcrumbNav>
-      )}
-    </>
+        {/* render a smaller view on mobile viewports with only previous breadcrumb */}
+        {activeCrumbParents && (
+          <BreadcrumbNav className="text-muted" mobile>
+            <Separator character={<MdChevronLeft />} m="0rem 0.25rem 0rem 0rem" />
+            <Link
+              to={
+                activeCrumbParents[activeCrumbParents.length - 1]
+                  ? activeCrumbParents[activeCrumbParents.length - 1].pathname
+                  : `/`
+              }
+            >
+              {activeCrumbParents[activeCrumbParents.length - 1]
+                ? activeCrumbParents[activeCrumbParents.length - 1]
+                  .crumbLabel
+                : "Home"}
+            </Link>
+          </BreadcrumbNav>
+        )}
+      </Col>
+    </Row>
   )
 }
 

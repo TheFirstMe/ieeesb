@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import { useExecom } from "../components/Hooks/Execom";
 import { useLatestPosts } from "../components/Hooks/MarkdownPosts";
@@ -141,7 +140,8 @@ const Index = () => {
     const postEdges = useLatestPosts().edges;
     const {execom} = useExecom(true).edges[0].node;
     return (
-        <Layout>
+        // <Layout>
+        <>
             <Helmet title={config.siteTitle} />
             <SEO />
             {/* <PostListing postEdges={postEdges} /> */}
@@ -239,7 +239,8 @@ const Index = () => {
                     <Sidebar />
                 </Col>
             </Row>
-        </Layout>
+        {/* </Layout> */}
+        </>
     );
 }
 

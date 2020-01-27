@@ -1,13 +1,13 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import Layout from "../layout";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import PostListing from "../components/PostListing/PostListing";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { Row, Col } from "react-bootstrap";
 import Pagination from "../components/Pagination";
+import Breadcrumb from "../components/Breadcrumbs"
 
 export default class EventsTemplate extends React.Component {
   render() {
@@ -18,9 +18,10 @@ export default class EventsTemplate extends React.Component {
     } = pageContext
     const events = Array.from(Array(6).keys())
     return (
-      <Layout crumbs={crumbs} crumbLabel="Events">
+      <>
         <Helmet title={`Events | ${config.siteTitle}`} />
         <SEO />
+        <Breadcrumb crumbs={crumbs} crumbLabel="Events" />
         <Row>
           <Col>
             <Row>
@@ -43,7 +44,7 @@ export default class EventsTemplate extends React.Component {
             <Sidebar />
           </Col>
         </Row>
-      </Layout>
+      </>
     );
   }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import Layout from "../layout";
 import Img from "gatsby-image";
 import UserInfo from "../components/UserInfo/UserInfo";
 import Disqus from "../components/Disqus/Disqus";
@@ -16,7 +15,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { Row, Col, Card } from "react-bootstrap";
 import PrevAndNext from "../components/prev-and-next";
 import styled from "styled-components";
-
+import Breadcrumb from "../components/Breadcrumbs"
 
 const PaginationDiv = styled.div`
   margin-left: auto;
@@ -44,11 +43,12 @@ const PostTemplate = ({ data, pageContext }) => {
     post.category_id = config.postDefaultCategoryID;
   }
   return (
-    <Layout crumbs={crumbs} crumbLabel={post.title} >
+    <>
       <Helmet>
         <title>{`${post.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO postPath={slug} postNode={postNode} postSEO />
+      <Breadcrumb crumbs={crumbs} crumbLabel={post.title} />
       <Row>
         <Col lg={8} md={12}>
           <h1 className="mb-3">{post.title}</h1>
@@ -116,7 +116,7 @@ const PostTemplate = ({ data, pageContext }) => {
           <Sidebar type="secondary" />
         </Col>
       </Row>
-    </Layout>
+    </>
   );
 }
 

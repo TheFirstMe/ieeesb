@@ -21,6 +21,7 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
@@ -45,7 +46,7 @@ module.exports = {
             crumbLabel: 'Contact'
           }
         ],
-     },
+      },
     },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",

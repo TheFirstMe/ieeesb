@@ -1,13 +1,12 @@
 import React from "react";
 import Helmet from "react-helmet";
-import {Link} from "gatsby";
-import Layout from "../layout";
+import { Link } from "gatsby";
 import config from "../../data/SiteConfig";
 import { Row, Col } from "react-bootstrap";
 
 export default () => {
     return (
-        <Layout>
+        <>
             <Helmet title={`Page not found | ${config.siteTitle}`} />
             <Row>
                 <Col>
@@ -24,13 +23,13 @@ export default () => {
                             <li>Try searching for your page using the search box above.</li>
                         </ul>
                         <p>
-                            If you continue to have difficulty finding or accessing the page, please 
-                            use the <Link to='/contact'>contact form</Link> to report a problem and someone will get back 
+                            If you continue to have difficulty finding or accessing the page, please
+                            use the <Link to='/contact'>contact form</Link> to report a problem and someone will get back
                             to you as soon as possible.
                         </p>
                     </div>
                 </Col>
             </Row>
-        </Layout>
+        </>
     );
 }

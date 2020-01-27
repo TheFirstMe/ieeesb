@@ -6,11 +6,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 import "./index.scss";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import Breadcrumb from "../components/Breadcrumbs";
+import Transition from "../components/transition"
 
 export default class MainLayout extends React.Component {
     render() {
-        const { children, crumbs, crumbLabel } = this.props;
+        const { children, location } = this.props;
         return (
             <>
                 <Helmet>
@@ -21,12 +21,9 @@ export default class MainLayout extends React.Component {
                     <Header />
                     <div className="site-content pt-lg-3">
                         <Container>
-                            <Row>
-                                <Col>
-                                    <Breadcrumb crumbs={crumbs} crumbLabel={crumbLabel} />
-                                </Col>
-                            </Row>
-                            {children}
+                            <Transition location={location}>
+                                {children}
+                            </Transition>
                         </Container>
                     </div>
                     <Footer config={config} />
