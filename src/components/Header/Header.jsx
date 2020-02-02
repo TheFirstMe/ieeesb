@@ -158,7 +158,7 @@ class MainHeader extends React.Component {
                     className="site-identifier px-3"
                 >
                     <Container>
-                        <Navbar.Brand href="/"><Logo height={40} /></Navbar.Brand>
+                        <Navbar.Brand href="/"><Logo height={40} fill="#0b5172" /></Navbar.Brand>
                         <Navbar.Toggle />
                         <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" rel="noopener noreferrer" >
                             <IEEE />

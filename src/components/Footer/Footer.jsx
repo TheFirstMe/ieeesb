@@ -5,7 +5,48 @@ import UserLinks from "../UserLinks/UserLinks";
 import "./Footer.scss";
 import { StyledMetaHeader as IEEENav } from "../Header/Header";
 import styled from "styled-components";
+import Logo from "../../assets/svg/logo.svg";
 import { SocialIcon } from 'react-social-icons';
+
+const PrimaryFooterDiv = styled.div`
+    background-color: #006699;
+    padding-top: 58px;
+    padding-bottom: 20px;
+    color: white;
+    h5 {
+        font-family: Open Sans Condensed;
+    }
+`
+
+const PrimaryFooter = ({ config }) => (
+    <PrimaryFooterDiv>
+        <Container>
+            <Row>
+                <Col className="pl-0">
+                    <Logo fill="white" height={40} />
+                    <p className="mt-4">
+                        The IEEE Student Branch of GCEK came into existence on 5<sup>th</sup> June 2009.
+                        Since then we have conducted several programs for the benefit of students.
+                        The IEEE Head Quarters is regularly conducting contests in various category in which students can participate.
+                        These are conducted globally and the students get a chance to compete with students from Universities from other
+                        parts of the world.
+            </p>
+                </Col>
+                <Col>
+                    <h5 className="mb-4">Follow us</h5>
+                    <UserLinks config={config} labeled />
+                </Col>
+            </Row>
+        </Container>
+    </PrimaryFooterDiv>
+)
+
+const StyledPrimaryFooter = styled(PrimaryFooter)`
+    margin: 1000px;
+    h3{
+        font-family: "Open Sans Condensed";
+    }
+`
 
 const FooterNav = ({ className, Links }) => {
     return (
@@ -65,18 +106,22 @@ class Footer extends Component {
         // }
         return (
             <footer className="footer">
-                <Container>
-                    <Row>
-                        <FooterNav className="footer-nav" Links={Links} />
-                    </Row>
-                    <Row>
-                        <Col className="pl-md-0" md={12} lg={8}><Copyright /></Col>
-                        <Col md={12} lg={4}>
-                            <UserLinks config={config} labeled />
-                        </Col>
-                    </Row>
-                </Container>
+                {/* <PrimaryFooter config={config} /> */}
+                <div className="global-footer">
+                    <Container>
+                        <Row>
+                            <FooterNav className="footer-nav" Links={Links} />
+                        </Row>
+                        <Row>
+                            <Col className="pl-md-0" md={12} lg={8}><Copyright /></Col>
+                            {/* <Col md={12} lg={4}>
+                                <UserLinks config={config} labeled />
+                            </Col> */}
+                        </Row>
+                    </Container>
+                </div>
             </footer>
+
         );
     }
 }
