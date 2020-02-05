@@ -1,0 +1,124 @@
+{
+    "year": "2020",
+    "execom": [
+        {
+            "execomName": "Student Branch",
+            "execomColor": "#1e73be",
+            "chair": {
+                "name": "Anagha N",
+                "designation": "Chairperson",
+                "image": "../images/execommembers/2020/SB/Anagha.JPG"
+            },
+            "members": [
+                {
+                    "name": "Mrinal M",
+                    "designation": "Vice Chairman",
+                    "image": "../images/execommembers/2020/SB/Mrinal.jpeg"
+                },
+                {
+                    "name": "Pratheek Nambiar",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2020/SB/Pratheek.jpeg"
+                },
+                {
+                    "name": "Ambareesh V Sankaran",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2020/SB/Ambareesh.jpg"
+                },
+                {
+                    "name": "Amalendhu KR",
+                    "designation": "Link/Hub Representative",
+                    "image": "../images/execommembers/2020/SB/Amalendhu.jpeg"
+                },
+                {
+                    "name": "Gopika AK",
+                    "designation": "Technical Coordinator",
+                    "image": "../images/execommembers/2020/SB/Gopika.jpg"
+                },
+				{
+                    "name": "Safwan KP",
+                    "designation": "Membership Development Coordinator",
+                    "image": "../images/execommembers/2020/SB/Safwan_edited.jpg"
+                },
+                {
+                    "name": "Rishan KP",
+                    "designation": "Webmaster",
+                    "image": "../images/execommembers/2020/SB/Rishan.jpeg"
+                },
+                {
+                    "name": "Anugrah V",
+                    "designation": "Electronics Communication Coordinator",
+                    "image": "../images/execommembers/2020/SB/Anugrah.jpg"
+                }
+            ]
+        },
+        {
+            "execomName": "IAS Chapter",
+            "execomColor": "#006341",
+            "chair": {
+                "name": "Akshay Sivadas",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2020/IAS/Akshay.jpg"
+            },
+            "members": [
+                {
+                    "name": "Teajsree MV",
+                    "designation": "Vice Chair",
+                    "image": "../images/execommembers/2020/IAS/Tejasree.jpeg"
+                },
+                {
+                    "name": "Vaidehi CK",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2020/IAS/Vaidehi.jpeg"
+                },
+                {
+                    "name": "Anusree Ramesan",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2020/IAS/Anusree.jpeg"
+                }
+            ]
+        },
+        {
+            "execomName": "PELS Chapter",
+            "execomColor": "#BA0C2F",
+            "chair": {
+                "name": "Arjundas N",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2020/PELS/Arjun.jpg"
+            },
+            "members": [
+                {
+                    "name": "Meghana NV",
+                    "designation": "Vice Chair",
+                    "image": "../images/execommembers/2020/PELS/Meghana (2).jpeg"
+                },
+                {
+                    "name": "Pooja PV",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2020/PELS/Pooja.jpeg"
+                },
+                {
+                    "name": "Amal Pothan",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2020/PELS/Amal.jpg"
+                }
+            ]
+        },
+        {
+            "execomName": "WIE Chapter",
+            "execomColor": "#772583",
+            "chair": {
+                "name": "Thejaswi AG",
+                "designation": "Chairperson",
+                "image": "../images/execommembers/2020/WIE/Thejaswi.jpeg"
+            },
+            "members": [
+                {
+                    "name": "Merlitta Jose",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2020/WIE/Merlitta.jpeg"
+                }
+            ]
+        }
+    ]
+}

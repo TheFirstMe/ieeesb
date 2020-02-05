@@ -6,7 +6,7 @@ export const useExecom = (chair=false) => {
         graphql`
             query {
                 allMembers: allExecomMembersJson(
-                    filter: { year: { eq: "2019" } }
+                    filter: { year: { eq: "2020" } }
                   ) {
                       edges {
                         node {
@@ -41,7 +41,7 @@ export const useExecom = (chair=false) => {
                 }
 
                 allChairs: allExecomMembersJson(
-                    filter: { year: { eq: "2019" } }
+                    filter: { year: { eq: "2020" } }
                   ) {
                     edges {
                       node {
