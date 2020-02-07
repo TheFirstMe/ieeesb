@@ -21,6 +21,14 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: config.googleAnalyticsID,
+        anonymize: true,
+        pageTransitionDelay: 300
+      }
+    },
     `gatsby-plugin-layout`,
     {
       resolve: `gatsby-plugin-breadcrumb`,
@@ -102,12 +110,6 @@ module.exports = {
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-autolink-headers"
         ]
-      }
-    },
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: config.googleAnalyticsID
       }
     },
     {

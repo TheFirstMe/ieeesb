@@ -8,10 +8,10 @@ const config = {
   siteDescription: "The official website for the IEEE Student Branch of GCEK.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   // siteFBAppID: "1825356251115265", // FB Application ID for using app insights
-  // googleAnalyticsID: "UA-47311644-5", // GA tracking ID.
+  googleAnalyticsID: "UA-157982264-1", // GA tracking ID.
   // disqusShortname: "https-vagr9k-github-io-gatsby-advanced-starter", // Disqus shortname.
   disqusShortname: process.env.GATSBY_DISQUS_SHORT_NAME,
-  postDefaultCategoryID: "Tech", // Default category for posts.
+  postDefaultCategoryID: "General", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
   // userName: "Advanced User", // Username to display in the author segment.
