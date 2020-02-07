@@ -22,7 +22,7 @@ const BreadcrumbNav = styled.nav`
     margin-bottom: 2.5rem;
   }
 `
-const BreadCrumb = ({ crumbs, crumbLabel }) => {
+const BreadCrumb = ({ crumbs, crumbLabel, children }) => {
   // provide escape if no itemList is provided so breadcrumb isn't rendered
   if (crumbs === undefined) return null
   else if (crumbs.length == 1) return null
@@ -41,45 +41,48 @@ const BreadCrumb = ({ crumbs, crumbLabel }) => {
   return (
     <Row>
       <Col>
-        {/* render the default view on desktop sizes with all links displayed */}
-        <BreadcrumbNav className="text-muted">
-          {/* <Link to="/">Home</Link>
+        <div className="d-flex flex-row justify-content-between">
+          {/* render the default view on desktop sizes with all links displayed */}
+          <BreadcrumbNav className="text-muted">
+            {/* <Link to="/">Home</Link>
         <Separator><MdChevronRight /></Separator>
         <Link to={`/${topLevel}/`}>{topLevelTitle}</Link>
         <Separator /> */}
-          {activeCrumbParents.map(crumb => {
-            const crumbLabel = crumb.crumbLabel
-            return (
-              <React.Fragment key={crumbLabel}>
-                <span>
-                  <Link to={crumb.pathname}>{crumbLabel}</Link>
-                </span>
-                <Separator />
-              </React.Fragment>
-            )
-          })}
-          <span aria-current="page">
-            {activeCrumbLabel}
-          </span>
-        </BreadcrumbNav>
-        {/* render a smaller view on mobile viewports with only previous breadcrumb */}
-        {activeCrumbParents && (
-          <BreadcrumbNav className="text-muted" mobile>
-            <Separator character={<MdChevronLeft />} m="0rem 0.25rem 0rem 0rem" />
-            <Link
-              to={
-                activeCrumbParents[activeCrumbParents.length - 1]
-                  ? activeCrumbParents[activeCrumbParents.length - 1].pathname
-                  : `/`
-              }
-            >
-              {activeCrumbParents[activeCrumbParents.length - 1]
-                ? activeCrumbParents[activeCrumbParents.length - 1]
-                  .crumbLabel
-                : "Home"}
-            </Link>
+            {activeCrumbParents.map(crumb => {
+              const crumbLabel = crumb.crumbLabel
+              return (
+                <React.Fragment key={crumbLabel}>
+                  <span>
+                    <Link to={crumb.pathname}>{crumbLabel}</Link>
+                  </span>
+                  <Separator />
+                </React.Fragment>
+              )
+            })}
+            <span aria-current="page">
+              {activeCrumbLabel}
+            </span>
           </BreadcrumbNav>
-        )}
+          {/* render a smaller view on mobile viewports with only previous breadcrumb */}
+          {activeCrumbParents && (
+            <BreadcrumbNav className="text-muted" mobile>
+              <Separator character={<MdChevronLeft />} m="0rem 0.25rem 0rem 0rem" />
+              <Link
+                to={
+                  activeCrumbParents[activeCrumbParents.length - 1]
+                    ? activeCrumbParents[activeCrumbParents.length - 1].pathname
+                    : `/`
+                }
+              >
+                {activeCrumbParents[activeCrumbParents.length - 1]
+                  ? activeCrumbParents[activeCrumbParents.length - 1]
+                    .crumbLabel
+                  : "Home"}
+              </Link>
+            </BreadcrumbNav>
+          )}
+          {children}
+        </div>
       </Col>
     </Row>
   )
