@@ -35,7 +35,7 @@ export const Member = ({
 }
 class ExecomMembers extends Component {
     render() {
-        const {execom} = this.props.members.node;
+        const {execom} = this.props.members.node || this.props.members
         return (
             <>
                 {

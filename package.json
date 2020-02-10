@@ -49,6 +49,7 @@
     "react-icons": "^3.8.0",
     "react-instantsearch-dom": "^6.1.0",
     "react-intersection-observer": "^8.25.2",
+    "react-onclickoutside": "^6.9.0",
     "react-share": "^4.0.1",
     "react-social-icons": "^4.1.0",
     "react-transition-group": "^4.3.0",

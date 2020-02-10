@@ -47,7 +47,39 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagPage = path.resolve("src/templates/tag.jsx");
   const categoryPage = path.resolve("src/templates/category.jsx");
   const eventPage = path.resolve("src/templates/events.jsx");
+  const execomPage = path.resolve("src/templates/execom.jsx")
 
+  const execomQueryResult = await graphql(
+    `
+      {
+        allExecomMembersJson {
+          edges {
+            node {
+              year
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (execomQueryResult.errors) {
+    console.error(execomQueryResult.errors);
+    throw execomQueryResult.errors;
+  }
+
+  const execomEdges = execomQueryResult.data.allExecomMembersJson.edges;
+
+  execomEdges.forEach((edge, index) => {
+    createPage({
+      path: `/${edge.node.year}/`,
+      component: execomPage,
+      context: {
+        year: edge.node.year,
+      }
+    });
+  });
+  
   const markdownQueryResult = await graphql(
     `
       {
@@ -102,7 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/events/` : `/events/page/${i + 1}/`, 
+      path: i === 0 ? `/events/` : `/events/page/${i + 1}/`,
       component: eventPage,
       context: {
         limit: postsPerPage,
