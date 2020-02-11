@@ -16,12 +16,12 @@ export default class EventsTemplate extends React.Component {
     const {
       breadcrumb: { crumbs },
     } = pageContext
-    const events = Array.from(Array(6).keys())
+    
     return (
       <>
         <Helmet title={`Events | ${config.siteTitle}`} />
         <SEO />
-        <Breadcrumb crumbs={crumbs} crumbLabel="Events" />
+        <Breadcrumb crumbs={crumbs.length == 4 ? crumbs.slice(0,2): crumbs} crumbLabel={crumbs.length==2 ? "":"Events"} />
         <Row>
           <Col>
             <Row>
