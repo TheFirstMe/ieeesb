@@ -47,12 +47,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagPage = path.resolve("src/templates/tag.jsx");
   const categoryPage = path.resolve("src/templates/category.jsx");
   const eventPage = path.resolve("src/templates/events.jsx");
-  const execomPage = path.resolve("src/templates/execom.jsx")
+  const execomPage = path.resolve("src/templates/execom-members.jsx")
 
   const execomQueryResult = await graphql(
     `
       {
-        allExecomMembersJson {
+        allExecomMembersJson(sort: {fields: year, order: DESC}) {
           edges {
             node {
               year
@@ -71,15 +71,16 @@ exports.createPages = async ({ graphql, actions }) => {
   const execomEdges = execomQueryResult.data.allExecomMembersJson.edges;
 
   execomEdges.forEach((edge, index) => {
+    const year = `${edge.node.year}-${Number(edge.node.year)+1}`
     createPage({
-      path: `/${edge.node.year}/`,
+      path: index === 0 ? `/execom-members/` : `/execom-members/${year}/`,
       component: execomPage,
       context: {
         year: edge.node.year,
       }
     });
   });
-  
+
   const markdownQueryResult = await graphql(
     `
       {

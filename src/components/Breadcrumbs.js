@@ -15,7 +15,7 @@ const Separator = styled.span.attrs(({ character = <MdChevronRight /> }, props) 
 const BreadcrumbNav = styled.nav`
   display: ${props => props.mobile ? 'inherit' : 'none'};
   font-size: 0.875rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   
   @media screen and (min-width: 576px ) {
     display: ${props => props.mobile ? 'none' : 'inherit'};
@@ -26,17 +26,11 @@ const BreadCrumb = ({ crumbs, crumbLabel, children }) => {
   // provide escape if no itemList is provided so breadcrumb isn't rendered
   if (crumbs === undefined) return null
   else if (crumbs.length == 1) return null
-  // const activeItem = getActiveItem(itemList.items, location, undefined)
-  // const activeItemParents = getActiveItemParents(itemList.items, activeItem, [])
-  // const topLevel = itemList.key
-  // const topLevelTitle = itemList.breadcrumbTitle || itemList.title
-  let newCrumbs = crumbs
-  if (crumbs[1].pathname === '/events' && crumbs.length === 4) {
-    newCrumbs = crumbs.slice(0, 2)
-  }
-  const activeCrumb = newCrumbs[newCrumbs.length - 1]
-  const activeCrumbParents = newCrumbs.slice(0, newCrumbs.length - 1)
+
+  const activeCrumb = crumbs[crumbs.length - 1]
+  const activeCrumbParents = crumbs.slice(0, crumbs.length - 1)
   const activeCrumbLabel = crumbLabel || activeCrumb.crumbLabel
+
   // const parentCrumbs = crumbs.slice(0,crumbs.length-1)
   return (
     <Row>
