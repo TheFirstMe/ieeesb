@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { Algolia } from 'styled-icons/fa-brands/Algolia'
-import { Search } from 'styled-icons/fa-solid/Search'
+import { FaAlgolia } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
 
 export const Root = styled.div`
  
@@ -22,19 +22,20 @@ Root.defaultProps = {
     display: 'none'
   }
 }
-export const SearchIcon = styled(Search)`
+
+export const SearchIcon = styled(FaSearch)`
   width: 1em;
   pointer-events: none;
-  color: #212122;
+  color: #006699;
 `
 
 const focus = css`
   background: white;
-  color: #002855;
+  color: #006699;
   cursor: text;
   width: auto;
   + ${SearchIcon} {
-    color: #002855;
+    color: #006699;
     margin: 0 0.3em;
   }
 `
@@ -121,7 +122,7 @@ export const HitsWrapper = styled.div`
     border-bottom: 2px solid #3d3d3d;
     h4 {
       color: white;
-      background: #75787B;
+      background: #006699;
       padding: 0.1em 0.4em;
       border-radius: 0.2em;
       margin-bottom: 0.3em;
@@ -139,7 +140,7 @@ export const PoweredBy = () => (
   <span css="font-size: 1em; text-align: end; padding: 0;">
     Powered by{` `}
     <a href="https://algolia.com">
-      <Algolia size="1em" /> Algolia
+      <FaAlgolia size="1em" /> Algolia
     </a>
   </span>
 )

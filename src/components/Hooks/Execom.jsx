@@ -16,7 +16,7 @@ export const useExecom = (chair=false) => {
                                   designation
                                   image{
                                       childImageSharp{
-                                          fluid(maxWidth: 180, quality: 100){
+                                          fluid(maxWidth: 180, quality: 80){
                                               ...GatsbyImageSharpFluid_withWebp
                                           }
                                       }

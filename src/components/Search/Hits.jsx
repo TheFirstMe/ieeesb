@@ -1,8 +1,8 @@
 import { Link } from 'gatsby'
 import React, { Fragment } from 'react'
 import { Highlight, Snippet } from 'react-instantsearch-dom'
-import { Tags } from 'styled-icons/fa-solid/Tags'
-import { Calendar } from 'styled-icons/octicons/Calendar'
+import { FaTags } from 'react-icons/fa'
+import { GoCalendar } from 'react-icons/go'
 import { connectHits } from 'react-instantsearch-dom'
 
 // export const PageHit = clickHandler => ({ hit }) => (
@@ -18,14 +18,14 @@ import { connectHits } from 'react-instantsearch-dom'
 
 const postHit = hit => (
   <div className="pb-3">
-    <Calendar size="1em" />
+    <GoCalendar size="1em" />
     &nbsp;
     <Highlight attribute="date" hit={hit} tagName="mark" />
     {hit.tags && 
       (
         <> 
           &emsp;
-          <Tags size="1em" />
+          <FaTags size="1em" />
           &nbsp;
         </>
       )

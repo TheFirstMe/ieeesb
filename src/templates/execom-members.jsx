@@ -28,7 +28,6 @@ export default ({ data, pageContext }) => {
         year
     } = pageContext
     const yearEdges = data.allYears.edges
-    console.log(yearEdges)
     const changeYear = e => {
         const year = Number(e.target.value)
         navigate(year ? `/execom-members/${year}-${year + 1}` : `/execom-members`)

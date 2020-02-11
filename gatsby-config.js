@@ -21,6 +21,7 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-netlify-cache`,
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
