@@ -17,7 +17,7 @@ export const useExecom = (chair=false) => {
                                   image{
                                       childImageSharp{
                                           fluid(maxWidth: 180, quality: 80){
-                                              ...GatsbyImageSharpFluid_withWebp
+                                              ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                           }
                                       }
                                   }

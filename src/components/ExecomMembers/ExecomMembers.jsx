@@ -12,16 +12,16 @@ export const Member = ({
 }) => {
     return (
         <Card style={{ borderTopColor: borderTopColor,height: "230px" }} className="member rounded-0">
+            <div className="partial-border"></div>
             <div className="mx-auto showcase">
                 {/* <img src={image} className="rounded-circle showcase-img img-fluid" /> */}
                 <Img 
                     className="rounded-circle showcase-img" 
                     fluid={image.childImageSharp.fluid} 
-                    placeholderStyle={{ filter: "blur(15px)" }}
+                    // placeholderStyle={{ filter: "blur(15px)" }}
                     alt={name}
                     title={name}
-                    backgroundColor
-                    onLoad={ () => console.log("Image loaded")}
+                    backgroundColor="white"
                 />
             </div>
             <Card.Body className="text-center my-3">

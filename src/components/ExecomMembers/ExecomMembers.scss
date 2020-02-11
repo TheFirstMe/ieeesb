@@ -13,12 +13,13 @@
 .member.card {
   margin-top: 60px;
   border-top: #1e73be solid 5px;
+  position: relative;
   .showcase {
     width: 120px;
     height: 120px;
     margin-top: -60px;
     .showcase-img {
-      background-color: whitesmoke;
+      background-color: white;
       min-width: 120px;
       // transform: scale(1);
       border: 3px solid #ffffff;
@@ -53,6 +54,6 @@
   }
 }
 
-.filter-test{
-  filter: blur(5px);
+.filter-test {
+  // filter: blur(5px);
 }
