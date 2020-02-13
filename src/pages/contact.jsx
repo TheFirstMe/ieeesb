@@ -1,10 +1,10 @@
 import React from "react";
 import Helmet from "react-helmet";
-import Contact from "../components/Contact/Contact";
+import Contact from "../components/contact-form";
 import config from "../../data/SiteConfig";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Sidebar from "../components/sidebar";
 import { Row, Col } from "react-bootstrap";
-import Breadcrumb from "../components/Breadcrumbs";
+import Breadcrumb from "../components/breadcrumbs";
 
 export default ({ pageContext }) => {
     const {

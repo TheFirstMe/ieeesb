@@ -4,10 +4,10 @@ import { graphql } from "gatsby";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import PostListing from "../components/PostListing/PostListing";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Sidebar from "../components/sidebar";
 import { Row, Col } from "react-bootstrap";
 import Pagination from "../components/Pagination";
-import Breadcrumb from "../components/Breadcrumbs"
+import Breadcrumb from "../components/breadcrumbs"
 
 export default class EventsTemplate extends React.Component {
   render() {

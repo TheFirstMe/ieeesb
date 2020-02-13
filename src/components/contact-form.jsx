@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Form, Button, Alert } from 'react-bootstrap';
-import { useLegacyState } from '../Hooks'
+import { useLegacyState } from '../hooks'
 
 const encode = (data) => {
   return Object.keys(data)
@@ -144,23 +144,17 @@ const ContactForm = () => {
   );
 }
 
-class Contact extends Component {
-  render() {
-    return (
-      <Row>
+export default () => (
+  <Row>
+    <Col xs={12}>
+      <h3 className="boxed">
+        <span>Contact Us</span>
+      </h3>
+      <Row className="mt-4">
         <Col xs={12}>
-          <h3 className="boxed">
-            <span>Contact Us</span>
-          </h3>
-          <Row className="mt-4">
-            <Col xs={12}>
-              <ContactForm />
-            </Col>
-          </Row>
+          <ContactForm />
         </Col>
       </Row>
-    )
-  }
-}
-
-export default Contact;
+    </Col>
+  </Row>
+)

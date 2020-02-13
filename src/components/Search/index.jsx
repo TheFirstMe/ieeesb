@@ -4,7 +4,7 @@ import {
   Index,
   connectStateResults,
 } from "react-instantsearch-dom"
-import { useOnClickOutside } from "../Hooks"
+import { useOnClickOutside } from "../../hooks"
 import algoliasearch from "algoliasearch/lite"
 
 import { Root, HitsWrapper, PoweredBy } from "./styles"
