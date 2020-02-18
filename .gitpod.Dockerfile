@@ -1,6 +1,7 @@
 FROM gitpod/workspace-full
                     
-USER root
+USER gitpod
+
 RUN apt-get update && apt-get install nodejs
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
