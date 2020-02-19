@@ -10,12 +10,12 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.scss";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Sidebar from "../components/sidebar";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Row, Col, Card } from "react-bootstrap";
 import PrevAndNext from "../components/prev-and-next";
 import styled from "styled-components";
-import Breadcrumb from "../components/Breadcrumbs"
+import Breadcrumb from "../components/breadcrumbs"
 
 const PaginationDiv = styled.div`
   margin-left: auto;

@@ -1,14 +1,12 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import PostListing from "../components/PostListing/PostListing";
-import { useExecom } from "../components/Hooks/Execom";
-import { useLatestPosts } from "../components/Hooks/MarkdownPosts";
+import { useExecom } from "../hooks";
+import { useLatestEvents } from "../hooks";
 import SEO from "../components/SEO/SEO";
 import Img from "gatsby-image";
 import config from "../../data/SiteConfig";
-import { Container, Row, Col, Button as B } from "react-bootstrap";
-import Sidebar from "../components/Sidebar/Sidebar";
+import { Row, Col, Button as B } from "react-bootstrap";
+import Sidebar from "../components/sidebar";
 import { Member } from "../components/ExecomMembers/ExecomMembers";
 import styled from "styled-components";
 
@@ -137,8 +135,8 @@ const Button = styled(B)`
 `
 
 const Index = () => {
-    const postEdges = useLatestPosts().edges;
-    const {execom} = useExecom(true).edges[0].node;
+    const { edges: postEdges } = useLatestEvents();
+    const { execom } = useExecom().edges[0].node;
     return (
         // <Layout>
         <>
@@ -154,9 +152,9 @@ const Index = () => {
                         <p>
                             The IEEE Student Branch of GCEK came into existence
                                 on 5<sup>th</sup> June 2009. Since then we have conducted several
-                            programs for the benefit of students.
-                            The IEEE Head Quarters is regularly conducting contests in various
-                            category in which students can participate. These are conducted globally
+                        programs for the benefit of students.
+                        The IEEE Head Quarters is regularly conducting contests in various
+                        category in which students can participate. These are conducted globally
                                 and the students get a chance to compete with students from Universities from other parts of the world.<br />
                             Our IAS and PELS chapters were officially inaugurated by Dr. Sanjeeb Kumar Panda, Director of Power and
                             Energy Section On March 11, 2019. It mainly focused on industry leadership in energy conservation and
@@ -178,7 +176,7 @@ const Index = () => {
                     </h3>
                     <Row className="boxed-content">
                         {
-                            execom.map(({ execomName, execomColor, chair },key) => {
+                            execom.map(({ execomName, execomColor, chair }, key) => {
                                 let designation;
                                 if (execomName.toLowerCase() !== "student branch")
                                     designation = execomName.split(" ")[0] + " " + chair.designation;
@@ -208,30 +206,30 @@ const Index = () => {
                                 <span>Events</span>
                             </h3>
                             <Row>
-                            {
-                                postEdges.map(({node},key) => {
-                                    let featuredImage = node.frontmatter.featuredImage;
-                                    return(
-                                        <Col key={key} sm={12} md={6} md={6} className="pt-4">
-                                    <a href={node.fields.slug}>
-                                        <Img                                       
-                                            fluid={featuredImage.childImageSharp.thumbnail} 
-                                            placeholderStyle={{ filter: "blur(20px)" }}
-                                            alt={node.frontmatter.title}
-                                            title={node.frontmatter.title}
-                                        />
-                                    </a>
-                                </Col>
-                                    )
-                                })
-                                
-                            }
+                                {
+                                    postEdges.map(({ node }, key) => {
+                                        let featuredImage = node.frontmatter.featuredImage;
+                                        return (
+                                            <Col key={key} sm={12} md={6} md={6} className="pt-4">
+                                                <a href={node.fields.slug}>
+                                                    <Img
+                                                        fluid={featuredImage.childImageSharp.thumbnail}
+                                                        placeholderStyle={{ filter: "blur(20px)" }}
+                                                        alt={node.frontmatter.title}
+                                                        title={node.frontmatter.title}
+                                                    />
+                                                </a>
+                                            </Col>
+                                        )
+                                    })
+
+                                }
                             </Row>
                             <Row className="mt-4">
                                 <Col>
                                     <Button href="/events" block>See all Events</Button>
                                 </Col>
-                            </Row> 
+                            </Row>
                         </Col>
                     </Row>
                 </Col>
@@ -239,7 +237,7 @@ const Index = () => {
                     <Sidebar />
                 </Col>
             </Row>
-        {/* </Layout> */}
+            {/* </Layout> */}
         </>
     );
 }

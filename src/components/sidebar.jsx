@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from "react-bootstrap";
-import Calendar from "../Calendar/Calendar";
-import LatestPosts from "../LatestPosts/LatestPosts";
+import Calendar from "./Calendar/Calendar";
+import LatestPosts from "./latest-posts";
 
 const Primary = () => (
     <>

@@ -1,12 +1,12 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-export const useEvents = () => {
-    const data = useStaticQuery(
-        graphql`
+export const useLatestEvents = () => {
+  const data = useStaticQuery(
+    graphql`
         query EventQuery {
             allMarkdownRemark(
-              limit: 2000
+              limit: 4
               sort: { fields: [fields___date], order: DESC }
             ) {
               edges {
@@ -40,11 +40,6 @@ export const useEvents = () => {
             }
           }
         `
-    )
-    return data.allMarkdownRemark;
-}
-
-export const useLatestPosts = () => {
-    const postEdges = useEvents().edges.slice(0,4);
-    return { edges: postEdges }
+  )
+  return data.allMarkdownRemark;
 }

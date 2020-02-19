@@ -3,10 +3,10 @@ import Helmet from "react-helmet";
 import { graphql, navigate } from "gatsby";
 import ExecomMembers from "../components/ExecomMembers/ExecomMembers";
 import config from "../../data/SiteConfig";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Sidebar from "../components/sidebar";
 import { Row, Col, Form } from "react-bootstrap";
-import Breadcrumb from "../components/Breadcrumbs"
-import { useExecom } from "../components/Hooks/Execom";
+import Breadcrumb from "../components/breadcrumbs"
+// import { useExecom } from "../components/Hooks/Execom";
 import styled from "styled-components"
 
 const yearSelectProps = { isOpen: Boolean }
