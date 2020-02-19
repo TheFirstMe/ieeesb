@@ -1,6 +1,7 @@
 FROM node:12
 
-RUN npm install -g gatsby-cli
+RUN npm install -g gatsby-cli && \
+    npm install
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
