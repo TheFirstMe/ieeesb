@@ -21,6 +21,12 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/util/typography`,
+      },
+    },
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-netlify-cache`,
     {
