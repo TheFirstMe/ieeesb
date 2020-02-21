@@ -3,18 +3,20 @@ import { action } from "@storybook/addon-actions"
 import React from "react"
 import { ThemeProvider } from "theme-ui"
 import theme from "../src/gatsby-plugin-theme-ui"
-import typography from "../src/util/typography"
+import typography from "../src/utils/typography"
+import { TypographyStyle, GoogleFont } from 'react-typography'
 
 // automatically import all files ending in *.stories.js
-configure(require.context("../src", true, /\.stories\.js$/), module)
+// configure(require.context("../src", true, /\.stories\.js$/), module)
 
 addDecorator((story) => (
     <ThemeProvider theme={theme}>
+        <TypographyStyle typography={typography} />
+        <GoogleFont typography={typography} />
         {story()}
     </ThemeProvider>
 ))
 
-typography.injectStyles()
 
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here

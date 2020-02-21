@@ -9,6 +9,18 @@ const _options = {
   headerLineHeight: lineHeights.heading,
   headerColor: colors.heading,
   bodyColor: colors.text,
+  googleFonts: [
+    {
+      name: 'Open Sans',
+      styles: [],
+    },
+    {
+      name: 'Open Sans Condensed',
+      styles: [
+        '700',
+      ],
+    },
+  ],
 }
 
 const typography = new Typography(_options)

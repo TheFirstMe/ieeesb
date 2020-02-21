@@ -1,4 +1,4 @@
-require('./src/fonts/fonts.css');
+// require('./src/fonts/fonts.css');
 
 const transitionDelay = 300
 exports.shouldUpdateScroll = ({

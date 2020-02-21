@@ -1,6 +1,6 @@
 const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
-const queries = require("./src/util/algolia")
+const queries = require("./src/utils/algolia")
 
 require("dotenv").config()
 
@@ -24,7 +24,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/util/typography`,
+        pathToConfigModule: `src/utils/typography`,
       },
     },
     `gatsby-plugin-theme-ui`,
