@@ -1,8 +1,20 @@
-import { configure } from "@storybook/react"
+import { configure, addDecorator, addParameters } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
+import React from "react"
+import { ThemeProvider } from "theme-ui"
+import theme from "../src/gatsby-plugin-theme-ui"
+import typography from "../src/util/typography"
 
 // automatically import all files ending in *.stories.js
 configure(require.context("../src", true, /\.stories\.js$/), module)
+
+addDecorator((story) => (
+    <ThemeProvider theme={theme}>
+        {story()}
+    </ThemeProvider>
+))
+
+typography.injectStyles()
 
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
