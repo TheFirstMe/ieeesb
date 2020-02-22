@@ -1,13 +1,15 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { Button } from '@storybook/react/demo';
-import { Styled } from 'theme-ui'
+
+import {colors} from "../design-tokens/colors"
+
 export default {
   title: 'Button',
   component: Button,
 };
 
-export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
+export const Text = () => <Button onClick={action('clicked')}>Hello Button {colors.purple[90]}</Button>;
 
 export const Emoji = () => (
   <Button onClick={action('clicked')}>
@@ -16,7 +18,3 @@ export const Emoji = () => (
     </span>
   </Button>
 );
-
-export const Heading = () => (
-  <Styled.root>Test</Styled.root>
-)

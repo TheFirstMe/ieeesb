@@ -81,6 +81,7 @@
     "eslint-plugin-react": "^7.17.0",
     "gh-pages": "^2.1.1",
     "prettier": "^1.19.1",
+    "preval.macro": "^4.0.0",
     "react-svg-loader": "^3.0.3",
     "remark-cli": "^6.0.1",
     "remark-preset-lint-recommended": "^3.0.3",
