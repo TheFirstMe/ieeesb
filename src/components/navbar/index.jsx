@@ -1,9 +1,17 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Grid } from 'theme-ui'
+import { jsx, Flex, Box, Grid, Container } from 'theme-ui'
 import Logo from "../../assets/svg/logo.svg";
 import { mediaQueries } from "../../design-tokens/media-queries"
 import { Link } from "gatsby"
+import React from "react"
 
+const links = [
+  { title: "IEEE.org", url: "https://www.ieee.org" },
+  { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },
+  { title: "IEEE Standards", url: "https://standards.ieee.org" },
+  { title: "IEEE Spectrum", url: "https://spectrum.ieee.org" },
+  { title: "More sites", url: "https://www.ieee.org/sitemap" }
+];
 
 const MetaHeader = () => {
   return (
@@ -11,21 +19,30 @@ const MetaHeader = () => {
       sx={{
         display: `none`,
         [mediaQueries.md]: {
-          paddingX:`12em`,
+          // paddingX: `12em`,
           // marginX: `auto`,
-          height: `100%`,
+          minHeight: 40,
+          color: `white`,
           alignItems: `center`,
           alignSelf: `flex-end`,
           display: `flex`,
           listStyle: `none`,
-          m: 0,
+          // mx: -2,
           maskImage: t =>
             `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
           overflowX: `auto`,
         },
       }}
     >
-      <NavItem to="/">Home</NavItem>
+      {/* <NavItem isMetaHeader to="/">Home</NavItem> */}
+      {
+        links.map((link, key) => (
+          <NavItem isMetaHeader key={key} to={link.url} target="_blank" rel="noopener noreferrer">
+            {/* <Nav.Link href={link.url} target="_blank" rel="noopener noreferrer">{link.title}</Nav.Link> */}
+            {link.title}
+          </NavItem>
+        ))
+      }
     </nav>
   )
 }
@@ -34,7 +51,7 @@ const navItemHorizontalSpacing = [1, null, 2]
 
 const navItemStyles = {
   borderBottom: `2px solid transparent`,
-  color: `blue`,
+  // color: `white`,
   display: `block`,
   fontSize: 2,
   lineHeight: 1.5,
@@ -47,30 +64,39 @@ const navItemStyles = {
   "&:hover, &:focus": { color: `navigation.linkHover` },
 }
 
-const NavItem = ({ to, children }) => (
-  <li
-    sx={{
-      display: `block`,
-      m: 0,
-      mx: navItemHorizontalSpacing,
-    }}
-  >
-    <Link
-      to={to}
-      activeClassName="active"
-      partiallyActive={true}
+const NavItem = ({ to, children, isMetaHeader }) => {
+  let styles = { ...navItemStyles }
+  if (isMetaHeader) {
+    styles.fontSize = 0
+    styles.color = `white`
+  }
+  return (
+    <li
       sx={{
-        ...navItemStyles,
-        // "&.active": {
-        //   borderBottomColor: `lilac`,
-        //   color: `black`,
-        // },
+        display: `block`,
+        m: 0,
+        mx: navItemHorizontalSpacing,
+        borderRight: `1px solid rgba(117, 120, 123, 0.4)`,
+        px: navItemHorizontalSpacing
       }}
     >
-      {children}
-    </Link>
-  </li>
-)
+      <Link
+        to={to}
+        activeClassName="active"
+        partiallyActive={true}
+        sx={{
+          ...styles,
+          // "&.active": {
+          //   borderBottomColor: `lilac`,
+          //   color: `black`,
+          // },
+        }}
+      >
+        {children}
+      </Link>
+    </li>
+  )
+}
 
 const Navbar = (props) => (
   <header
@@ -85,12 +111,20 @@ const Navbar = (props) => (
   >
     <div
       sx={{
-        display: `grid`,
-        gridTemplateRows: [
-          `40px auto`
-        ],
-        gridGap: [`30px`]
+        backgroundColor: `black`,
       }}
+    >
+      <Container
+        mx={`auto`}
+        px={15}
+        sx={{
+          maxWidth: t => t.sizes.containerSizes,
+        }}
+      >
+        <MetaHeader />
+      </Container>
+    </div>
+    <div
     >
       {/* <Box
       sx={{
@@ -118,7 +152,7 @@ const Navbar = (props) => (
           fill: `#0b5172`,
         }}
       /> */}
-      <MetaHeader />
+
       <nav
         sx={{
           fontFamily: `heading`,

@@ -25,7 +25,7 @@ const c = {
   // Body background color
   background: colorsTokens.white,
   // Primary brand color for links, buttons, etc.
-  primary: colorsTokens.gatsby,
+  primary: colorsTokens.white,
   // A secondary brand color for alternative styling
   secondary: colorsTokens.purple[40],
   // A contrast color for emphasizing UI
@@ -52,6 +52,10 @@ export const theme = {
   lineHeights: lineHeights,
   mediaQueries: mediaQueries,
   space: space,
+  sizes: {
+    containerSizes: [null, null, 514, 702, 968, 1140, 1528],
+    container: `100%`
+  }
 }
 
 export {
