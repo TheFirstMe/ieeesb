@@ -5,6 +5,7 @@
   "author": "Ruben Harutyunyan <vagr9k@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "@mdx-js/react": "^1.5.5",
     "algoliasearch": "^3.35.1",
     "babel-plugin-styled-components": "^1.10.6",

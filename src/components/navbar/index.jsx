@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Grid, Container } from 'theme-ui'
+import { jsx, Flex, Box, Grid } from 'theme-ui'
 import Logo from "../../assets/svg/logo.svg";
+import styled from '@emotion/styled'
 import { mediaQueries } from "../../design-tokens/media-queries"
 import { Link } from "gatsby"
 import React from "react"
-
+import Container from "../container"
 const links = [
   { title: "IEEE.org", url: "https://www.ieee.org" },
   { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },
@@ -19,28 +20,21 @@ const MetaHeader = () => {
       sx={{
         display: `none`,
         [mediaQueries.md]: {
-          // paddingX: `12em`,
-          // marginX: `auto`,
-          minHeight: 40,
           color: `white`,
           alignItems: `center`,
           alignSelf: `flex-end`,
           display: `flex`,
           listStyle: `none`,
-          // mx: -2,
-          maskImage: t =>
-            `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
           overflowX: `auto`,
+          py: 2,
         },
       }}
     >
-      {/* <NavItem isMetaHeader to="/">Home</NavItem> */}
       {
         links.map((link, key) => (
-          <NavItem isMetaHeader key={key} to={link.url} target="_blank" rel="noopener noreferrer">
-            {/* <Nav.Link href={link.url} target="_blank" rel="noopener noreferrer">{link.title}</Nav.Link> */}
+          <MetaNavItem key={key} to={link.url} target="_blank" rel="noopener noreferrer">
             {link.title}
-          </NavItem>
+          </MetaNavItem>
         ))
       }
     </nav>
@@ -64,20 +58,54 @@ const navItemStyles = {
   "&:hover, &:focus": { color: `navigation.linkHover` },
 }
 
-const NavItem = ({ to, children, isMetaHeader }) => {
-  let styles = { ...navItemStyles }
-  if (isMetaHeader) {
-    styles.fontSize = 0
-    styles.color = `white`
-  }
+const metaNavItemStyles = {
+  ...navItemStyles,
+  fontSize: 0,
+  color: `white`,
+}
+
+const MetaNavItem = ({ to, target, rel, children }) => (
+  <li
+    sx={{
+      display: `block`,
+      m: 0,
+      "&:first-of-type": {
+        a: {
+          pl: 0,
+        }
+      },
+      "&:not(:last-of-type)": {
+        a: {
+          borderRight: "1px solid rgba(117,120,123,.4)"
+        },
+      }
+    }}
+  >
+    <a
+      href={to}
+      target={target}
+      rel={rel}
+      sx={{
+        ...metaNavItemStyles,
+        px: 4,
+        "&:hover": {
+          color: "#00629B"
+        },
+
+      }}>
+      {children}
+    </a>
+  </li>
+)
+
+const NavItem = ({ to, children }) => {
   return (
     <li
       sx={{
         display: `block`,
         m: 0,
         mx: navItemHorizontalSpacing,
-        borderRight: `1px solid rgba(117, 120, 123, 0.4)`,
-        px: navItemHorizontalSpacing
+        // px: navItemHorizontalSpacing
       }}
     >
       <Link
@@ -85,7 +113,7 @@ const NavItem = ({ to, children, isMetaHeader }) => {
         activeClassName="active"
         partiallyActive={true}
         sx={{
-          ...styles,
+          ...navItemStyles,
           // "&.active": {
           //   borderBottomColor: `lilac`,
           //   color: `black`,
@@ -94,6 +122,7 @@ const NavItem = ({ to, children, isMetaHeader }) => {
       >
         {children}
       </Link>
+
     </li>
   )
 }
@@ -101,7 +130,7 @@ const NavItem = ({ to, children, isMetaHeader }) => {
 const Navbar = (props) => (
   <header
     sx={{
-      minHeight: `4rem`,
+      // minHeight: `4rem`,
       px: 0,
       position: `absolute`,
       left: 0,
@@ -109,21 +138,13 @@ const Navbar = (props) => (
       border: `1px solid black`
     }}
   >
-    <div
+    <Container
       sx={{
         backgroundColor: `black`,
       }}
     >
-      <Container
-        mx={`auto`}
-        px={15}
-        sx={{
-          maxWidth: t => t.sizes.containerSizes,
-        }}
-      >
-        <MetaHeader />
-      </Container>
-    </div>
+      <MetaHeader />
+    </Container>
     <div
     >
       {/* <Box
@@ -152,7 +173,19 @@ const Navbar = (props) => (
           fill: `#0b5172`,
         }}
       /> */}
-
+      <Container
+        psx={{
+          py: 7,
+          backgroundColor: `#ecebe9`,
+        }}
+      >
+        <Logo
+          sx={{
+            height: 40,
+            fill: `#0b5172`,
+          }}
+        />
+      </Container>
       <nav
         sx={{
           fontFamily: `heading`,
@@ -162,8 +195,8 @@ const Navbar = (props) => (
             display: `flex`,
             listStyle: `none`,
             m: 0,
-            // maskImage: t =>
-            //   `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
+            maskImage: t =>
+              `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
             overflowX: `auto`,
           },
         }}
