@@ -1,18 +1,16 @@
 /** @jsx jsx */
 import { jsx, Container as Cont } from 'theme-ui'
 
-const Container = ({ children, sx, psx, ...props }) => (
-    <div {...psx} {...props}>
-        <Cont
-            mx={`auto`}
-            px={15}
-            sx={{
-                maxWidth: t => t.sizes.containerSizes,
-                ...sx,
-            }}>
-            {children}
-        </Cont>
-    </div>
+const Container = ({ children, sx }) => (
+    <Cont
+        mx={`auto`}
+        px={15}
+        sx={{
+            ...sx,
+            maxWidth: t => t.sizes.containerSizes,
+        }}>
+        {children}
+    </Cont>
 
 )
 

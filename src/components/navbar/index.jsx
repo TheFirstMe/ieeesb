@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, Grid } from 'theme-ui'
 import Logo from "../../assets/svg/logo.svg";
+import IEEE from "../../assets/svg/ieee.svg"
 import styled from '@emotion/styled'
 import { mediaQueries } from "../../design-tokens/media-queries"
 import { Link } from "gatsby"
@@ -45,7 +46,7 @@ const navItemHorizontalSpacing = [1, null, 2]
 
 const navItemStyles = {
   borderBottom: `2px solid transparent`,
-  // color: `white`,
+  color: `black`,
   display: `block`,
   fontSize: 2,
   lineHeight: 1.5,
@@ -114,6 +115,8 @@ const NavItem = ({ to, children }) => {
         partiallyActive={true}
         sx={{
           ...navItemStyles,
+          py: `13px`,
+          px: `30px`,
           // "&.active": {
           //   borderBottomColor: `lilac`,
           //   color: `black`,
@@ -127,6 +130,7 @@ const NavItem = ({ to, children }) => {
   )
 }
 
+
 const Navbar = (props) => (
   <header
     sx={{
@@ -138,13 +142,15 @@ const Navbar = (props) => (
       border: `1px solid black`
     }}
   >
-    <Container
+    <div
       sx={{
         backgroundColor: `black`,
       }}
     >
-      <MetaHeader />
-    </Container>
+      <Container>
+        <MetaHeader />
+      </Container>
+    </div>
     <div
     >
       {/* <Box
@@ -173,35 +179,50 @@ const Navbar = (props) => (
           fill: `#0b5172`,
         }}
       /> */}
-      <Container
-        psx={{
+      <div
+        sx={{
           py: 7,
           backgroundColor: `#ecebe9`,
         }}
       >
-        <Logo
-          sx={{
-            height: 40,
-            fill: `#0b5172`,
-          }}
-        />
-      </Container>
+        <Container>
+          <Flex alignItems="center" >
+            <Logo
+              sx={{
+                height: 40,
+                fill: `#0b5172`,
+              }}
+            />
+            <Box mx='auto' />
+            {/* <img src={require("../../assets/ieee.png")} alt="IEEE" /> */}
+            <IEEE
+              sx={{
+                height: 30
+              }}
+            />
+          </Flex>
+
+        </Container>
+      </div>
       <nav
         sx={{
           fontFamily: `heading`,
           display: `none`,
           [mediaQueries.md]: {
+            backgroundColor: `#dad7d8`,
             alignSelf: `flex-end`,
             display: `flex`,
             listStyle: `none`,
             m: 0,
-            maskImage: t =>
-              `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
+            // maskImage: t =>
+            //   `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
             overflowX: `auto`,
           },
         }}
       >
-        <NavItem to="/">Home</NavItem>
+        <Container>
+          <NavItem to="/">Home</NavItem>
+        </Container>
       </nav>
     </div>
     {/* </Box> */}

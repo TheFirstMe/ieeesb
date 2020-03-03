@@ -53,7 +53,7 @@ export const theme = {
   mediaQueries: mediaQueries,
   space: space,
   sizes: {
-    containerSizes: [null, null, 514, 702, 968, 1140, 1528],
+    containerSizes: [null, null, 514, 702, 968, 1140],
     container: `100%`
   }
 }
