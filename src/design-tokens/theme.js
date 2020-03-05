@@ -40,6 +40,12 @@ const c = {
   // _heading_ and _textMuted_ resolves that
   heading: colorsTokens.text.header, // text.header
   textMuted: colorsTokens.text.secondary, // text.secondary
+  navigation: {
+    linkDefault: colorsTokens.blue[60],
+    linkHover: colorsTokens.grey[20],
+    linkActive: colorsTokens.black,
+    background: colorsTokens.grey[20],
+  }
 }
 
 export const theme = {

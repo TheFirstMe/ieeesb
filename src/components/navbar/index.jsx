@@ -15,48 +15,18 @@ const links = [
   { title: "More sites", url: "https://www.ieee.org/sitemap" }
 ];
 
-const MetaHeader = () => {
-  return (
-    <nav
-      sx={{
-        display: `none`,
-        [mediaQueries.md]: {
-          color: `white`,
-          alignItems: `center`,
-          alignSelf: `flex-end`,
-          display: `flex`,
-          listStyle: `none`,
-          overflowX: `auto`,
-          py: 2,
-        },
-      }}
-    >
-      {
-        links.map((link, key) => (
-          <MetaNavItem key={key} to={link.url} target="_blank" rel="noopener noreferrer">
-            {link.title}
-          </MetaNavItem>
-        ))
-      }
-    </nav>
-  )
-}
-
 const navItemHorizontalSpacing = [1, null, 2]
 
 const navItemStyles = {
   borderBottom: `2px solid transparent`,
-  color: `black`,
+  color: `navigation.linkDefault`,
   display: `block`,
   fontSize: 2,
   lineHeight: 1.5,
-  // [mediaQueries.md]: {
-  //   lineHeight: t => `calc(${t.sizes.headerHeight} - ${navItemTopOffset})`,
-  // },
-  position: `relative`,
   textDecoration: `none`,
   zIndex: 1,
-  "&:hover, &:focus": { color: `navigation.linkHover` },
+  "&:hover, &.active": { backgroundColor: `navigation.linkHover` },
+  "&.active": { color: `#00629b`,}
 }
 
 const metaNavItemStyles = {
@@ -90,7 +60,7 @@ const MetaNavItem = ({ to, target, rel, children }) => (
         ...metaNavItemStyles,
         px: 4,
         "&:hover": {
-          color: "#00629B"
+          color: "#00B5E2"
         },
 
       }}>
@@ -105,7 +75,7 @@ const NavItem = ({ to, children }) => {
       sx={{
         display: `block`,
         m: 0,
-        mx: navItemHorizontalSpacing,
+        // mx: navItemHorizontalSpacing,
         // px: navItemHorizontalSpacing
       }}
     >
@@ -118,9 +88,12 @@ const NavItem = ({ to, children }) => {
           py: `13px`,
           px: `30px`,
           // "&.active": {
-          //   borderBottomColor: `lilac`,
-          //   color: `black`,
+          //   color: `#00629b`,
+          //   backgroundColor: `#ecebe9`,
           // },
+          // "&:hover": {
+          //   backgroundColor: `#ecebe9`,
+          // }
         }}
       >
         {children}
@@ -131,101 +104,91 @@ const NavItem = ({ to, children }) => {
 }
 
 
+const navlinks = [
+  { title: "Home", url: "/" },
+  { title: "About", url: "/about" },
+  { title: "Events", url: "/events" },
+  { title: "Execom Members", url: "/execom-members" },
+  { title: "Contact", url: "/contact" }
+];
+
 const Navbar = (props) => (
-  <header
-    sx={{
-      // minHeight: `4rem`,
-      px: 0,
-      position: `absolute`,
-      left: 0,
-      right: 0,
-      border: `1px solid black`
-    }}
-  >
+  <header>
     <div
       sx={{
         backgroundColor: `black`,
       }}
     >
       <Container>
-        <MetaHeader />
+        <nav
+          sx={{
+            display: `none`,
+            [mediaQueries.md]: {
+              color: `white`,
+              alignItems: `center`,
+              alignSelf: `flex-end`,
+              display: `flex`,
+              listStyle: `none`,
+              overflowX: `auto`,
+              py: 2,
+            },
+          }}
+        >
+          {
+            links.map((link, key) => (
+              <MetaNavItem key={key} to={link.url} target="_blank" rel="noopener noreferrer">
+                {link.title}
+              </MetaNavItem>
+            ))
+          }
+        </nav>
       </Container>
     </div>
     <div
-    >
-      {/* <Box
       sx={{
-        alignItems: `center`,
-        height: `100%`,
-        margin: `0 auto`,
-        px: 6,
-        width: `100%`,
-        position: `relative`,
-        "&:after": {
-          bg: `transparent`,
-          bottom: 0,
-          content: `''`,
-          height: 1,
-          left: 0,
-          position: `absolute`,
-          right: 0,
-          zIndex: -1,
-        },
+        py: 7,
+        backgroundColor: `navigation.background`,
       }}
-    > */}
-      {/* <Logo
-        sx={{
-          height: 40,
-          fill: `#0b5172`,
-        }}
-      /> */}
-      <div
-        sx={{
-          py: 7,
-          backgroundColor: `#ecebe9`,
-        }}
-      >
-        <Container>
-          <Flex alignItems="center" >
-            <Logo
-              sx={{
-                height: 40,
-                fill: `#0b5172`,
-              }}
-            />
-            <Box mx='auto' />
-            {/* <img src={require("../../assets/ieee.png")} alt="IEEE" /> */}
-            <IEEE
-              sx={{
-                height: 30
-              }}
-            />
-          </Flex>
+    >
+      <Container>
+        <Flex sx={{ alignItems: 'center', }}>
+          <Logo
+            sx={{
+              height: 40,
+              fill: `#0b5172`,
+            }}
+          />
+          <Box mx='auto' />
+          <IEEE sx={{ height: 30, }} />
+        </Flex>
 
-        </Container>
-      </div>
-      <nav
-        sx={{
-          fontFamily: `heading`,
-          display: `none`,
-          [mediaQueries.md]: {
-            backgroundColor: `#dad7d8`,
-            alignSelf: `flex-end`,
-            display: `flex`,
-            listStyle: `none`,
-            m: 0,
-            // maskImage: t =>
-            //   `linear-gradient(to right, transparent, white ${t.space[1]}, white 98%, transparent)`,
-            overflowX: `auto`,
-          },
-        }}
-      >
-        <Container>
-          <NavItem to="/">Home</NavItem>
-        </Container>
-      </nav>
+      </Container>
     </div>
-    {/* </Box> */}
+    <div
+      sx={{
+        backgroundColor: `#dad7d8`,
+      }}
+    >
+      <Container pl={0}>
+        <nav
+          sx={{
+            fontFamily: `heading`,
+            display: `none`,
+            [mediaQueries.md]: {
+              alignSelf: `flex-end`,
+              display: `flex`,
+              listStyle: `none`,
+              m: 0,
+              overflowX: `auto`,
+            },
+          }}
+        >
+          {navlinks.map((link, key) => (
+            <NavItem key={key} to={link.url}>{link.title}</NavItem>
+          ))}
+        </nav>
+      </Container>
+    </div>
   </header>
 )
 
