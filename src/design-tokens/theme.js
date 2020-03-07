@@ -25,7 +25,7 @@ const c = {
   // Body background color
   background: colorsTokens.white,
   // Primary brand color for links, buttons, etc.
-  primary: colorsTokens.white,
+  primary: colorsTokens.blue[90],
   // A secondary brand color for alternative styling
   secondary: colorsTokens.purple[40],
   // A contrast color for emphasizing UI
@@ -42,7 +42,8 @@ const c = {
   textMuted: colorsTokens.text.secondary, // text.secondary
   navigation: {
     linkDefault: colorsTokens.black,
-    linkHover: colorsTokens.blue[90],
+    linkHover: colorsTokens.grey[20],
+    metaLinkHover: colorsTokens.blue[70],
     linkActive: colorsTokens.blue[90],
     background: colorsTokens.grey[20],
   }

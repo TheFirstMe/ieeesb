@@ -66,6 +66,7 @@ export const colors = preval`
       10: '#ffe6f6',
       5: '#fffafd',
     },
+    //done
     blue: {
       90: '#00629b',
       80: '#007dae',

@@ -6,6 +6,12 @@ import styled from '@emotion/styled'
 import { mediaQueries } from "../../design-tokens/media-queries"
 import { Link } from "gatsby"
 import React from "react"
+import Search from "../Search"
+const searchIndices = [
+    //   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+    { name: `Posts`, title: `Events`, type: `postHit` },
+]
+
 import Container from "../container"
 const links = [
     { title: "IEEE.org", url: "https://www.ieee.org" },
@@ -32,6 +38,9 @@ const navItemStyles = {
 const metaNavItemStyles = {
     ...navItemStyles,
     "&:hover, &.active": null,
+    "&:hover": {
+        color: `navigation.metaLinkHover`
+    },
     fontSize: 0,
     color: `white`,
 }
@@ -60,9 +69,6 @@ const MetaNavItem = ({ to, target, rel, children }) => (
             sx={{
                 ...metaNavItemStyles,
                 px: 4,
-                "&:hover": {
-                    color: "#00B5E2"
-                },
 
             }}>
             {children}
@@ -88,13 +94,6 @@ const NavItem = ({ to, children }) => {
                     ...navItemStyles,
                     py: `13px`,
                     px: `30px`,
-                    // "&.active": {
-                    //   color: `#00629b`,
-                    //   backgroundColor: `#ecebe9`,
-                    // },
-                    // "&:hover": {
-                    //   backgroundColor: `#ecebe9`,
-                    // }
                 }}
             >
                 {children}
@@ -156,7 +155,7 @@ const Navbar = (props) => (
                     <Logo
                         sx={{
                             height: 40,
-                            fill: `#0b5172`,
+                            fill: `primary`,
                         }}
                     />
                     <Box mx='auto' />
@@ -171,23 +170,37 @@ const Navbar = (props) => (
             }}
         >
             <Container pl={0}>
-                <nav
-                    sx={{
-                        fontFamily: `heading`,
-                        display: `none`,
-                        [mediaQueries.md]: {
-                            alignSelf: `flex-end`,
-                            display: `flex`,
-                            listStyle: `none`,
-                            m: 0,
-                            overflowX: `auto`,
-                        },
-                    }}
-                >
-                    {navlinks.map((link, key) => (
-                        <NavItem key={key} to={link.url}>{link.title}</NavItem>
-                    ))}
-                </nav>
+                <Flex sx={{ alignItems: 'center', justifyContent: 'end'}}>
+                    <nav
+                        sx={{
+                            fontFamily: `heading`,
+                            display: `none`,
+                            [mediaQueries.md]: {
+                                alignSelf: `flex-end`,
+                                display: `inline-flex`,
+                                listStyle: `none`,
+                                m: 0,
+                                overflowX: `auto`,
+                            },
+                        }}
+                    >
+                        {navlinks.map((link, key) => (
+                            <NavItem key={key} to={link.url}>{link.title}</NavItem>
+                        ))}
+                    </nav>
+                    <Box mx='auto' />
+                    <div
+                        sx={{
+                            display: `inline-block`,
+                            "form": {
+                                mb: 0,
+                            }
+                        }}
+                    >
+                        <Search indices={searchIndices} />
+                    </div>
+                </Flex>
+
             </Container>
         </div>
     </header>
