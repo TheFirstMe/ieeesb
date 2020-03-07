@@ -41,9 +41,9 @@ const c = {
   heading: colorsTokens.text.header, // text.header
   textMuted: colorsTokens.text.secondary, // text.secondary
   navigation: {
-    linkDefault: colorsTokens.blue[60],
-    linkHover: colorsTokens.grey[20],
-    linkActive: colorsTokens.black,
+    linkDefault: colorsTokens.black,
+    linkHover: colorsTokens.blue[90],
+    linkActive: colorsTokens.blue[90],
     background: colorsTokens.grey[20],
   }
 }
