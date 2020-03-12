@@ -31,7 +31,7 @@ export const SearchIcon = styled(FaSearch)`
 
 const focus = css`
   background: white;
-  color: #006699;
+  // color: #006699;
   cursor: text;
   width: auto;
   + ${SearchIcon} {
@@ -43,7 +43,7 @@ const focus = css`
 const collapsed = css`
   width: 0;
   cursor: pointer;
-  color: #009CA6;
+  // color: #009CA6;
   ${props => props.focus && focus}
   margin-left: ${props => (props.focus ? `-2em` : `-1em`)};
   padding-left: ${props => (props.focus ? `2.2em` : `1em`)};

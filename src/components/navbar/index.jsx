@@ -13,6 +13,8 @@ const searchIndices = [
 ]
 
 import Container from "../container"
+
+import NavMobile from "../navbar-mobile"
 const links = [
     { title: "IEEE.org", url: "https://www.ieee.org" },
     { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },
@@ -114,95 +116,101 @@ const navlinks = [
 
 const Navbar = (props) => (
     <header>
-        <div
-            sx={{
-                backgroundColor: `black`,
-            }}
-        >
-            <Container>
-                <nav
-                    sx={{
-                        display: `none`,
-                        [mediaQueries.md]: {
-                            color: `white`,
-                            alignItems: `center`,
-                            alignSelf: `flex-end`,
-                            display: `flex`,
-                            listStyle: `none`,
-                            overflowX: `auto`,
-                            py: 2,
-                        },
-                    }}
-                >
-                    {
-                        links.map((link, key) => (
-                            <MetaNavItem key={key} to={link.url} target="_blank" rel="noopener noreferrer">
-                                {link.title}
-                            </MetaNavItem>
-                        ))
-                    }
-                </nav>
-            </Container>
-        </div>
-        <div
-            sx={{
-                py: 7,
-                backgroundColor: `navigation.background`,
-            }}
-        >
-            <Container>
-                <Flex sx={{ alignItems: 'center', }}>
-                    <Logo
-                        sx={{
-                            height: 40,
-                            fill: `primary`,
-                        }}
-                    />
-                    <Box mx='auto' />
-                    <div
-                        sx={{
-                            display: `inline-block`,
-                            pr: 5,
-                            mr: 5,
-                            borderRight: `1px solid`,
-                            borderRightColor: `blue.40`,
-                            "form": {
-                                mb: 0,
-                            }
-                        }}
-                    >
-                        <Search indices={searchIndices} collapse />
-                    </div>
-                    <IEEE sx={{ height: 30, }} />
-                </Flex>
-
-            </Container>
-        </div>
-        <div
-            sx={{
-                backgroundColor: `#dad7d8`,
-            }}
-        >
-            <Container>
-                <Flex sx={{ alignItems: 'center', justifyContent: 'end'}}>
+        <div sx={{
+            display: `none`,
+            [mediaQueries.md]: {
+                display: `block`
+            },
+        }}>
+            <div
+                sx={{
+                    backgroundColor: `black`,
+                }}
+            >
+                <Container>
                     <nav
                         sx={{
-                            fontFamily: `heading`,
                             display: `none`,
                             [mediaQueries.md]: {
+                                color: `white`,
+                                alignItems: `center`,
                                 alignSelf: `flex-end`,
-                                display: `inline-flex`,
+                                display: `flex`,
                                 listStyle: `none`,
-                                m: 0,
                                 overflowX: `auto`,
+                                py: 2,
                             },
                         }}
                     >
-                        {navlinks.map((link, key) => (
-                            <NavItem key={key} to={link.url}>{link.title}</NavItem>
-                        ))}
+                        {
+                            links.map((link, key) => (
+                                <MetaNavItem key={key} to={link.url} target="_blank" rel="noopener noreferrer">
+                                    {link.title}
+                                </MetaNavItem>
+                            ))
+                        }
                     </nav>
-                    {/* <Box mx='auto' />
+                </Container>
+            </div>
+            <div
+                sx={{
+                    py: 7,
+                    backgroundColor: `navigation.background`,
+                }}
+            >
+                <Container>
+                    <Flex sx={{ alignItems: 'center', }}>
+                        <Logo
+                            sx={{
+                                height: 40,
+                                fill: `primary`,
+                            }}
+                        />
+                        <Box mx='auto' />
+                        <div
+                            sx={{
+                                display: `inline-block`,
+                                pr: 5,
+                                mr: 5,
+                                borderRight: `1px solid`,
+                                borderRightColor: `blue.40`,
+                                "form": {
+                                    mb: 0,
+                                }
+                            }}
+                        >
+                            <Search indices={searchIndices} collapse />
+                        </div>
+                        <IEEE sx={{ height: 30, }} />
+                    </Flex>
+
+                </Container>
+            </div>
+            <div
+                sx={{
+                    backgroundColor: `#dad7d8`,
+                }}
+            >
+                <Container>
+                    <Flex sx={{ alignItems: 'center', justifyContent: 'end' }}>
+                        <nav
+                            sx={{
+                                fontFamily: `heading`,
+                                display: `none`,
+                                [mediaQueries.md]: {
+                                    alignSelf: `flex-end`,
+                                    display: `inline-flex`,
+                                    listStyle: `none`,
+                                    m: 0,
+                                    overflowX: `auto`,
+                                },
+                            }}
+                        >
+                            {navlinks.map((link, key) => (
+                                <NavItem key={key} to={link.url}>{link.title}</NavItem>
+                            ))}
+                        </nav>
+                        {/* <Box mx='auto' />
                     <div
                         sx={{
                             display: `inline-block`,
@@ -213,9 +221,17 @@ const Navbar = (props) => (
                     >
                         <Search indices={searchIndices} collapse />
                     </div> */}
-                </Flex>
-
-            </Container>
+                    </Flex>
+                </Container>
+            </div>
+        </div>
+        <div sx={{
+            [mediaQueries.md]: {
+                display: `none`,
+            },
+        }}>
+           {/* Test  */}
+           <NavMobile />
         </div>
     </header>
 )
