@@ -3,7 +3,7 @@ import { connectSearchBox } from 'react-instantsearch-dom'
 import { Form, Input, SearchIcon } from './styles'
 
 export default connectSearchBox(({ refine, ...rest }) => (
-  <Form onSubmit={e => { e.preventDefault(); }} className="mr-auto pl-4 mb-md-0 mb-2">
+  <Form onSubmit={e => { e.preventDefault(); }}>
     <Input
       type="text"
       placeholder="Search"
@@ -13,6 +13,6 @@ export default connectSearchBox(({ refine, ...rest }) => (
       onMouseLeave={e => e.target.blur()}
       {...rest}
     />
-    <SearchIcon />
+    <SearchIcon size={20} />
   </Form>
 ))

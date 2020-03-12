@@ -159,6 +159,20 @@ const Navbar = (props) => (
                         }}
                     />
                     <Box mx='auto' />
+                    <div
+                        sx={{
+                            display: `inline-block`,
+                            pr: 5,
+                            mr: 5,
+                            borderRight: `1px solid`,
+                            borderRightColor: `blue.40`,
+                            "form": {
+                                mb: 0,
+                            }
+                        }}
+                    >
+                        <Search indices={searchIndices} collapse />
+                    </div>
                     <IEEE sx={{ height: 30, }} />
                 </Flex>
 
@@ -169,7 +183,7 @@ const Navbar = (props) => (
                 backgroundColor: `#dad7d8`,
             }}
         >
-            <Container pl={0}>
+            <Container>
                 <Flex sx={{ alignItems: 'center', justifyContent: 'end'}}>
                     <nav
                         sx={{
@@ -188,7 +202,7 @@ const Navbar = (props) => (
                             <NavItem key={key} to={link.url}>{link.title}</NavItem>
                         ))}
                     </nav>
-                    <Box mx='auto' />
+                    {/* <Box mx='auto' />
                     <div
                         sx={{
                             display: `inline-block`,
@@ -197,8 +211,8 @@ const Navbar = (props) => (
                             }
                         }}
                     >
-                        <Search indices={searchIndices} />
-                    </div>
+                        <Search indices={searchIndices} collapse />
+                    </div> */}
                 </Flex>
 
             </Container>

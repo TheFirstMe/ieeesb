@@ -24,7 +24,7 @@ Root.defaultProps = {
 }
 
 export const SearchIcon = styled(FaSearch)`
-  width: 1em;
+  // width: 1em;
   pointer-events: none;
   color: #006699;
 `
@@ -45,8 +45,8 @@ const collapsed = css`
   cursor: pointer;
   color: #009CA6;
   ${props => props.focus && focus}
-  margin-left: ${props => (props.focus ? `-1.6em` : `-1em`)};
-  padding-left: ${props => (props.focus ? `1.6em` : `1em`)};
+  margin-left: ${props => (props.focus ? `-2em` : `-1em`)};
+  padding-left: ${props => (props.focus ? `2.2em` : `1em`)};
   ::placeholder {
     color: #75787B;
   }
@@ -65,7 +65,7 @@ const expanded = css`
 export const Input = styled.input`
   outline: none;
   border: none;
-  height: 40px;
+  height: 35px;
   padding: 0 10px;
   font-size: 1em;
   background: transparent;
