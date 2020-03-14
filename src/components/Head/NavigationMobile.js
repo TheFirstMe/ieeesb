@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React, { useState } from 'react';
-import Burger from '../Burger';
+import Burger from '../burger';
 import { mediaQueries } from "../../design-tokens/media-queries"
 
 import { bool } from 'prop-types';

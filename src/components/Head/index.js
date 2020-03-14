@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../navbar'
-import NavigationMobile from '../NavigationMobile'
+import Navigation from './Navigation'
+import NavigationMobile from './NavigationMobile'
 
 const Header = () => (
     <header>
-        <Navbar />
+        <Navigation />
         <NavigationMobile />
     </header>
 )
