@@ -14,7 +14,6 @@ const searchIndices = [
 
 import Container from "../container"
 
-import NavigationMobile from "../NavigationMobile"
 const links = [
     { title: "IEEE.org", url: "https://www.ieee.org" },
     { title: <>IEEE <em>Xplore</em> Digital Library</>, url: "https://ieeexplore.ieee.org" },
@@ -114,7 +113,7 @@ const navlinks = [
     { title: "Contact", url: "/contact" }
 ];
 
-const Navbar = (props) => (
+const Navigation = (props) => (
     // <header>
         <div sx={{
             display: `none`,
@@ -235,4 +234,4 @@ const Navbar = (props) => (
     // </header>
 )
 
-export default Navbar
+export default Navigation
