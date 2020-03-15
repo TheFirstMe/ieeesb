@@ -154,7 +154,7 @@ const Navigation = (props) => (
             <div
                 sx={{
                     py: 7,
-                    backgroundColor: `navigation.background`,
+                    backgroundColor: `navigation.linkHover`,
                 }}
             >
                 <Container>
@@ -187,7 +187,7 @@ const Navigation = (props) => (
             </div>
             <div
                 sx={{
-                    backgroundColor: `#dad7d8`,
+                    backgroundColor: `navigation.background`,
                 }}
             >
                 <Container>

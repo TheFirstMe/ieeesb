@@ -1,18 +1,24 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Box, Flex } from 'theme-ui'
 import React, { useState } from 'react';
 import Burger from '../burger';
 import { mediaQueries } from "../../design-tokens/media-queries"
 import { Link } from "gatsby"
-
+import Logo from "../../assets/svg/logo.svg";
+import Search from "../Search"
 import { bool } from 'prop-types';
+import Container from "../container"
 
+const searchIndices = [
+    //   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+    { name: `Posts`, title: `Events`, type: `postHit` },
+]
 
 const navItemStyles = {
     borderBottom: `2px solid transparent`,
     color: `navigation.linkDefault`,
     display: `block`,
-    fontSize: 4,
+    fontSize: 5,
     lineHeight: 1.5,
     textDecoration: `none`,
     textAlign: `center`,
@@ -37,7 +43,7 @@ const NavItem = ({ to, children }) => {
                 sx={{
                     ...navItemStyles,
                     py: `13px`,
-                    // px: `30px`,
+                    px: `40px`,
                 }}
             >
                 {children}
@@ -54,9 +60,9 @@ const menuStyles = {
     justifyContent: `center`,
     // alignSelf: `flex-end`,
     backgroundColor: `navigation.background`,
-    height: `100vh`,
-    textAlign: `left`,
-    py: 12,
+    minHeight: `100vh`,
+    // textAlign: `left`,
+    // pt: 80,
     position: `absolute`,
     top: 0,
     left: 0,
@@ -76,30 +82,24 @@ const menuStyles = {
     // },
 }
 
+
+const navlinks = [
+    { title: "Home", url: "/" },
+    { title: "About", url: "/about" },
+    { title: "Events", url: "/events" },
+    { title: "Execom Members", url: "/execom-members" },
+    { title: "Contact", url: "/contact" },
+];
+
 const Menu = ({ open }) => {
     return (
         <nav sx={{
             ...menuStyles,
             transform: open ? `translateX(0)` : `translateX(-100%)`,
         }}>
-            {/* <a href="/">
-                <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
-        About us
-      </a>
-            <a href="/">
-                <span role="img" aria-label="price">&#x1f4b8;</span>
-        Pricing
-        </a>
-            <a href="/">
-                <span role="img" aria-label="contact">&#x1f4e9;</span>
-        Contact
-        </a>
-            <a href="/">
-                <span role="img" aria-label="contact">&#x1f4e9;</span>
-        Contact
-        </a> */}
-        <NavItem to={`/`}>Home</NavItem>
-        <NavItem to={`/`}>Home</NavItem>
+            {navlinks.map((link, key) => (
+                <NavItem key={key} to={link.url}>{link.title}</NavItem>
+            ))}
         </nav>
     )
 }
@@ -113,7 +113,38 @@ const NavigationMobile = () => {
                     display: `none`,
                 },
             }}>
-            <Burger open={open} setOpen={setOpen} />
+            <div
+                sx={{
+                    py: 6,
+                    // px: 1,
+                    // height: 7,
+                    backgroundColor: `navigation.linkHover`,
+                }}
+            >
+                <Container>
+                    <Flex sx={{ alignItems: 'center', justifyContent: `space-between` }}>
+                        <Burger open={open} setOpen={setOpen} />
+                        <Logo
+                            sx={{
+                                height: 35,
+                                fill: `primary`,
+                            }}
+                        />
+                        <div
+                            sx={{
+                                display: `inline-block`,
+                                "form": {
+                                    mb: 0,
+                                },
+                            }}
+                            onClick={() => console.log(1)}
+                        >
+                            <Search indices={searchIndices} collapse />
+                        </div>
+                    </Flex>
+
+                </Container>
+            </div>
             <Menu open={open} setOpen={setOpen} />
         </div>
     )

@@ -45,7 +45,7 @@ const c = {
     linkHover: colorsTokens.grey[20],
     metaLinkHover: colorsTokens.blue[70],
     linkActive: colorsTokens.blue[90],
-    background: colorsTokens.grey[20],
+    background: colorsTokens.grey[30],
   }
 }
 

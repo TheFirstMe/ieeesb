@@ -33,7 +33,7 @@ const focus = css`
   background: white;
   // color: #006699;
   cursor: text;
-  width: auto;
+  width: 100%;
   + ${SearchIcon} {
     color: #006699;
     margin: 0 0.3em;

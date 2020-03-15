@@ -5,9 +5,9 @@ import React from 'react'
 import { bool, func } from 'prop-types';
 
 const burgerStyles = {
-  position: `absolute`,
-  top: `5%`,
-  left: `2rem`,
+  position: `relative`,
+  // top: `5%`,
+  // left: `2rem`,
   display: `flex`,
   flexDirection: `column`,
   justifyContent: `space-around`,
@@ -22,6 +22,16 @@ const burgerStyles = {
   "&:focus": {
     outline: `none`,
   },
+
+  div: {
+    width: `2rem`,
+    height: `0.25rem`,
+    borderRadius: 10,
+    transition: `all 0.2s linear`,
+    position: `relative`,
+    transformOrigin: 1,
+    backgroundColor: `grey.80`,
+  }
 }
 
 const Burger = ({ open, setOpen }) => {
@@ -30,22 +40,16 @@ const Burger = ({ open, setOpen }) => {
       sx={{
         ...burgerStyles,
         div: {
-          width: `2rem`,
-          height: `0.25rem`,
-          borderRadium: `10px`,
-          transition: `all 0.2s linear`,
-          position: `relative`,
-          transformOrigin: `1px`,
-          background: `black`,
-          ":first-child": {
+          ...burgerStyles.div,
+          ":first-of-type": {
             transform: open ? 'rotate(45deg)' : 'rotate(0)',
           },
-          ":nth-child(2)": {
-            opacity: open ? '0' : '1',
-            // transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+          ":nth-of-type(2)": {
+            opacity: open ? 0 : 1,
+            // transform: open ? 'translateX(20px)' : 'translateX(0)',
           },
 
-          ":nth-child(3)": {
+          ":nth-of-type(3)": {
             transform: open ? 'rotate(-45deg)' : 'rotate(0)',
           }
         }
