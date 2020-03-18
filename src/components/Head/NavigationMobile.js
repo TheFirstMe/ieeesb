@@ -122,17 +122,18 @@ const NavigationMobile = () => {
                 }}
             >
                 <Container>
-                    <Flex sx={{ alignItems: 'center', justifyContent: `space-between` }}>
+                    <Flex sx={{ position: `relative`, alignItems: 'center', justifyContent: `space-between` }}>
                         <Burger open={open} setOpen={setOpen} />
                         <Logo
                             sx={{
                                 height: 35,
-                                fill: `primary`,
+                                fill: `primary`
                             }}
                         />
                         <div
                             sx={{
-                                display: `inline-block`,
+                                // display: `inline-block`,
+                                // width: `85%`,
                                 "form": {
                                     mb: 0,
                                 },
