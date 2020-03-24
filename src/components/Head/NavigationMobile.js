@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import { jsx, Box, Flex } from 'theme-ui'
+import { jsx, Box, Flex, Close } from 'theme-ui'
 import React, { useState } from 'react';
 import Burger from '../burger';
 import { mediaQueries } from "../../design-tokens/media-queries"
 import { Link } from "gatsby"
 import Logo from "../../assets/svg/logo.svg";
 import Search from "../Search"
+import { SearchIcon } from "../Search/styles"
 import { bool } from 'prop-types';
 import Container from "../container"
 
@@ -104,8 +105,50 @@ const Menu = ({ open }) => {
     )
 }
 
+const SearchB = ({ show, setShow }) => {
+    return (
+        <div sx={{
+            position: `absolute`,
+            display: show.display ? `flex` : `none`,
+            justifyContent: `space-between`,
+            alignItems: `center`,
+            height: `100%`,
+            width: `100%`,
+            // transform: show.opacity ? `translateX(0)` : `translateX(90%)`,
+            opacity: show.opacity ? 1 : 0,
+            // ml: 40,
+            transition: `opacity 0.2s ease-in-out`,
+            backgroundColor: `navigation.linkHover`,
+            zIndex: 10,
+            "form": {
+                mb: 0,
+            }
+        }}>
+            {/* <div sx={{ width: `20%` }}> */}
+            <Search indices={searchIndices} />
+            {/* </div> */}
+            <Close
+                onClick={() => {
+                    setShow({
+                        display: true,
+                    })
+                    setTimeout(() => setShow(false), 200)
+                }}
+                sx={{
+                    // p: 0,
+                    // height: `auto`,
+                    // width: `auto`,
+                    // justifyContent: `flex-end`,
+                }}
+            />
+        </div>
+    )
+}
+
 const NavigationMobile = () => {
     const [open, setOpen] = useState(false);
+    const [show, setShow] = useState(false);
+    // const [opacity, setOpacity] = useState(0);
     return (
         <div
             sx={{
@@ -122,7 +165,7 @@ const NavigationMobile = () => {
                 }}
             >
                 <Container>
-                    <Flex sx={{ position: `relative`, alignItems: 'center', justifyContent: `space-between` }}>
+                    <Flex sx={{ px: 1, position: `relative`, alignItems: 'center', justifyContent: `space-between` }}>
                         <Burger open={open} setOpen={setOpen} />
                         <Logo
                             sx={{
@@ -138,10 +181,20 @@ const NavigationMobile = () => {
                                     mb: 0,
                                 },
                             }}
-                            onClick={() => console.log(1)}
+                            onClick={() => {
+                                setShow({
+                                    display: true
+                                })
+                                setTimeout(() => setShow({
+                                    display: true,
+                                    opacity: true,
+                                }), 10)
+                            }}
                         >
-                            <Search indices={searchIndices} collapse />
+                            {/* <Search indices={searchIndices} collapse /> */}
+                            <SearchIcon sx={{ display: `block` }} size={20} />
                         </div>
+                        <SearchB show={show} setShow={setShow} />
                     </Flex>
 
                 </Container>

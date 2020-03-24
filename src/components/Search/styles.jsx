@@ -4,7 +4,10 @@ import { FaAlgolia } from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
 
 export const Root = styled.div`
- 
+  width: 85%;
+  @media (min-width: 750px) {
+    width: auto;
+  }
   position: relative;
   display: grid;
   // ${props => props.theme.mobile && display}
@@ -53,6 +56,10 @@ const collapsed = css`
 `
 
 const expanded = css`
+  width: 100%;
+  @media (min-width: 750px) {
+    width: auto;
+  }
   background: white;
   margin-left: -1.7em;
   padding-left: 2em;
