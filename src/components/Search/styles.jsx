@@ -4,7 +4,7 @@ import { FaAlgolia } from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
 
 export const Root = styled.div`
-  width: 85%;
+  width: 100%;
   @media (min-width: 750px) {
     width: auto;
   }
@@ -94,18 +94,20 @@ export const HitsWrapper = styled.div`
   overflow-y: auto;
   z-index: 2;
   position: absolute;
-  @media (max-width: 768px) {
-    right: 0.75rem;
-    left: 0.75rem;
-  }
+  // @media (max-width: 768px) {
+  //   right: 0.75rem;
+  //   left: 0.75rem;
+  // }
   @media (min-width: 768px) {
     right: 0px !important;
     left: inherit !important;
     width: 85vw;
+    top: calc(100% + 0.5em);
+    max-width: 30em;
   }
-  top: calc(100% + 0.5em);
+  top: calc(100% + 1.7em);
+  width: calc(100% + 1.7em);
  
-  max-width: 30em;
   box-shadow: 0 0 5px 0 black;
   padding: 0.7em 1em 0.4em;
   border-radius: 0.2em;

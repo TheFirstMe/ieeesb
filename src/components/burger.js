@@ -34,34 +34,38 @@ const burgerStyles = {
   }
 }
 
-const Burger = ({ open, setOpen }) => {
+const Burger = React.forwardRef(({ open, setOpen, }, ref) => {
   return (
     <button
+      ref={ref}
       sx={{
         ...burgerStyles,
-        div: {
-          ...burgerStyles.div,
-          ":first-of-type": {
-            transform: open ? 'rotate(45deg)' : 'rotate(0)',
-          },
-          ":nth-of-type(2)": {
-            opacity: open ? 0 : 1,
-            // transform: open ? 'translateX(20px)' : 'translateX(0)',
-          },
+        // div: {
+        //   ...burgerStyles.div,
+        //   ":first-of-type": {
+        //     transform: open ? 'rotate(45deg)' : 'rotate(0)',
+        //   },
+        //   ":nth-of-type(2)": {
+        //     opacity: open ? 0 : 1,
+        //     // transform: open ? 'translateX(20px)' : 'translateX(0)',
+        //   },
 
-          ":nth-of-type(3)": {
-            transform: open ? 'rotate(-45deg)' : 'rotate(0)',
-          }
-        }
+        //   ":nth-of-type(3)": {
+        //     transform: open ? 'rotate(-45deg)' : 'rotate(0)',
+        //   }
+        // }
       }}
-      onClick={() => setOpen(!open)}
+      onClick={() => {
+        setOpen(!open)
+
+      }}
     >
       <div />
       <div />
       <div />
     </button>
   )
-}
+})
 
 Burger.propTypes = {
   open: bool.isRequired,
