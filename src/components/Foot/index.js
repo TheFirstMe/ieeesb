@@ -22,6 +22,20 @@ const FooterNavItem = ({ to, self, children }) => (
     sx={{
       display: `block`,
       m: 0,
+      "&:not(:first-of-type) a div": {
+        display: `none`,
+        [mediaQueries.md]: {
+          display: `block`,
+          position: `absolute`,
+          top: `50%`,
+          left: `-10px`,
+          width: `18px`,
+          height: `1px`,
+          backgroundColor: `rgba(117, 120, 123, 0.4)`,
+          transform: `rotate(90deg)`,
+          // "&:first-of-type": { display: `none` }
+        }
+      }
     }}
   >
     <a
@@ -39,10 +53,11 @@ const FooterNavItem = ({ to, self, children }) => (
         lineHeight: `15px`,
         textDecoration: `none`,
         color: `white`,
-        "&:hover": { color: `navigation.linkActive`, }
+        "&:hover": { color: `navigation.linkActive`, },
       }}
     >
       {children}
+      <div />
     </a>
   </li>
 )
