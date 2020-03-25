@@ -158,14 +158,15 @@ const Navigation = (props) => (
                 }}
             >
                 <Container>
-                    <Flex sx={{ alignItems: 'center', }}>
+                    <Flex sx={{ alignItems: 'center', justifyContent: `space-between` }}>
                         <Logo
                             sx={{
                                 height: 40,
                                 fill: `primary`,
                             }}
                         />
-                        <Box mx='auto' />
+                        {/* <Box mx='auto' /> */}
+                        <Flex sx={{justifyContent: `flex-end`}}>
                         <div
                             sx={{
                                 display: `inline-block`,
@@ -175,12 +176,13 @@ const Navigation = (props) => (
                                 borderRightColor: `blue.40`,
                                 "form": {
                                     mb: 0,
-                                }
+                                },
                             }}
                         >
                             <Search indices={searchIndices} collapse />
                         </div>
                         <IEEE sx={{ height: 30, }} />
+                        </Flex>
                     </Flex>
 
                 </Container>
@@ -191,7 +193,7 @@ const Navigation = (props) => (
                 }}
             >
                 <Container>
-                    <Flex sx={{ alignItems: 'center', justifyContent: 'end' }}>
+                    <Flex sx={{ alignItems: 'center' }}>
                         <nav
                             sx={{
                                 fontFamily: `heading`,
