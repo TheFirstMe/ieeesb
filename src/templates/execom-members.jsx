@@ -48,9 +48,9 @@ export default ({ data, pageContext }) => {
                         <Form>
                             <Form.Control as="select" size="sm" onChange={changeYear} defaultValue={year}>
                                 {/* <option value="default" hidden>Select year</option> */}
-                                {yearEdges.map(({ node }, index, key) => {
+                                {yearEdges.map(({ node }, index) => {
                                     return (
-                                        <option value={index === 0 ? '' : node.year} key={key}>{`${node.year} - ${Number(node.year) + 1}`}</option>
+                                        <option value={index === 0 ? '' : node.year} key={node.year}>{`${node.year} - ${Number(node.year) + 1}`}</option>
                                     )
                                 })}
                             </Form.Control>
@@ -87,7 +87,7 @@ export default ({ data, pageContext }) => {
                             </Dropdown.Menu>
                         </Dropdown> */}
                     {/* </div> */}
-                    <ExecomMembers members={data.execomMembersJson} />
+                    <ExecomMembers members={data.execomMembersJson} advisors={data.staffAdvisors} />
                 </Col>
                 <Col md={12} lg={4} className="py-2 py-lg-0">
                     <Sidebar type="secondary" />
@@ -137,5 +137,22 @@ export const execomQuery = graphql`
                         }
                     }
                   }
+        
+        staffAdvisors: staffAdvisorsJson {
+            title
+            members {
+                name
+                image {
+                    childImageSharp {
+                        fluid(maxWidth: 180, quality: 80) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
+                designation
+                contact
+                execomColor
+            }
+        }
     }
 `

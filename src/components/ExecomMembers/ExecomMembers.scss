@@ -2,12 +2,12 @@
 
 @include media-breakpoint-down(sm) {
   .space + .space {
-    margin-top: 20px;
+    margin-top: 40px;
   }
 }
 @include media-breakpoint-up(sm) {
   .space + .space + .space + .space {
-    margin-top: 20px;
+    margin-top: 40px;
   }
 }
 .member.card {

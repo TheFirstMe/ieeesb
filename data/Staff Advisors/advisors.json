@@ -1,0 +1,33 @@
+{
+    "title": "Staff Advisors",
+    "members": [
+        {
+            "name": "Dr. Manoj Kumar MV",
+            "designation": "Branch Counselor",
+            "contact": 9744430507,
+            "image": "./sb.png",
+            "execomColor": "#1e73be"
+        },
+        {
+            "name": "Dr. Jayaprakash Pychadathil",
+            "designation": "IAS Staff Advisor",
+            "contact": 9497609509,
+            "image": "./ias.png",
+            "execomColor": "#006341"
+        },
+        {
+            "name": "Dr. M Rajesh",
+            "designation": "PELS Staff Advisor",
+            "contact": 9446031710,
+            "image": "./pels.png",
+            "execomColor": "#BA0C2F"
+        },
+        {
+            "name": "Anjali Anand K",
+            "designation": "WIE Staff Advisor",
+            "contact": 8589862816,
+            "image": "./wie.png",
+            "execomColor": "#772583"
+        }
+    ]
+}

@@ -92,6 +92,13 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "staff",
+        path: `${__dirname}/data/Staff Advisors`
+      }
+    },
+    {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
