@@ -5,7 +5,7 @@ category: "sb"
 date: "2020-05-28"
 venue: "Online"
 tags:
-    - ieeesbgcek -ieeeyp
+    - ieeesbgcek
 ---
 IEEE SB GCEK conducted a webinar on the topic HAM Radio handled by the respectable resource person Shankar Jayaraj (SDLP Coordinator, IEEE Kerala section, Academia working group coordinator ,IEEE Kerala Young Professional , Asst Professor (ECE), UKFCET, Paripally ).
 The webinar was hosted exclusively for the students of GCE Kannur. The session started at 6pm. Introduction and welcome was given by Shilpa S. Ankitha Vinod aided as a moderator.

@@ -6,7 +6,7 @@ date: "2020-05-13"
 venue: "Online"
 slug: "spectrum-talk-05-20"
 tags:
-    - sb
+    - ieeesbgcek
 ---
 
 An online spectrum talk on the topic “Bionic Eyes” was conducted on the 13th of May 2020. The talk was given by Anusree of S2 EEE at 7pm in Google Meet platform.
