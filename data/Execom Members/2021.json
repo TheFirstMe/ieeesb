@@ -1,0 +1,114 @@
+{
+    "year": "2021",
+    "execom": [
+        {
+            "execomName": "Student Branch",
+            "execomColor": "#1e73be",
+            "chair": {
+                "name": "Haritha M E",
+                "designation": "Chairperson",
+                "image": "../images/execommembers/2021/SB/Haritha.jpg"
+            },
+            "members": [
+                {
+                    "name": "Ambareesh V Sankaran",
+                    "designation": "Vice Chairman",
+                    "image": "../images/execommembers/2021/SB/Ambareesh.jpeg"
+                },
+                {
+                    "name": "Mridul P M",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2021/SB/Mridul.jpg"
+                },
+                {
+                    "name": "Shilpa Suresh",
+                    "designation": "Treasurer",
+                    "image": "../images/execommembers/2021/SB/Shilpa.jpg"
+                },
+                {
+                    "name": "Akshay Sivadas",
+                    "designation": "Link/Hub Representative",
+                    "image": "../images/execommembers/2021/SB/Akshay.jpg"
+                },
+                {
+                    "name": "Jishnu K",
+                    "designation": "Technical Coordinator",
+                    "image": "../images/execommembers/2021/SB/Jishnu.jpg"
+                },
+				{
+                    "name": "Jithesh Raj M",
+                    "designation": "Membership Development Coordinator",
+                    "image": "../images/execommembers/2021/SB/Jithesh.jpg"
+                },
+                {
+                    "name": "Nevin Anil Kumar",
+                    "designation": "Webmaster",
+                    "image": "../images/execommembers/2021/SB/Nevin.jpg"
+                },
+                {
+                    "name": "Mehnaz P P",
+                    "designation": "Electronics Communication Coordinator",
+                    "image": "../images/execommembers/2021/SB/Mehnaz.jpg"
+                }
+            ]
+        },
+        {
+            "execomName": "IAS Chapter",
+            "execomColor": "#006341",
+            "chair": {
+                "name": "Anusree R",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2021/IAS/Anusree.jpg"
+            },
+            "members": [
+                {
+                    "name": "Abhishek A",
+                    "designation": "Vice Chair",
+                    "image": "../images/execommembers/2021/IAS/Abhishek.jpeg"
+                },
+                {
+                    "name": "Kavya",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2021/IAS/Kavya.jpg"
+                }
+            ]
+        },
+        {
+            "execomName": "PELS Chapter",
+            "execomColor": "#BA0C2F",
+            "chair": {
+                "name": "Avani P V",
+                "designation": "Chairman",
+                "image": "../images/execommembers/2021/PELS/Avani.jpg"
+            },
+            "members": [
+                {
+                    "name": "Jijina C",
+                    "designation": "Vice Chair",
+                    "image": "../images/execommembers/2021/PELS/Jijina.jpg"
+                },
+                {
+                    "name": "Vismaya K",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2021/PELS/Vismaya.jpeg"
+                }
+            ]
+        },
+        {
+            "execomName": "WIE Chapter",
+            "execomColor": "#772583",
+            "chair": {
+                "name": "Lavanya EV",
+                "designation": "Chairperson",
+                "image": "../images/execommembers/2021/WIE/Lavanya.jpg"
+            },
+            "members": [
+                {
+                    "name": "Shaba K",
+                    "designation": "Secretary",
+                    "image": "../images/execommembers/2021/WIE/Shaba.jpg"
+                }
+            ]
+        }
+    ]
+}
