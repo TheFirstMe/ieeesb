@@ -57,17 +57,17 @@
             "execomColor": "#006341",
             "chair": {
                 "name": "Anusree R",
-                "designation": "Chairman",
+                "designation": "Chairperson",
                 "image": "../images/execommembers/2021/IAS/Anusree.jpg"
             },
             "members": [
                 {
                     "name": "Abhishek A",
                     "designation": "Vice Chair",
-                    "image": "../images/execommembers/2021/IAS/Abhishek.jpeg"
+                    "image": "../images/execommembers/2021/IAS/Abhishek.jpg"
                 },
                 {
-                    "name": "Kavya",
+                    "name": "Kavya K",
                     "designation": "Secretary",
                     "image": "../images/execommembers/2021/IAS/Kavya.jpg"
                 }
@@ -78,7 +78,7 @@
             "execomColor": "#BA0C2F",
             "chair": {
                 "name": "Avani P V",
-                "designation": "Chairman",
+                "designation": "Chairperson",
                 "image": "../images/execommembers/2021/PELS/Avani.jpg"
             },
             "members": [
