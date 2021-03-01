@@ -41,7 +41,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
-    "prismjs": "^1.18.0",
+    "prismjs": "^1.23.0",
     "react": "^16.12.0",
     "react-big-calendar": "^0.22.1",
     "react-bootstrap": "^1.0.0-beta.16",
