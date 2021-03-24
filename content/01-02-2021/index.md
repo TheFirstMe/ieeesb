@@ -20,4 +20,4 @@ The event concluded with a vote of thanks by Ms. Haritha M E.
 
 
 ![Hrithika 5.0](./Hrithika52.jpg)
-![Hrithika 5.0](./Hrithika53.jpg)
+
