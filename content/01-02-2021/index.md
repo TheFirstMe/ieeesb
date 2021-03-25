@@ -1,6 +1,6 @@
 ---
 title: "Hridhika 5.0"
-featuredImage: ./Hridhika5.jpg
+featuredImage: ./Hrithika5.jpg
 category: "sb"
 date: "2021-02-01"
 venue: "Online"
