@@ -2,7 +2,7 @@
 title: "WEBINAR-Engineering thinking- R&D at Wind Energy Sector"
 featuredImage: ./iasweb.jpg
 category: "sb"
-date: "2021-02-10"
+date: "2021-02-13"
 venue: "Online"
 tags:
     - ieeesbgcek - ias
