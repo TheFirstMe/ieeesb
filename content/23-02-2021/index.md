@@ -7,10 +7,15 @@ venue: "Online"
 tags:
     - ieeesbgcek
 ---
-No. of Participants: 68
-Coordinators: Avani P V and Jijina C
+No. of Participants: 31
+Coordinators: Jishnu, Jithesh
 
-Power Electronics Society of IEEE SB GCEK conducted a quiz, ‘Q’RIOUS on 17th February, 2021. The questions of the quiz were based on basic electrical and electronics. The competition was conducted exclusively for First year IEEE members of GCEK. 68 students registered and 42 of them submitted the answer. Ramnath Shenoy B of S1 CSE bagged first prize and Jeffrey Shijo of S1 CSE bagged the second prize. 
+IEEE SB GCEK celebrated the National Science Week under the title ‘Eureka’.
+With an aim to trigger the members’ creative writing and to increase awareness of climate change and other threats of global warming, the second competition was  Article Writing on the topic ‘How Technology can help reduce Global Warming and Climate Change?’.
+The competition was announced on 23rd February and the submissions of participants were collected through a Google Form until 26th February 2021.
+
+31 participants submitted their entries. The first prize was bagged by Lakshmi Priya of S1 EEE and the second prize by Anagha K Sashidharan of S1 CSE.
+
 
 
 ![Webinar](./article2.jpeg)
