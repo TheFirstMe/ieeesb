@@ -25,7 +25,7 @@ const LatestPosts = () => (
           query MainLayoutQuery {
             allMarkdownRemark(
               limit: 5
-              sort: { fields: [fields___date], order: DESC }
+              sort: { fields: [frontmatter___date], order: DESC }
             ) {
               edges {
                 node {

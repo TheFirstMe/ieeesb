@@ -7,7 +7,7 @@ export const useLatestEvents = () => {
         query EventQuery {
             allMarkdownRemark(
               limit: 4
-              sort: { fields: [fields___date], order: DESC }
+              sort: { fields: [frontmatter___date], order: DESC }
             ) {
               edges {
                 node {
