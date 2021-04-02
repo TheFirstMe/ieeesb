@@ -99,60 +99,67 @@ export default ({ data, pageContext }) => {
 
 /* eslint no-undef: "off" */
 
-export const execomQuery = graphql`
-    query ExecomByYear($year: Date!) {
-        execomMembersJson(year: { eq: $year } ) {
-            year
-            execom {
-                execomName
-                execomColor
-                chair {
-                    name
-                    designation
-                    image{
-                        childImageSharp {
-                            fluid(maxWidth: 180, quality: 80){
-                                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                            }
-                        }
-                    }
-                }
-                members {
-                    name
-                    designation
-                    image {
-                        childImageSharp{
-                            fluid(maxWidth: 180, quality: 80){
-                                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                            }
-                        }
-                    }
-                }
-            }
+export const execomQuery = graphql`query ExecomByYear($year: Date!) {
+  execomMembersJson(year: {eq: $year}) {
+    year
+    execom {
+      execomName
+      execomColor
+      chair {
+        name
+        designation
+        image {
+          childImageSharp {
+            gatsbyImageData(
+              width: 180
+              quality: 80
+              placeholder: TRACED_SVG
+              layout: CONSTRAINED
+            )
+          }
         }
-        allYears: allExecomMembersJson(sort: {fields: year, order: DESC}) {
-                    edges {
-                        node {
-                            year
-                        }
-                    }
-                  }
-        
-        staffAdvisors: staffAdvisorsJson {
-            title
-            members {
-                name
-                image {
-                    childImageSharp {
-                        fluid(maxWidth: 180, quality: 80) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
-                    }
-                }
-                designation
-                contact
-                execomColor
-            }
+      }
+      members {
+        name
+        designation
+        image {
+          childImageSharp {
+            gatsbyImageData(
+              width: 180
+              quality: 80
+              placeholder: TRACED_SVG
+              layout: CONSTRAINED
+            )
+          }
         }
+      }
     }
+  }
+  allYears: allExecomMembersJson(sort: {fields: year, order: DESC}) {
+    edges {
+      node {
+        year
+      }
+    }
+  }
+  staffAdvisors: staffAdvisorsJson {
+    title
+    members {
+      name
+      image {
+        childImageSharp {
+          gatsbyImageData(
+            width: 180
+            quality: 80
+            placeholder: TRACED_SVG
+            layout: CONSTRAINED
+          )
+        }
+      }
+      designation
+      contact
+      execomColor
+    }
+  }
+}
 `

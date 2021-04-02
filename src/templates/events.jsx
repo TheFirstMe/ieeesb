@@ -50,36 +50,30 @@ export default class EventsTemplate extends React.Component {
 }
 
 /* eslint no-undef: "off" */
-export const eventQuery = graphql`
-  query eventQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        limit: $limit
-        skip: $skip
-      ) {
-            edges {
-                node {
-                    fields {
-                        slug
-                    }
-                    excerpt(
-                      pruneLength: 120,
-                      truncate:true
-                    )
-                    frontmatter {
-                        title
-                        tags
-                        featuredImage{
-                            childImageSharp{
-                                fluid(maxWidth: 800, quality: 80){
-                                    ...GatsbyImageSharpFluid_withWebp
-                                }
-                            }
-                        }
-                         date(formatString: "MMM Do YYYY")
-                    }
-                }
-            }
+export const eventQuery = graphql`query eventQuery($skip: Int!, $limit: Int!) {
+  allMarkdownRemark(
+    sort: {fields: [frontmatter___date], order: DESC}
+    limit: $limit
+    skip: $skip
+  ) {
+    edges {
+      node {
+        fields {
+          slug
         }
+        excerpt(pruneLength: 120, truncate: true)
+        frontmatter {
+          title
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(width: 800, quality: 80, layout: CONSTRAINED)
+            }
+          }
+          date(formatString: "MMM Do YYYY")
+        }
+      }
     }
+  }
+}
 `;

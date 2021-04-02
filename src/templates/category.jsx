@@ -20,36 +20,33 @@ export default class CategoryTemplate extends React.Component {
 }
 
 /* eslint no-undef: "off" */
-export const pageQuery = graphql`
-  query CategoryPage($category: String) {
-    allMarkdownRemark(
-      limit: 1000
-      sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-            date(formatString: "MMM Do YYYY")
-          }
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            featuredImage{
-              childImageSharp{
-                fluid(maxWidth: 800, quality: 80){
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
+export const pageQuery = graphql`query CategoryPage($category: String) {
+  allMarkdownRemark(
+    limit: 1000
+    sort: {fields: [fields___date], order: DESC}
+    filter: {frontmatter: {category: {eq: $category}}}
+  ) {
+    totalCount
+    edges {
+      node {
+        fields {
+          slug
+          date(formatString: "MMM Do YYYY")
+        }
+        excerpt
+        timeToRead
+        frontmatter {
+          title
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(width: 800, quality: 80, layout: CONSTRAINED)
             }
-            date(formatString: "MMM Do YYYY")
           }
+          date(formatString: "MMM Do YYYY")
         }
       }
     }
   }
+}
 `;

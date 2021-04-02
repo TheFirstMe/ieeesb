@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ExecomMembers.scss";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 // import { array } from "prop-types";
 import { MdCall } from "react-icons/md";
 
@@ -15,6 +15,7 @@ export const Member = ({
   if (!image) {
     return null;
   }
+
   return (
     <Card
       style={{ borderTopColor: borderTopColor, height: contact ? 270 : 230 }}
@@ -23,14 +24,12 @@ export const Member = ({
       <div className="partial-border"></div>
       <div className="mx-auto showcase">
         {/* <img src={image} className="rounded-circle showcase-img img-fluid" /> */}
-        <Img
+        <GatsbyImage
+          image={getImage(image)}
           className="rounded-circle showcase-img"
-          fluid={image.childImageSharp.fluid}
-          // placeholderStyle={{ filter: "blur(15px)" }}
           alt={name}
           title={name}
-          backgroundColor="white"
-        />
+          backgroundColor="white" />
       </div>
       <Card.Body className="text-center my-3">
         <Card.Title>{name}</Card.Title>
@@ -73,7 +72,7 @@ class ExecomMembers extends Component {
                           designation={designation}
                           contact={contact}
                           borderTopColor={execomColor}
-                          image={image}
+                          image={getImage(image)}
                         />
                       </Col>
                       {key === 0 && <Col className="space mt-0" md={4} />}
@@ -103,7 +102,7 @@ class ExecomMembers extends Component {
                           name={name}
                           designation={designation}
                           borderTopColor={execomColor}
-                          image={image}
+                          image={getImage(image)}
                         />
                       </Col>
                     );
