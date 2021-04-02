@@ -4,6 +4,7 @@ featuredImage: ./grid.jpg
 category: "sb"
 date: "2020-06-09"
 venue: "Online"
+slug: "gridlock-2020"
 tags:
     - ieeesbgcek
 ---

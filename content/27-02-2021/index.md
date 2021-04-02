@@ -4,6 +4,7 @@ featuredImage: ./panel.jpg
 category: "sb"
 date: "2021-02-27"
 venue: "Online"
+slug: "eureka-2021-02-27"
 tags:
     - ieeesbgcek
 ---

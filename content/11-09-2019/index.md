@@ -4,7 +4,7 @@ featuredImage: ./grid-lock.jpg
 category: "sb"
 date: "2019-09-11"
 venue: "Online"
-slug: "gridlock"
+slug: "gridlock-2019"
 tags:
     - online
 ---

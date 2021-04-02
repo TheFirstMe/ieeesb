@@ -4,7 +4,7 @@ featuredImage: ./spectrum-alif.jpg
 category: "sb"
 date: "2020-02-27"
 venue: "S7/S8 ME"
-slug: "spectrum-talk-02-20"
+slug: "spectrum-talk-2020-02-27"
 tags:
     - sb
 ---

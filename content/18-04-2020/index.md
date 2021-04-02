@@ -3,6 +3,7 @@ title: "JUST A MINUTE"
 featuredImage: ./jam.jpeg
 category: "ias"
 date: "2020-04-18"
+slug: "jam-2020-04"
 venue: "Online"
 tags:
     - ieeesbgcek - ias

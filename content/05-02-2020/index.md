@@ -4,6 +4,7 @@ featuredImage: ./logoquiz.jpg
 category: "sb"
 date: "2020-02-05"
 venue: "S7/S8 ME"
+slug: "logo-quiz-2020"
 tags:
     - sb
 ---
