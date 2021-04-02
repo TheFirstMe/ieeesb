@@ -21,7 +21,6 @@ module.exports = {
     }
   },
   plugins: [
-    `gatsby-plugin-netlify-cache`,
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -128,6 +127,7 @@ module.exports = {
         showSpinner: false,
       }
     },
+    `gatsby-plugin-image`,
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-catch-links",
@@ -220,7 +220,7 @@ module.exports = {
             {
               allMarkdownRemark(
                 limit: 1000,
-                sort: { order: DESC, fields: [fields___date] },
+                sort: { order: DESC, fields: [frontmatter___date] },
               ) {
                 edges {
                   node {

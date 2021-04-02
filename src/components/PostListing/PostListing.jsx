@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col, Card } from "react-bootstrap";
 import PostTags from "../PostTags/PostTags";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FaCalendarAlt } from "react-icons/fa";
 import styled from "styled-components";
 import './PostListing.scss';
@@ -51,9 +51,8 @@ class PostListing extends React.Component {
             <Col sm={12} md={6} lg={12} xl={6} key={key} className="d-flex py-3">
               <Card className="post w-100 flex-fill">
                 <Link to={post.path} className="stretched-link">
-                  <Img
-                    fluid={post.featuredImage.childImageSharp.fluid}
-                    placeholderStyle={{ filter: "blur(20px)" }}
+                  <GatsbyImage
+                    image={getImage(post.featuredImage)}
                     className="card-img-top"
                     title={post.title}
                     alt={post.title} />

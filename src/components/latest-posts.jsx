@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby';
 import { Row, Col } from 'react-bootstrap';
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FaCalendarAlt } from "react-icons/fa";
 
 
@@ -21,37 +21,31 @@ const PostText = styled.div`
 
 const LatestPosts = () => (
     <StaticQuery
-        query={graphql`
-          query MainLayoutQuery {
-            allMarkdownRemark(
-              limit: 5
-              sort: { fields: [fields___date], order: DESC }
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                    date(formatString: "MMM Do YYYY")
-                  }
-                  excerpt
-                  timeToRead
-                  frontmatter {
-                    title
-                    tags
-                    featuredImage{
-                        childImageSharp{
-                          fluid(maxWidth: 800, quality: 80){
-                            ...GatsbyImageSharpFluid_withWebp
-                          }
-                        }
-                    }
-                    date(formatString: "MMM Do YYYY")
-                  }
-                }
-              }
+        query={graphql`query MainLayoutQuery {
+  allMarkdownRemark(limit: 5, sort: {fields: [frontmatter___date], order: DESC}) {
+    edges {
+      node {
+        fields {
+          slug
+          date(formatString: "MMM Do YYYY")
+        }
+        excerpt
+        timeToRead
+        frontmatter {
+          title
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(width: 800, quality: 80, layout: CONSTRAINED)
             }
           }
-        `}
+          date(formatString: "MMM Do YYYY")
+        }
+      }
+    }
+  }
+}
+`}
         render={data => {
             const postEdges = data.allMarkdownRemark.edges;
             const postList = [];
@@ -66,47 +60,43 @@ const LatestPosts = () => (
                     timeToRead: postEdge.node.timeToRead
                 });
             });
-            return (
-                <>
-                    <h3 className="boxed">
-                        <span>Latest Posts</span>
-                    </h3>
-                    {postList.map(post => (
-                        <Row key={post.title}>
-                            <Col>
-                                <Post className="my-3">
-                                    <PostImage>
-                                        <Link style={{ textDecoration: 'none' }} to={post.path}>
-                                            <Img
-                                                fluid={post.featuredImage.childImageSharp.fluid}
-                                                placeholderStyle={{ filter: "blur(20px)" }}
-                                                title={post.title}
-                                                alt={post.title}
-                                            />
-                                        </Link>
-                                    </PostImage>
-                                    <PostText>
-                                        <Link style={{ textDecoration: 'none' }} to={post.path}>
-                                            {post.title}
-                                        </Link><br />
-                                        <div className="small"
-                                            style={{
-                                                display: "inline-flex",
-                                                alignItems: "center",
-                                                padding: "3px 0px"
-                                            }}>
-                                            <FaCalendarAlt className="text-muted" />
-                                            <span className="text-muted ml-1" style={{ fontSize: "90%" }}>
-                                                {post.date}
-                                            </span>
-                                        </div>
-                                    </PostText>
-                                </Post>
-                            </Col>
-                        </Row>
-                    ))}
-                </>
-            );
+            return <>
+                <h3 className="boxed">
+                    <span>Latest Posts</span>
+                </h3>
+                {postList.map(post => (
+                    <Row key={post.title}>
+                        <Col>
+                            <Post className="my-3">
+                                <PostImage>
+                                    <Link style={{ textDecoration: 'none' }} to={post.path}>
+                                        <GatsbyImage
+                                            image={getImage(post.featuredImage)}
+                                            title={post.title}
+                                            alt={post.title} />
+                                    </Link>
+                                </PostImage>
+                                <PostText>
+                                    <Link style={{ textDecoration: 'none' }} to={post.path}>
+                                        {post.title}
+                                    </Link><br />
+                                    <div className="small"
+                                        style={{
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            padding: "3px 0px"
+                                        }}>
+                                        <FaCalendarAlt className="text-muted" />
+                                        <span className="text-muted ml-1" style={{ fontSize: "90%" }}>
+                                            {post.date}
+                                        </span>
+                                    </div>
+                                </PostText>
+                            </Post>
+                        </Col>
+                    </Row>
+                ))}
+            </>;
         }}
     />
 );

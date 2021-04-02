@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { useExecom } from "../hooks";
 import { useLatestEvents } from "../hooks";
 import SEO from "../components/SEO/SEO";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import config from "../../data/SiteConfig";
 import { Row, Col, Button as B } from "react-bootstrap";
 import Sidebar from "../components/sidebar";
@@ -212,15 +212,13 @@ const Index = () => {
                                         return (
                                             <Col key={key} sm={12} md={6} md={6} className="pt-4">
                                                 <a href={node.fields.slug}>
-                                                    <Img
-                                                        fluid={featuredImage.childImageSharp.thumbnail}
-                                                        placeholderStyle={{ filter: "blur(20px)" }}
+                                                    <GatsbyImage
+                                                        image={featuredImage.childImageSharp.thumbnail}
                                                         alt={node.frontmatter.title}
-                                                        title={node.frontmatter.title}
-                                                    />
+                                                        title={node.frontmatter.title} />
                                                 </a>
                                             </Col>
-                                        )
+                                        );
                                     })
 
                                 }
