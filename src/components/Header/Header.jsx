@@ -7,13 +7,13 @@ import { Location } from '@reach/router';
 import Logo from "../../assets/svg/logo.svg";
 import { FaSearch } from 'react-icons/fa';
 import Search from "../Search"
+// const ieeeLogo = require("../../assets/ieee.png")
+import ieeeLogo from "../../assets/ieee.png"
+
 const searchIndices = [
     //   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
     { name: `Posts`, title: `Events`, type: `postHit` },
 ]
-const IEEE = () => (
-    <img src={require("../../assets/ieee.png")} alt="IEEE" />
-)
 
 const darkTheme = {
     color: "#212122"
@@ -161,7 +161,7 @@ class MainHeader extends React.Component {
                         <Navbar.Brand href="/"><Logo height={40} fill="#0b5172" /></Navbar.Brand>
                         <Navbar.Toggle />
                         <a href="https://www.ieee.org" className="d-none d-md-block" target="_blank" rel="noopener noreferrer" >
-                            <IEEE />
+                            <img src={ieeeLogo} alt="IEEE" />
                         </a>
                     </Container>
                 </Navbar>
