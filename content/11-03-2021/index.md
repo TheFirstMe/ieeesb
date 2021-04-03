@@ -14,4 +14,4 @@ As a part of WIE WEEK, WIE Affinity group of IEEE SB GCEK conducted ‘PEN IT DO
  
 
 
-![Webinar](./penit2.jpeg)
+![Winners](./penit2.jpeg)
