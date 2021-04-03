@@ -4,6 +4,7 @@ featuredImage: ./jam.jpg
 category: "sb"
 date: "2020-09-26"
 venue: "Online"
+slug: "jam-2020-09"
 tags:
     - ieeesbgcek - wie
 ---

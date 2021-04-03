@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import UserInfo from "../components/UserInfo/UserInfo";
 import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
@@ -42,115 +42,105 @@ const PostTemplate = ({ data, pageContext }) => {
   if (!post.category_id) {
     post.category_id = config.postDefaultCategoryID;
   }
-  return (
-    <>
-      <Helmet>
-        <title>{`${post.title} | ${config.siteTitle}`}</title>
-      </Helmet>
-      <SEO postPath={slug} postNode={postNode} postSEO />
-      <Breadcrumb crumbs={crumbs} crumbLabel={post.title} />
-      <Row>
-        <Col lg={8} md={12}>
-          <h1 className="mb-3">{post.title}</h1>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              padding: "3px 0px",
-              fontSize: "80%"
-            }}>
-            <FaCalendarAlt className="text-muted" />
-            <span className="text-muted" style={{ marginTop: "1px", marginLeft: "6px" }}>
-              {post.date}
-            </span>
+  return <>
+    <Helmet>
+      <title>{`${post.title} | ${config.siteTitle}`}</title>
+    </Helmet>
+    <SEO postPath={slug} postNode={postNode} postSEO />
+    <Breadcrumb crumbs={crumbs} crumbLabel={post.title} />
+    <Row>
+      <Col lg={8} md={12}>
+        <h1 className="mb-3">{post.title}</h1>
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            padding: "3px 0px",
+            fontSize: "80%"
+          }}>
+          <FaCalendarAlt className="text-muted" />
+          <span className="text-muted" style={{ marginTop: "1px", marginLeft: "6px" }}>
+            {post.date}
+          </span>
+        </div>
+        <PostTags tags={post.tags} />
+        <Card className="mt-4 border-0">
+          <GatsbyImage
+            image={getImage(post.featuredImage)}
+            className="card-img-top"
+            title={post.title}
+            alt={post.title} />
+          <Card.Body>
+            {post.venue && <div className="mt-2"> <strong>Venue: </strong>{post.venue} </div>}
+            <div className="post-content mt-3" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          </Card.Body>
+          <Card.Footer className="border" style={{
+            backgroundColor: "white"
+          }}>
+            <SocialLinks postPath={slug} postNode={postNode} mobile />
+          </Card.Footer>
+        </Card>
+        <PaginationDiv className="mb-5">
+          <PrevAndNext
+            prev={
+              prevtitle && {
+                title: prevtitle,
+                link: prevslug
+              }
+            }
+            next={
+              nexttitle && {
+                title: nexttitle,
+                link: nextslug
+              }
+            }
+          >
+          </PrevAndNext>
+        </PaginationDiv>
+        {/* <h1>{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div className="post-meta mt-5">
+            
+            <SocialLinks postPath={slug} postNode={postNode} />
           </div>
-          <PostTags tags={post.tags} />
-          <Card className="mt-4 border-0">
-            <Img
-              fluid={post.featuredImage.childImageSharp.fluid}
-              placeholderStyle={{ filter: "blur(20px)" }}
-              className="card-img-top"
-              title={post.title}
-              alt={post.title} />
-            <Card.Body>
-              {post.venue && <div className="mt-2"> <strong>Venue: </strong>{post.venue} </div>}
-              <div className="post-content mt-3" dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            </Card.Body>
-            <Card.Footer className="border" style={{
-              backgroundColor: "white"
-            }}>
-              <SocialLinks postPath={slug} postNode={postNode} mobile />
-            </Card.Footer>
-          </Card>
-          <PaginationDiv className="mb-5">
-            <PrevAndNext
-              prev={
-                prevtitle && {
-                  title: prevtitle,
-                  link: prevslug
-                }
-              }
-              next={
-                nexttitle && {
-                  title: nexttitle,
-                  link: nextslug
-                }
-              }
-            >
-            </PrevAndNext>
-          </PaginationDiv>
-          {/* <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className="post-meta mt-5">
-              
-              <SocialLinks postPath={slug} postNode={postNode} />
-            </div>
-            */}
-          {/* <UserInfo config={config} /> */}
-          {/* <LazyLoad width="100%" onContentVisible={() => console.log('look ma I have been lazyloaded!')}>
-            <DiscussionEmbed {...disqusConfig({ slug, title })} />
-          </LazyLoad> */}
-          {/* <Disqus slug={slug} title={title} /> */}
-        </Col>
-        <Col md={12} lg={4} className="py-2 py-lg-0">
-          <Sidebar type="secondary" />
-        </Col>
-      </Row>
-    </>
-  );
+          */}
+        {/* <UserInfo config={config} /> */}
+        {/* <LazyLoad width="100%" onContentVisible={() => console.log('look ma I have been lazyloaded!')}>
+          <DiscussionEmbed {...disqusConfig({ slug, title })} />
+        </LazyLoad> */}
+        {/* <Disqus slug={slug} title={title} /> */}
+      </Col>
+      <Col md={12} lg={4} className="py-2 py-lg-0">
+        <Sidebar type="secondary" />
+      </Col>
+    </Row>
+  </>;
 }
 
 export default PostTemplate
 
 /* eslint no-undef: "off" */
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      timeToRead
-      excerpt(
-        pruneLength: 50,
-        truncate:true
-      )
-      frontmatter {
-        title
-        date(formatString: "MMM Do YYYY")
-        category
-        tags
-        venue
-        featuredImage{
-          childImageSharp{
-            fluid(maxWidth: 800, quality: 80){
-                ...GatsbyImageSharpFluid_withWebp
-                
-            }
-          }
+export const pageQuery = graphql`query BlogPostBySlug($slug: String!) {
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    html
+    timeToRead
+    excerpt(pruneLength: 50, truncate: true)
+    frontmatter {
+      title
+      date(formatString: "MMM Do YYYY")
+      category
+      tags
+      venue
+      featuredImage {
+        childImageSharp {
+          gatsbyImageData(width: 800, quality: 80, layout: CONSTRAINED)
         }
       }
-      fields {
-        slug
-        date
-      }
+    }
+    fields {
+      slug
+      date
     }
   }
+}
 `;

@@ -4,7 +4,7 @@ featuredImage: ./wie-logo-quiz.jpeg
 category: "wie"
 date: "2019-03-04"
 venue: "S4 ME"
-slug: "logo-quiz"
+slug: "logo-quiz-2019"
 tags:
     - quiz
 ---

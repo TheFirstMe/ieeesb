@@ -4,7 +4,7 @@ featuredImage: ./spectrum-ankita.jpg
 category: "sb"
 date: "2020-02-20"
 venue: "S1/S2 CE"
-slug: "spectrum-talk-02-20"
+slug: "spectrum-talk-2020-02-20"
 tags:
     - sb
 ---

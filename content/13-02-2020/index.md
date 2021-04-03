@@ -4,7 +4,7 @@ featuredImage: ./spectrum-avani.jpg
 category: "sb"
 date: "2020-02-13"
 venue: "S2 EEE"
-slug: "spectrum-talk-02-20"
+slug: "spectrum-talk-2020-02-13"
 tags:
     - spectrum talk
 ---

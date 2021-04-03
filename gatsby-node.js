@@ -2,6 +2,7 @@ const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
+const { set } = require("lodash");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -33,10 +34,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         createNodeField({
           node,
           name: "date",
-          value: date.toISOString()
+          value: date.toISOString(),
         });
       }
     }
+
     createNodeField({ node, name: "slug", value: slug });
   }
 };
@@ -47,12 +49,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagPage = path.resolve("src/templates/tag.jsx");
   const categoryPage = path.resolve("src/templates/category.jsx");
   const eventPage = path.resolve("src/templates/events.jsx");
-  const execomPage = path.resolve("src/templates/execom-members.jsx")
+  const execomPage = path.resolve("src/templates/execom-members.jsx");
 
   const execomQueryResult = await graphql(
     `
       {
-        allExecomMembersJson(sort: {fields: year, order: DESC}) {
+        allExecomMembersJson(sort: { fields: year, order: DESC }) {
           edges {
             node {
               year
@@ -61,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     `
-  )
+  );
 
   if (execomQueryResult.errors) {
     console.error(execomQueryResult.errors);
@@ -71,13 +73,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const execomEdges = execomQueryResult.data.allExecomMembersJson.edges;
 
   execomEdges.forEach((edge, index) => {
-    const year = `${edge.node.year}-${Number(edge.node.year)+1}`
+    const year = `${edge.node.year}-${Number(edge.node.year) + 1}`;
     createPage({
       path: index === 0 ? `/execom-members/` : `/execom-members/${year}/`,
       component: execomPage,
       context: {
         year: edge.node.year,
-      }
+      },
     });
   });
 
@@ -96,6 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 category
                 date
               }
+              fileAbsolutePath
             }
           }
         }
@@ -112,6 +115,28 @@ exports.createPages = async ({ graphql, actions }) => {
   const categorySet = new Set();
 
   const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+
+  const map = new Map();
+  const duplicates = [];
+
+  for (let i = 0; i < postsEdges.length; i++) {
+    const { node } = postsEdges[i];
+    const slug = node.fields.slug;
+    if (map.has(slug)) {
+      duplicates.push({ idx: i, slug: slug });
+    } else {
+      map.set(slug, i);
+    }
+  }
+
+  if (duplicates.length > 0) {
+    let message = new Set()
+    for (const { idx, slug } of duplicates) {
+      message.add(`File path: ${postsEdges[map.get(slug)].node.fileAbsolutePath} ${slug}`)
+      message.add(`File path: ${postsEdges[idx].node.fileAbsolutePath} ${slug}`)
+    }
+    throw new Error(`${[...message].join("\n")}`);
+  }
 
   postsEdges.sort((postA, postB) => {
     const dateA = moment(
@@ -130,8 +155,8 @@ exports.createPages = async ({ graphql, actions }) => {
     return 0;
   });
 
-  const postsPerPage = 8
-  const numPages = Math.ceil(postsEdges.length / postsPerPage)
+  const postsPerPage = 8;
+  const numPages = Math.ceil(postsEdges.length / postsPerPage);
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
@@ -141,14 +166,14 @@ exports.createPages = async ({ graphql, actions }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1
+        currentPage: i + 1,
       },
     });
   });
 
   postsEdges.forEach((edge, index) => {
     if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
+      edge.node.frontmatter.tags.forEach((tag) => {
         tagSet.add(tag);
       });
     }
@@ -157,9 +182,9 @@ exports.createPages = async ({ graphql, actions }) => {
       categorySet.add(edge.node.frontmatter.category);
     }
 
-    const nextEdge = index + 1 < postsEdges.length ? postsEdges[index + 1] : null;
+    const nextEdge =
+      index + 1 < postsEdges.length ? postsEdges[index + 1] : null;
     const prevEdge = index - 1 >= 0 ? postsEdges[index - 1] : null;
-
 
     createPage({
       path: edge.node.fields.slug,
@@ -169,27 +194,27 @@ exports.createPages = async ({ graphql, actions }) => {
         nexttitle: nextEdge ? nextEdge.node.frontmatter.title : null,
         nextslug: nextEdge ? nextEdge.node.fields.slug : null,
         prevtitle: prevEdge ? prevEdge.node.frontmatter.title : null,
-        prevslug: prevEdge ? prevEdge.node.fields.slug : null
-      }
+        prevslug: prevEdge ? prevEdge.node.fields.slug : null,
+      },
     });
   });
 
-  tagSet.forEach(tag => {
+  tagSet.forEach((tag) => {
     createPage({
       path: `/tags/${_.kebabCase(tag)}/`,
       component: tagPage,
       context: {
-        tag
-      }
+        tag,
+      },
     });
   });
-  categorySet.forEach(category => {
+  categorySet.forEach((category) => {
     createPage({
       path: `/categories/${_.kebabCase(category)}/`,
       component: categoryPage,
       context: {
-        category
-      }
+        category,
+      },
     });
   });
 };

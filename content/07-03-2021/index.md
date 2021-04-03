@@ -4,6 +4,7 @@ featuredImage: ./Captio.jpg
 category: "sb"
 date: "2021-03-07"
 venue: "Online"
+slug: "eureka-2021-03-07"
 tags:
     - ieeesbgcek - wie
 ---
