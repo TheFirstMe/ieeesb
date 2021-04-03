@@ -18,4 +18,4 @@ The competition was announced on 23rd February and the submissions of participan
 
 
 
-![Webinar](./article2.jpeg)
+![Winners](./article2.jpeg)

@@ -16,4 +16,4 @@ With an aim to trigger the members’ creativity and imagination, the first comp
 
 
 
-![Webinar](./doodle2.jpeg)
+![Winners](./doodle2.jpeg)

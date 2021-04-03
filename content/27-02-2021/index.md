@@ -20,6 +20,5 @@ The discussion lasted for over 45 minutes and ended with a Q&A session. About 41
 At the end of the informative discussion, Anusree P of S3 EEE bagged the first prize while Sneha Sahajan of S1 ME bagged the second place.
 
 
-![Webinar](./panel2.jpeg)
-![Webinar](./panel3.jpeg)
-![Webinar](./panel4.jpeg)
+![winner](./panel2.jpg)
+
