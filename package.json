@@ -39,7 +39,7 @@
     "gatsby-transformer-sharp": "^3.2.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-big-calendar": "^0.22.1",
